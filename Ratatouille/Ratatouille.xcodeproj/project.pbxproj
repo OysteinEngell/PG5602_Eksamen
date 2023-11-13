@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1727FF8E2B02589100AB3930 /* RatatouilleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FF8D2B02589100AB3930 /* RatatouilleApp.swift */; };
+		1727FF902B02589100AB3930 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FF8F2B02589100AB3930 /* ContentView.swift */; };
+		1727FF922B02589400AB3930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1727FF912B02589400AB3930 /* Assets.xcassets */; };
+		1727FF952B02589400AB3930 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1727FF942B02589400AB3930 /* Preview Assets.xcassets */; };
+		1727FF9F2B02589500AB3930 /* RatatouilleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FF9E2B02589500AB3930 /* RatatouilleTests.swift */; };
+		1727FFA92B02589500AB3930 /* RatatouilleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FFA82B02589500AB3930 /* RatatouilleUITests.swift */; };
+		1727FFAB2B02589500AB3930 /* RatatouilleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FFAA2B02589500AB3930 /* RatatouilleUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1727FF9B2B02589500AB3930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1727FF822B02589100AB3930 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1727FF892B02589100AB3930;
+			remoteInfo = Ratatouille;
+		};
+		1727FFA52B02589500AB3930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1727FF822B02589100AB3930 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1727FF892B02589100AB3930;
+			remoteInfo = Ratatouille;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1727FF8A2B02589100AB3930 /* Ratatouille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratatouille.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1727FF8D2B02589100AB3930 /* RatatouilleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleApp.swift; sourceTree = "<group>"; };
+		1727FF8F2B02589100AB3930 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1727FF912B02589400AB3930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1727FF942B02589400AB3930 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1727FF9A2B02589500AB3930 /* RatatouilleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RatatouilleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1727FF9E2B02589500AB3930 /* RatatouilleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleTests.swift; sourceTree = "<group>"; };
+		1727FFA42B02589500AB3930 /* RatatouilleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RatatouilleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1727FFA82B02589500AB3930 /* RatatouilleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleUITests.swift; sourceTree = "<group>"; };
+		1727FFAA2B02589500AB3930 /* RatatouilleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1727FF872B02589100AB3930 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1727FF972B02589500AB3930 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1727FFA12B02589500AB3930 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1727FF812B02589100AB3930 = {
+			isa = PBXGroup;
+			children = (
+				1727FF8C2B02589100AB3930 /* Ratatouille */,
+				1727FF9D2B02589500AB3930 /* RatatouilleTests */,
+				1727FFA72B02589500AB3930 /* RatatouilleUITests */,
+				1727FF8B2B02589100AB3930 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1727FF8B2B02589100AB3930 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1727FF8A2B02589100AB3930 /* Ratatouille.app */,
+				1727FF9A2B02589500AB3930 /* RatatouilleTests.xctest */,
+				1727FFA42B02589500AB3930 /* RatatouilleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1727FF8C2B02589100AB3930 /* Ratatouille */ = {
+			isa = PBXGroup;
+			children = (
+				1727FF8D2B02589100AB3930 /* RatatouilleApp.swift */,
+				1727FF8F2B02589100AB3930 /* ContentView.swift */,
+				1727FF912B02589400AB3930 /* Assets.xcassets */,
+				1727FF932B02589400AB3930 /* Preview Content */,
+			);
+			path = Ratatouille;
+			sourceTree = "<group>";
+		};
+		1727FF932B02589400AB3930 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1727FF942B02589400AB3930 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1727FF9D2B02589500AB3930 /* RatatouilleTests */ = {
+			isa = PBXGroup;
+			children = (
+				1727FF9E2B02589500AB3930 /* RatatouilleTests.swift */,
+			);
+			path = RatatouilleTests;
+			sourceTree = "<group>";
+		};
+		1727FFA72B02589500AB3930 /* RatatouilleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1727FFA82B02589500AB3930 /* RatatouilleUITests.swift */,
+				1727FFAA2B02589500AB3930 /* RatatouilleUITestsLaunchTests.swift */,
+			);
+			path = RatatouilleUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1727FF892B02589100AB3930 /* Ratatouille */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1727FFAE2B02589500AB3930 /* Build configuration list for PBXNativeTarget "Ratatouille" */;
+			buildPhases = (
+				1727FF862B02589100AB3930 /* Sources */,
+				1727FF872B02589100AB3930 /* Frameworks */,
+				1727FF882B02589100AB3930 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ratatouille;
+			productName = Ratatouille;
+			productReference = 1727FF8A2B02589100AB3930 /* Ratatouille.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1727FF992B02589500AB3930 /* RatatouilleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1727FFB12B02589500AB3930 /* Build configuration list for PBXNativeTarget "RatatouilleTests" */;
+			buildPhases = (
+				1727FF962B02589500AB3930 /* Sources */,
+				1727FF972B02589500AB3930 /* Frameworks */,
+				1727FF982B02589500AB3930 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1727FF9C2B02589500AB3930 /* PBXTargetDependency */,
+			);
+			name = RatatouilleTests;
+			productName = RatatouilleTests;
+			productReference = 1727FF9A2B02589500AB3930 /* RatatouilleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1727FFA32B02589500AB3930 /* RatatouilleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1727FFB42B02589500AB3930 /* Build configuration list for PBXNativeTarget "RatatouilleUITests" */;
+			buildPhases = (
+				1727FFA02B02589500AB3930 /* Sources */,
+				1727FFA12B02589500AB3930 /* Frameworks */,
+				1727FFA22B02589500AB3930 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1727FFA62B02589500AB3930 /* PBXTargetDependency */,
+			);
+			name = RatatouilleUITests;
+			productName = RatatouilleUITests;
+			productReference = 1727FFA42B02589500AB3930 /* RatatouilleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1727FF822B02589100AB3930 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1727FF892B02589100AB3930 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					1727FF992B02589500AB3930 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 1727FF892B02589100AB3930;
+					};
+					1727FFA32B02589500AB3930 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 1727FF892B02589100AB3930;
+					};
+				};
+			};
+			buildConfigurationList = 1727FF852B02589100AB3930 /* Build configuration list for PBXProject "Ratatouille" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1727FF812B02589100AB3930;
+			productRefGroup = 1727FF8B2B02589100AB3930 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1727FF892B02589100AB3930 /* Ratatouille */,
+				1727FF992B02589500AB3930 /* RatatouilleTests */,
+				1727FFA32B02589500AB3930 /* RatatouilleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1727FF882B02589100AB3930 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1727FF952B02589400AB3930 /* Preview Assets.xcassets in Resources */,
+				1727FF922B02589400AB3930 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1727FF982B02589500AB3930 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1727FFA22B02589500AB3930 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1727FF862B02589100AB3930 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1727FF902B02589100AB3930 /* ContentView.swift in Sources */,
+				1727FF8E2B02589100AB3930 /* RatatouilleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1727FF962B02589500AB3930 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1727FF9F2B02589500AB3930 /* RatatouilleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1727FFA02B02589500AB3930 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1727FFA92B02589500AB3930 /* RatatouilleUITests.swift in Sources */,
+				1727FFAB2B02589500AB3930 /* RatatouilleUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1727FF9C2B02589500AB3930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1727FF892B02589100AB3930 /* Ratatouille */;
+			targetProxy = 1727FF9B2B02589500AB3930 /* PBXContainerItemProxy */;
+		};
+		1727FFA62B02589500AB3930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1727FF892B02589100AB3930 /* Ratatouille */;
+			targetProxy = 1727FFA52B02589500AB3930 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1727FFAC2B02589500AB3930 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1727FFAD2B02589500AB3930 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1727FFAF2B02589500AB3930 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Ratatouille/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = OysteinEngell.Ratatouille;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1727FFB02B02589500AB3930 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Ratatouille/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = OysteinEngell.Ratatouille;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1727FFB22B02589500AB3930 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = OysteinEngell.RatatouilleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ratatouille.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ratatouille";
+			};
+			name = Debug;
+		};
+		1727FFB32B02589500AB3930 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = OysteinEngell.RatatouilleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ratatouille.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ratatouille";
+			};
+			name = Release;
+		};
+		1727FFB52B02589500AB3930 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = OysteinEngell.RatatouilleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ratatouille;
+			};
+			name = Debug;
+		};
+		1727FFB62B02589500AB3930 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = OysteinEngell.RatatouilleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ratatouille;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1727FF852B02589100AB3930 /* Build configuration list for PBXProject "Ratatouille" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1727FFAC2B02589500AB3930 /* Debug */,
+				1727FFAD2B02589500AB3930 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1727FFAE2B02589500AB3930 /* Build configuration list for PBXNativeTarget "Ratatouille" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1727FFAF2B02589500AB3930 /* Debug */,
+				1727FFB02B02589500AB3930 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1727FFB12B02589500AB3930 /* Build configuration list for PBXNativeTarget "RatatouilleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1727FFB22B02589500AB3930 /* Debug */,
+				1727FFB32B02589500AB3930 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1727FFB42B02589500AB3930 /* Build configuration list for PBXNativeTarget "RatatouilleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1727FFB52B02589500AB3930 /* Debug */,
+				1727FFB62B02589500AB3930 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1727FF822B02589100AB3930 /* Project object */;
+}
