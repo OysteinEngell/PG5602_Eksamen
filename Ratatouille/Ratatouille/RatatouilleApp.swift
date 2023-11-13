@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct RatatouilleApp: App {
+    
+    
+    
     var body: some Scene {
         WindowGroup {
             TabView {

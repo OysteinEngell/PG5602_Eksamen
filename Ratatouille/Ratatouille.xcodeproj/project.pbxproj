@@ -21,6 +21,7 @@
 		1727FFC72B028A8400AB3930 /* EditIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FFC62B028A8400AB3930 /* EditIngredientView.swift */; };
 		1727FFC92B028B2400AB3930 /* EditArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FFC82B028B2400AB3930 /* EditArchiveView.swift */; };
 		1727FFCB2B028BB800AB3930 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FFCA2B028BB800AB3930 /* SplashScreenView.swift */; };
+		1727FFCF2B02ABFD00AB3930 /* RecipeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FFCE2B02ABFD00AB3930 /* RecipeAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		1727FFC62B028A8400AB3930 /* EditIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIngredientView.swift; sourceTree = "<group>"; };
 		1727FFC82B028B2400AB3930 /* EditArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveView.swift; sourceTree = "<group>"; };
 		1727FFCA2B028BB800AB3930 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		1727FFCE2B02ABFD00AB3930 /* RecipeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 		1727FFBB2B025B6200AB3930 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				1727FFCE2B02ABFD00AB3930 /* RecipeAPIClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1727FFBD2B025DF000AB3930 /* MyRecipesView.swift in Sources */,
+				1727FFCF2B02ABFD00AB3930 /* RecipeAPIClient.swift in Sources */,
 				1727FFC32B02895900AB3930 /* EditAreaView.swift in Sources */,
 				1727FFCB2B028BB800AB3930 /* SplashScreenView.swift in Sources */,
 				1727FFC12B025FF000AB3930 /* SettingsView.swift in Sources */,
