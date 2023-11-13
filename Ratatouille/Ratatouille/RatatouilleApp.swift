@@ -11,7 +11,20 @@ import SwiftUI
 struct RatatouilleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                MyRecipesView()
+                    .tabItem {
+                        Label("Mine Oppskrifter", systemImage: "fork.knife.circle.fill")
+                    }
+                SearchView()
+                    .tabItem {
+                        Label("Søk", systemImage: "magnifyingglass.circle.fill")
+                    }
+                SettingsView()
+                    .tabItem {
+                        Label("Innstillinger", systemImage: "gearshape")
+                    }
+            }
         }
     }
 }
