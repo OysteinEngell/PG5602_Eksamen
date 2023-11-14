@@ -4,11 +4,15 @@
 //
 //  Created by Øystein Engell on 13/11/2023.
 //
+//  kingfisher for å cashe bilder
 
 import SwiftUI
 
 @main
 struct RatatouilleApp: App {
+    
+    
+    
     var body: some Scene {
         WindowGroup {
             TabView {
