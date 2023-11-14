@@ -33,12 +33,13 @@ struct MyRecipesView: View {
             Text("Ingen matoppskrifter").bold()
             
             List{
-                Text("Oppskrift").swipeActions(edge: .trailing){
-                    Button {
-                        print("leading")
-                    } label: {
-                        Label("", systemImage: "archivebox.fill")
-                    }.tint(.accentColor)
+                Text("Oppskrift")
+                    .swipeActions(edge: .trailing){
+                        Button {
+                            print("Archived")
+                        } label: {
+                            Label("hei", systemImage: "archivebox.fill")
+                        }.tint(.accentColor)
                 }
             }
         }.onAppear{

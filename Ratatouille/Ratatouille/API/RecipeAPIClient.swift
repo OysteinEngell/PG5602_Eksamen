@@ -31,7 +31,7 @@ extension RecipeAPIClient {
                 
                 case 200...299:
                     print("OK")
-                
+                    print(data)
                 
                 default: print("Something went wrong")
             }
@@ -40,3 +40,5 @@ extension RecipeAPIClient {
       
     }
 }
+
+
