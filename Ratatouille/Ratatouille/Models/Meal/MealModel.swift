@@ -36,7 +36,6 @@ struct MealModel: Codable, Identifiable {
         let ingredient18: String?
         let ingredient19: String?
         let ingredient20: String?
-        
         let measure1: String?
         let measure2: String?
         let measure3: String?
@@ -67,7 +66,6 @@ struct MealModel: Codable, Identifiable {
         case image = "strMealThumb"
         case tags = "strTags"
         case video = "strYoutube"
-        
         case ingredient1 = "strIngredient1"
         case ingredient2 = "strIngredient2"
         case ingredient3 = "strIngredient3"
@@ -88,7 +86,6 @@ struct MealModel: Codable, Identifiable {
         case ingredient18 = "strIngredient18"
         case ingredient19 = "strIngredient19"
         case ingredient20 = "strIngredient20"
-
         case measure1 = "strMeasure1"
         case measure2 = "strMeasure2"
         case measure3 = "strMeasure3"
@@ -111,4 +108,5 @@ struct MealModel: Codable, Identifiable {
         case measure20 = "strMeasure20"
     }
 }
+
 
