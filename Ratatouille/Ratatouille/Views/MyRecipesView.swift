@@ -76,6 +76,11 @@ struct MyRecipesView: View {
                                 }
                                 Text(meal.area)
                                 Text(meal.category)
+                                
+                                Text(meal.ingredient1 ?? "No ingredient found")
+                                Text(meal.ingredient2 ?? "No ingredient found")
+                                Text(meal.measure1 ?? "No measure found")
+                                Text(meal.measure2 ?? "No measure found")
                                 }
 
 
