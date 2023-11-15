@@ -10,12 +10,14 @@ import SwiftUI
 struct MyRecipesView: View {
     let recipeApiClient = RecipeAPIClient.live
     @State var categories: [CategoryModel] = []
+    @State var areas: [AreaModel] = []
     
     func testAPI(){
         Task{
             do{
                 try await recipeApiClient.getMealByName("Arrabiata")
                 categories = try await recipeApiClient.getCategories()
+                areas = try await recipeApiClient.getAreas()
             } catch let error{
                print(error)
             }
@@ -43,11 +45,20 @@ struct MyRecipesView: View {
                             Label("hei", systemImage: "archivebox.fill")
                         }.tint(.accentColor)
                 }
-                ForEach(categories) {category in
-                    VStack{
-                        Text(category.title)
-                        Text(category.info)
-                        
+                Section{
+//                    ForEach(categories) {category in
+//                        VStack{
+//                            Text(category.title)
+//                            Text(category.info)
+//                            
+//                        }
+//                    }
+                    ForEach(areas) {area in
+                        VStack{
+                            Text(area.name)
+                            
+                            
+                        }
                     }
                 }
             }
