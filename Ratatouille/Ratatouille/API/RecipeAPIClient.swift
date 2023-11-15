@@ -16,7 +16,7 @@ struct RecipeAPIClient {
 //    
     var getCategories: (() async throws -> [CategoryModel])
     var getAreas: (() async throws -> [AreaModel])
-//    var getIngredients: (() async throws -> ())
+    var getIngredients: (() async throws -> [IngredientModel])
 }
 
 extension RecipeAPIClient {
@@ -84,6 +84,29 @@ extension RecipeAPIClient {
             }
         }
         return []
+    }getIngredients: {
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/list.php?i=list")!
+        
+        var urlRequest = URLRequest.init(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            switch statusCode {
+                
+                case 200...299:
+                    print("getIngredients() response: \(statusCode), with data: \(data)")
+                do{
+                    let ingredientData = try JSONDecoder().decode(IngredientResponse.self, from: data)
+//                    print(ingredientData)
+                    return ingredientData.meals
+                }catch let error{
+                    print(error)
+                }
+                
+                default: print("Something went wrong")
+            }
+        }
+        return []
     }
 }//extention recipeAPIClient
 
@@ -93,6 +116,10 @@ struct CategoryResponse: Codable {
 
 struct AreaResponse: Codable {
     let meals: [AreaModel]
+}
+
+struct IngredientResponse: Codable {
+    let meals: [IngredientModel]
 }
 
 

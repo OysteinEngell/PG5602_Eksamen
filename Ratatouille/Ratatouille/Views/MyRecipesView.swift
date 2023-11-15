@@ -11,6 +11,7 @@ struct MyRecipesView: View {
     let recipeApiClient = RecipeAPIClient.live
     @State var categories: [CategoryModel] = []
     @State var areas: [AreaModel] = []
+    @State var ingredients: [IngredientModel] = []
     
     func testAPI(){
         Task{
@@ -18,14 +19,15 @@ struct MyRecipesView: View {
                 try await recipeApiClient.getMealByName("Arrabiata")
                 categories = try await recipeApiClient.getCategories()
                 areas = try await recipeApiClient.getAreas()
+                ingredients = try await recipeApiClient.getIngredients()
             } catch let error{
-               print(error)
+                print(error)
             }
         }
     }
     
     
-  
+    
     
     var body: some View {
         VStack{
@@ -44,24 +46,31 @@ struct MyRecipesView: View {
                         } label: {
                             Label("hei", systemImage: "archivebox.fill")
                         }.tint(.accentColor)
-                }
+                    }
                 Section{
-//                    ForEach(categories) {category in
-//                        VStack{
-//                            Text(category.title)
-//                            Text(category.info)
-//                            
+//                        ForEach(categories) {category in
+//                            VStack{
+//                                Text(category.title)
+//                                Text(category.info)
+//
+//                            }
 //                        }
-//                    }
-                    ForEach(areas) {area in
+//                        ForEach(areas) {area in
+//                            VStack{
+//                                Text(area.name)
+//                            }
+                    ForEach(ingredients){ingredient in
                         VStack{
-                            Text(area.name)
-                            
-                            
+                            Text(ingredient.name)
+                            if(ingredient.info != nil){
+                                Text(ingredient.info!)
+                            }
                         }
+                        
                     }
                 }
             }
+        
         }.onAppear{
             testAPI()
         }
