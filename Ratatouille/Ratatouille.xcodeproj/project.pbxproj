@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172700032B04F3AC00AB3930 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172700022B04F3AC00AB3930 /* CategoryModel.swift */; };
 		1727FF8E2B02589100AB3930 /* RatatouilleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727FF8D2B02589100AB3930 /* RatatouilleApp.swift */; };
 		1727FF922B02589400AB3930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1727FF912B02589400AB3930 /* Assets.xcassets */; };
 		1727FF952B02589400AB3930 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1727FF942B02589400AB3930 /* Preview Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		172700022B04F3AC00AB3930 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		1727FF8A2B02589100AB3930 /* Ratatouille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratatouille.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1727FF8D2B02589100AB3930 /* RatatouilleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleApp.swift; sourceTree = "<group>"; };
 		1727FF912B02589400AB3930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172700012B04F37C00AB3930 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				172700022B04F3AC00AB3930 /* CategoryModel.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		1727FF812B02589100AB3930 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +175,7 @@
 		1727FFB82B025A9600AB3930 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				172700012B04F37C00AB3930 /* Category */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +339,7 @@
 				1727FFC12B025FF000AB3930 /* SettingsView.swift in Sources */,
 				1727FFC92B028B2400AB3930 /* EditArchiveView.swift in Sources */,
 				1727FFBF2B025FD300AB3930 /* SearchView.swift in Sources */,
+				172700032B04F3AC00AB3930 /* CategoryModel.swift in Sources */,
 				1727FFC52B028A6A00AB3930 /* EditCategoryView.swift in Sources */,
 				1727FF8E2B02589100AB3930 /* RatatouilleApp.swift in Sources */,
 				1727FFC72B028A8400AB3930 /* EditIngredientView.swift in Sources */,

@@ -8,20 +8,20 @@
 import Foundation
 
 struct RecipeAPIClient {
-    var getRecipeByName: (( _ recipeName: String) async throws -> ())
+    var getMealByName: (( _ mealName: String) async throws -> ())
 //    var getRecipeById: (() async throws -> ())
 //    var getRecipesByArea: (() async throws -> ())
 //    var getRecipesByCategory: (() async throws -> ())
 //    var getRecipesByIngredient: (() async throws -> ())
 //    
-//    var getCategories: (() async throws -> ())
+    var getCategories: (() async throws -> [CategoryModel])
 //    var getAreas: (() async throws -> ())
 //    var getIngredients: (() async throws -> ())
 }
 
 extension RecipeAPIClient {
-    static let live = RecipeAPIClient { recipeName in
-        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/search.php?s=\(recipeName)")!
+    static let live = RecipeAPIClient { mealName in
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/search.php?s=\(mealName)")!
         
         var urlRequest = URLRequest.init(url: url)
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -30,15 +30,42 @@ extension RecipeAPIClient {
             switch statusCode {
                 
                 case 200...299:
-                    print("OK")
-                    print(data)
+                    print("getMealByName() response: \(statusCode), with data: \(data)")
+                    
                 
                 default: print("Something went wrong")
             }
         }
         
       
+    } getCategories: {
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/categories.php")!
+        
+        var urlRequest = URLRequest.init(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            switch statusCode {
+                
+                case 200...299:
+                    print("getCategories() response: \(statusCode), with data: \(data)")
+                do{
+                    let categoryData = try JSONDecoder().decode(CategoryResponse.self, from: data)
+                    print(categoryData)
+                    return categoryData.categories
+                }catch let error{
+                    print(error)
+                }
+                
+                default: print("Something went wrong")
+            }
+        }
+        return []
     }
+}
+
+struct CategoryResponse: Codable {
+    let categories: [CategoryModel]
 }
 
 

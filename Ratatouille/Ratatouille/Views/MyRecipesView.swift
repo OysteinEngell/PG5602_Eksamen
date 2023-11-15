@@ -13,7 +13,8 @@ struct MyRecipesView: View {
     func testAPI(){
         Task{
             do{
-                try await recipeApiClient.getRecipeByName("spag")
+                try await recipeApiClient.getMealByName("Arrabiata")
+                try await recipeApiClient.getCategories()
             } catch let error{
                print(error)
             }
