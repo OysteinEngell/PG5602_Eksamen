@@ -51,7 +51,7 @@ extension RecipeAPIClient {
                     print("getCategories() response: \(statusCode), with data: \(data)")
                 do{
                     let categoryData = try JSONDecoder().decode(CategoryResponse.self, from: data)
-                    print(categoryData)
+//                    print(categoryData)
                     return categoryData.categories
                 }catch let error{
                     print(error)
