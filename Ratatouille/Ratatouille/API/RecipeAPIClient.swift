@@ -8,7 +8,7 @@
 import Foundation
 
 struct RecipeAPIClient {
-    var getMealByName: (( _ mealName: String) async throws -> ())
+    var getMealByName: (( _ mealName: String) async throws -> [MealModel])
 //    var getRecipeById: (() async throws -> ())
 //    var getRecipesByArea: (() async throws -> ())
 //    var getRecipesByCategory: (() async throws -> ())
@@ -31,12 +31,13 @@ extension RecipeAPIClient {
                 
                 case 200...299:
                     print("getMealByName() response: \(statusCode), with data: \(data)")
-                    
+                let mealData = try JSONDecoder().decode(MealResponse.self, from: data)
+                return mealData.meals
                 
                 default: print("Something went wrong")
             }
         }
-        
+        return []
       
     } getCategories: {
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/categories.php")!
@@ -109,6 +110,10 @@ extension RecipeAPIClient {
         return []
     }
 }//extention recipeAPIClient
+
+struct MealResponse: Codable {
+    let meals: [MealModel]
+}
 
 struct CategoryResponse: Codable {
     let categories: [CategoryModel]

@@ -12,11 +12,12 @@ struct MyRecipesView: View {
     @State var categories: [CategoryModel] = []
     @State var areas: [AreaModel] = []
     @State var ingredients: [IngredientModel] = []
+    @State var meals: [MealModel] = []
     
     func testAPI(){
         Task{
             do{
-                try await recipeApiClient.getMealByName("Arrabiata")
+                meals = try await recipeApiClient.getMealByName("Arrabiata")
                 categories = try await recipeApiClient.getCategories()
                 areas = try await recipeApiClient.getAreas()
                 ingredients = try await recipeApiClient.getIngredients()
@@ -48,28 +49,52 @@ struct MyRecipesView: View {
                         }.tint(.accentColor)
                     }
                 Section{
-//                        ForEach(categories) {category in
+//                    ForEach(categories) {category in
 //                            VStack{
 //                                Text(category.title)
+//                                AsyncImage(url: URL(string: category.image)){image in
+//                                    image.resizable()
+//                                        .aspectRatio(contentMode: .fill)
+//                                        .frame(width: 100, height: 100)
+//                                }placeholder: {
+//                                    ProgressView()
+//                                }
 //                                Text(category.info)
+//                                }
+//                                
 //
 //                            }
-//                        }
+                    ForEach(meals) {meal in
+                            VStack{
+                                Text(meal.title)
+                                AsyncImage(url: URL(string: meal.image)){image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                }placeholder: {
+                                    ProgressView()
+                                }
+                                Text(meal.area)
+                                Text(meal.category)
+                                }
+
+
+                            }
+                        }
 //                        ForEach(areas) {area in
 //                            VStack{
 //                                Text(area.name)
 //                            }
-                    ForEach(ingredients){ingredient in
-                        VStack{
-                            Text(ingredient.name)
-                            if(ingredient.info != nil){
-                                Text(ingredient.info!)
-                            }
-                        }
-                        
-                    }
+//                    ForEach(ingredients){ingredient in
+//                        VStack{
+//                            Text(ingredient.name)
+//                            if(ingredient.info != nil){
+//                                Text(ingredient.info!)
+//                            }
+//                        }
+//                    }
                 }
-            }
+            
         
         }.onAppear{
             testAPI()
