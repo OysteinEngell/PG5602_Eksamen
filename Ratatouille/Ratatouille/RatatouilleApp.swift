@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct RatatouilleApp: App {
     
-    
+    @StateObject var dataController = DataController()
     
     var body: some Scene {
         WindowGroup {
@@ -28,7 +28,7 @@ struct RatatouilleApp: App {
                     .tabItem {
                         Label("Innstillinger", systemImage: "gearshape")
                     }
-            }
+            }.environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

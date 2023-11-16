@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct MyRecipesView: View {
+    
+    @Environment(\.managedObjectContext) var moc
+    
+    
     let recipeApiClient = RecipeAPIClient.live
     @State var categories: [CategoryModel] = []
     @State var areas: [AreaModel] = []
@@ -27,6 +31,8 @@ struct MyRecipesView: View {
             let mealParser = parseMealModel()
             let parsedMeals = mealParser.parseMeal(meals: meals)
             print(parsedMeals[0].ingredients)
+            
+            
             
             
         }
