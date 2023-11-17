@@ -10,5 +10,11 @@ import Foundation
 struct FilteredMealModel: Identifiable, Codable {
     let id: String
     let title: String
-    let image: String //Change to URL??
+    let image: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "idMeal"
+        case title = "strMeal"
+        case image = "strMealThumb"
+    }
 }
