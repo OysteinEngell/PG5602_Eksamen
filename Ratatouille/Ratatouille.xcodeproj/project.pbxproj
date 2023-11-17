@@ -134,8 +134,8 @@
 		17E53D952B07675300F35940 /* Ratatouille */ = {
 			isa = PBXGroup;
 			children = (
-				17E53DE42B07692100F35940 /* API */,
 				17E53D962B07675300F35940 /* RatatouilleApp.swift */,
+				17E53DE42B07692100F35940 /* API */,
 				17E53D9A2B07675400F35940 /* Assets.xcassets */,
 				17E53DD72B07687700F35940 /* Models */,
 				17E53DD62B07683300F35940 /* Storage */,
