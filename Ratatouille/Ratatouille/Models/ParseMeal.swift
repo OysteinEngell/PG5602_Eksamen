@@ -3,21 +3,27 @@
 //  Ratatouille
 //
 //  Created by Øystein Engell on 15/11/2023.
-//  Converts all ingredient and measure parameteters in the API structure into arrays and discards empty strings and nil
+//
+//  - Converts MealModel into coreData Meal entity.
+//  - Converts all ingredient and measure parameters into arrays and discards empty strings / nil.
 
 import Foundation
 import SwiftUI
+import CoreData
 
-struct parseMealModel {
-    func parseMeal(meals: [MealModel]) -> [MealModelModified] {
+struct ParseMeal {
     
-        var newMealsArray: [MealModelModified] = []
-            
+    func parseMealArray(meals: [MealModel], context: NSManagedObjectContext) -> [Meal] {
+        
+        var newMealsArray: [Meal] = []
+        
         for meal in meals{
             
             var ingredientArray: [String] = []
             var measureArray: [String] = []
             
+            //  Tried to iterate through all the parameters, but ended up having to do it manually
+            //
             //        for i in 1...20 {
             //                if let ingredient = meal.ingredient(i), !ingredient.isEmpty {
             //                    ingredientArray.append(ingredient)
@@ -187,23 +193,26 @@ struct parseMealModel {
             if meal.measure20 != "" && meal.measure20 != nil {
                 measureArray.append(meal.measure20!)
             }
+
+            let newMeal = Meal(context: context)
             
-            let newMeal = MealModelModified.init(
-                id: meal.id,
-                title: meal.title,
-                category: meal.category,
-                area: meal.area,
-                instructions: meal.instructions,
-                image: meal.image,
-                tags: meal.tags,
-                video: meal.video,
-                ingredients: ingredientArray,
-                measures: measureArray
-            )
+            newMeal.id = meal.id
+            newMeal.title = meal.title
+            newMeal.category = meal.category
+            newMeal.area = meal.area
+            newMeal.instructions = meal.instructions
+            newMeal.image = meal.image
+            newMeal.tags = meal.tags
+            newMeal.video = meal.video
+            newMeal.ingredients = ingredientArray
+            newMeal.measures = measureArray
+            newMeal.favorite = false
+            newMeal.archived = false
+            
             
             newMealsArray.append(newMeal)
             
         }
-            return newMealsArray
+        return newMealsArray
     }
 }
