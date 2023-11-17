@@ -28,9 +28,10 @@ struct MyRecipesView: View {
             } catch let error{
                 print(error)
             }
-            let mealParser = parseMealModel()
-            let parsedMeals = mealParser.parseMeal(meals: meals)
-            print(parsedMeals[0].ingredients)
+            
+            let parsedMeals = ParseMeal().parseMealArray(meals: meals)
+            
+            print(parsedMeals[0].title)
             
             
             

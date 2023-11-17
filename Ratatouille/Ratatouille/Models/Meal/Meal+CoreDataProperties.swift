@@ -1,5 +1,5 @@
 //
-//  StoredMeal+CoreDataProperties.swift
+//  Meal+CoreDataProperties.swift
 //  Ratatouille
 //
 //  Created by Øystein Engell on 16/11/2023.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension StoredMeal {
+extension Meal {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<StoredMeal> {
-        return NSFetchRequest<StoredMeal>(entityName: "StoredMeal")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Meal> {
+        return NSFetchRequest<Meal>(entityName: "Meal")
     }
 
     @NSManaged public var id: String?
@@ -31,6 +31,6 @@ extension StoredMeal {
 
 }
 
-extension StoredMeal : Identifiable {
+extension Meal : Identifiable {
 
 }
