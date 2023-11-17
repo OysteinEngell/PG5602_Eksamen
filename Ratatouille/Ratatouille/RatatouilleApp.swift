@@ -4,15 +4,13 @@
 //
 //  Created by Øystein Engell on 13/11/2023.
 //
-//  kingfisher for å cashe bilder
 
 import SwiftUI
 
 @main
 struct RatatouilleApp: App {
-    
-    @StateObject var dataController = DataController()
-    
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -28,7 +26,7 @@ struct RatatouilleApp: App {
                     .tabItem {
                         Label("Innstillinger", systemImage: "gearshape")
                     }
-            }.environment(\.managedObjectContext, dataController.container.viewContext)
+            }.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyRecipesView: View {
     
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) private var moc
     
     
     let recipeApiClient = RecipeAPIClient.live
@@ -17,6 +17,7 @@ struct MyRecipesView: View {
     @State var areas: [AreaModel] = []
     @State var ingredients: [IngredientModel] = []
     @State var meals: [MealModel] = []
+    private let parseMeal = ParseMeal()
     
     func testAPI(){
         Task{
@@ -29,9 +30,10 @@ struct MyRecipesView: View {
                 print(error)
             }
             
-            let parsedMeals = ParseMeal().parseMealArray(meals: meals)
+            let parsedMeals = parseMeal.parseMealArray(meals: meals, context: moc )
             
-            print(parsedMeals[0].title)
+            print(parsedMeals[0].ingredients)
+            print(parsedMeals[0].measures)
             
             
             

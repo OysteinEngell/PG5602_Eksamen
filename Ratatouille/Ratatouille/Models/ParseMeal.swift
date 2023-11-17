@@ -9,9 +9,11 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct ParseMeal {
-    func parseMealArray(meals: [MealModel]) -> [Meal] {
+    
+    func parseMealArray(meals: [MealModel], context: NSManagedObjectContext) -> [Meal] {
         
         var newMealsArray: [Meal] = []
         
@@ -192,7 +194,7 @@ struct ParseMeal {
                 measureArray.append(meal.measure20!)
             }
 
-            let newMeal = Meal(context: DataController.shared.container.viewContext)
+            let newMeal = Meal(context: context)
             
             newMeal.id = meal.id
             newMeal.title = meal.title
