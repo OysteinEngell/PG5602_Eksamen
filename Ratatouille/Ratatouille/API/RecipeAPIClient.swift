@@ -10,7 +10,7 @@ import Foundation
 struct RecipeAPIClient {
     var getMealByName: (( _ mealName: String) async throws -> [MealModel])
 //    var getRecipeById: (() async throws -> ())
-//    var getRecipesByArea: (() async throws -> ())
+    var getRecipesByArea: ((_ area: String) async throws -> [FilteredMealModel])
 //    var getRecipesByCategory: (() async throws -> ())
 //    var getRecipesByIngredient: (() async throws -> ())
 //    
@@ -39,6 +39,29 @@ extension RecipeAPIClient {
         }
         return []
       
+    } getRecipesByArea: { area in
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?a=\(area)")!
+        
+        var urlRequest = URLRequest.init(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            switch statusCode {
+                
+                case 200...299:
+                    print("getRecipesByArea response: \(statusCode), with data: \(data)")
+                do{
+                    let filteredData = try JSONDecoder().decode(FilterResponse.self, from: data)
+//                    print(categoryData)
+                    return filteredData.meals
+                }catch let error{
+                    print(error)
+                }
+                
+                default: print("Something went wrong")
+            }
+        }
+        return []
     } getCategories: {
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/categories.php")!
         
@@ -113,6 +136,10 @@ extension RecipeAPIClient {
 
 struct MealResponse: Codable {
     let meals: [MealModel]
+}
+
+struct FilterResponse: Codable {
+    let meals: [FilteredMealModel]
 }
 
 struct CategoryResponse: Codable {
