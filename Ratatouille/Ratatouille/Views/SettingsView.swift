@@ -43,7 +43,7 @@ struct SettingsView: View {
                         NavigationLink{
                             EditArchiveView()
                         } label: {
-                            Text("Redigere ingredienser")
+                            Text("Redigere arkiv")
                         }
                     }
                 }

@@ -9,17 +9,18 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @State var selected = 0
+    @State var selected = "area"
     
     var body: some View {
         VStack{
             Picker(selection: $selected, label: Text(""), content: {
-                Image(systemName: "globe").tag(0)
-                Image(systemName: "rectangle.3.group.bubble").tag(1)
-                Image(systemName: "carrot.fill").tag(2)
-                Image(systemName: "magnifyingglass").tag(3)
+                Image(systemName: "globe").tag("area")
+                Image(systemName: "rectangle.3.group.bubble").tag("category")
+                Image(systemName: "carrot.fill").tag("ingredient")
+                Image(systemName: "magnifyingglass").tag("title")
                 
             }).pickerStyle(.segmented)
+            Spacer()
         }.padding()
     }
 }
