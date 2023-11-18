@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct RecipeAPIClient {
+struct MealAPIClient {
     var getMealByName: (( _ mealName: String) async throws -> [MealModel])
 //    var getRecipeById: (() async throws -> ())
-    var getRecipesByArea: ((_ area: String) async throws -> [FilteredMealModel])
+    var getMealsByArea: ((_ area: String) async throws -> [SearchMealModel])
 //    var getRecipesByCategory: (() async throws -> ())
 //    var getRecipesByIngredient: (() async throws -> ())
 //    
@@ -19,8 +19,8 @@ struct RecipeAPIClient {
     var getIngredients: (() async throws -> [IngredientModel])
 }
 
-extension RecipeAPIClient {
-    static let live = RecipeAPIClient { mealName in
+extension MealAPIClient {
+    static let live = MealAPIClient { mealName in
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/search.php?s=\(mealName)")!
         
         var urlRequest = URLRequest.init(url: url)
@@ -39,7 +39,7 @@ extension RecipeAPIClient {
         }
         return []
       
-    } getRecipesByArea: { area in
+    } getMealsByArea: { area in
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?a=\(area)")!
         
         var urlRequest = URLRequest.init(url: url)
@@ -49,9 +49,9 @@ extension RecipeAPIClient {
             switch statusCode {
                 
                 case 200...299:
-                    print("getRecipesByArea response: \(statusCode), with data: \(data)")
+                    print("getMealsByArea response: \(statusCode), with data: \(data)")
                 do{
-                    let filteredData = try JSONDecoder().decode(FilterResponse.self, from: data)
+                    let filteredData = try JSONDecoder().decode(SearchResponse.self, from: data)
 //                    print(categoryData)
                     return filteredData.meals
                 }catch let error{
@@ -138,8 +138,8 @@ struct MealResponse: Codable {
     let meals: [MealModel]
 }
 
-struct FilterResponse: Codable {
-    let meals: [FilteredMealModel]
+struct SearchResponse: Codable {
+    let meals: [SearchMealModel]
 }
 
 struct CategoryResponse: Codable {

@@ -15,3 +15,12 @@ struct AreaModel: Codable, Identifiable {
         case name = "strArea"
     }
 }
+
+extension AreaModel{
+    static let demo = AreaModel.init(name: "Italian")
+    static let demoArray = [
+        AreaModel.init(name: "Italian"),
+        AreaModel.init(name: "Greek"),
+        AreaModel.init(name: "American")
+    ]
+}
