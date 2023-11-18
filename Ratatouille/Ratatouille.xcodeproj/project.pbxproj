@@ -36,6 +36,7 @@
 		17E53DF22B07744400F35940 /* Meal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DF02B07744400F35940 /* Meal+CoreDataProperties.swift */; };
 		17E53DF42B07974400F35940 /* SearchMealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DF32B07974400F35940 /* SearchMealItemView.swift */; };
 		17E53DF62B079DE900F35940 /* SearchMealListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DF52B079DE900F35940 /* SearchMealListView.swift */; };
+		17E53DF82B08DCA500F35940 /* SearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DF72B08DCA500F35940 /* SearchSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		17E53DF02B07744400F35940 /* Meal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		17E53DF32B07974400F35940 /* SearchMealItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealItemView.swift; sourceTree = "<group>"; };
 		17E53DF52B079DE900F35940 /* SearchMealListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealListView.swift; sourceTree = "<group>"; };
+		17E53DF72B08DCA500F35940 /* SearchSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				17E53DCC2B07681400F35940 /* SplashScreenView.swift */,
 				17E53DF32B07974400F35940 /* SearchMealItemView.swift */,
 				17E53DF52B079DE900F35940 /* SearchMealListView.swift */,
+				17E53DF72B08DCA500F35940 /* SearchSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				17E53DE32B0768D100F35940 /* MealModelModified.swift in Sources */,
 				17E53DDB2B0768A200F35940 /* CategoryModel.swift in Sources */,
 				17E53DF22B07744400F35940 /* Meal+CoreDataProperties.swift in Sources */,
+				17E53DF82B08DCA500F35940 /* SearchSheetView.swift in Sources */,
 				17E53DD22B07681400F35940 /* EditIngredientView.swift in Sources */,
 				17E53D972B07675300F35940 /* RatatouilleApp.swift in Sources */,
 				17E53DDD2B0768AA00F35940 /* IngredientModel.swift in Sources */,

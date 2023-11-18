@@ -11,8 +11,15 @@ struct SearchView: View {
     
     var mealApiClient = MealAPIClient.live
     @State var tabSelected = "Landområde"
+    @State var sheetPresented = false
+    
     @State var selectedArea = "Italian"
+    @State var selectedCategory = "Seafood"
+    @State var selectedIngredient = "Pasta"
+    @State var selectedName = ""
+    
     @State var meals: [SearchMealModel] = []
+    @State var areas: [AreaModel] = []
     
     func getMealsbyArea(area: String) async{
         Task{
@@ -22,6 +29,20 @@ struct SearchView: View {
                 print(error)
             }
         }
+    }
+    
+    func getAreas() async {
+        Task{
+            do{
+                areas = try await mealApiClient.getAreas()
+            }catch let error{
+                print(error)
+            }
+        }
+    }
+    
+    func handleButtonPressed(){
+       sheetPresented = true
     }
     
     
@@ -44,7 +65,7 @@ struct SearchView: View {
             Spacer()
             
             Button(action: {
-                
+                handleButtonPressed()
             }, label: {
                 ZStack{
                     Rectangle().frame(width: 300, height: 50).cornerRadius(40).foregroundColor(.primary)
@@ -52,11 +73,14 @@ struct SearchView: View {
                 }.padding(.vertical)
                 
             })
-            
+            .sheet(isPresented: $sheetPresented){
+                SearchSheetView(searchTerm: $selectedArea, areas: areas, tabSelected: "Landområde")
+            }.presentationDetents([.height(50)])
             
         }.onAppear{
             Task{
                 await getMealsbyArea(area: selectedArea)
+                await getAreas()
             }
            
         }
