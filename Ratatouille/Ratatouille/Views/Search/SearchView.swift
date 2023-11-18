@@ -27,6 +27,7 @@ struct SearchView: View {
             
             switch(tabSelected){
                 case "Landområde": SearchByAreaView(dataContext: dataContext)
+                case "Kategori": SearchByCategoryView(dataContext: dataContext)
                 
                 default: SearchMealListView(meals: [])
             }

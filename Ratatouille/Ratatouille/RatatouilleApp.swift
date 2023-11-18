@@ -13,27 +13,6 @@ struct RatatouilleApp: App {
     @ObservedObject var dataContext = DataContext()
     var mealApiClient = MealAPIClient.live
     
-    
-    func fetchData() async {
-            do{
-                let apiAreas = try await mealApiClient.getAreas()
-                let apiCategories = try await mealApiClient.getCategories()
-                let apiIngredients = try await mealApiClient.getIngredients()
-                
-                let apiAreaFilteredMeals = try await mealApiClient.getMealsByArea("Italian")
-//                let apiCategoryFilteredMeals = try await mealApiClient
-                
-                dataContext.areaArray = apiAreas
-                dataContext.categoryArray = apiCategories
-                dataContext.ingredientArray = apiIngredients
-                
-                dataContext.areaFilteredMealArray = apiAreaFilteredMeals
-                
-                
-            }catch let error{print(error)}
-     
-    }
-
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -51,10 +30,33 @@ struct RatatouilleApp: App {
                     }
             }.onAppear{
                 Task{
-                   await fetchData()
+                    await fetchData()
                 }
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)
-                
+            
         }
+    }
+    
+    func fetchData() async { //handle null / ""
+        do{
+            let apiCategoryFilteredMeals = try await mealApiClient.getMealsByCategory(dataContext.selectedCategory.title)
+            
+            dataContext.areaArray = try await mealApiClient.getAreas()
+            dataContext.selectedArea = dataContext.areaArray[0]
+            dataContext.areaFilteredMealArray = try await mealApiClient.getMealsByArea(dataContext.selectedArea.name)
+            
+            
+            dataContext.categoryArray = try await mealApiClient.getCategories()
+            dataContext.selectedCategory = dataContext.categoryArray[0]
+            dataContext.categoryFilteredMealArray = try await mealApiClient.getMealsByCategory(dataContext.selectedCategory.title)
+            
+            dataContext.ingredientArray = try await mealApiClient.getIngredients()
+            
+            
+            
+            
+            
+        }catch let error{print(error)}
+        
     }
 }

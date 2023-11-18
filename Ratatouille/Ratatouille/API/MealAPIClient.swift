@@ -9,11 +9,11 @@ import Foundation
 
 struct MealAPIClient {
     var getMealByName: (( _ mealName: String) async throws -> [MealModel])
-//    var getRecipeById: (() async throws -> ())
+    //    var getRecipeById: (() async throws -> ())
     var getMealsByArea: ((_ area: String) async throws -> [SearchMealModel])
-//    var getRecipesByCategory: (() async throws -> ())
-//    var getRecipesByIngredient: (() async throws -> ())
-//    
+    var getMealsByCategory: ((_ category: String) async throws -> [SearchMealModel])
+    //    var getRecipesByIngredient: (() async throws -> ())
+    //
     var getCategories: (() async throws -> [CategoryModel])
     var getAreas: (() async throws -> [AreaModel])
     var getIngredients: (() async throws -> [IngredientModel])
@@ -29,16 +29,16 @@ extension MealAPIClient {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
                 
-                case 200...299:
-                    print("getMealByName() response: \(statusCode), with data: \(data)")
+            case 200...299:
+                print("getMealByName() response: \(statusCode), with data: \(data)")
                 let mealData = try JSONDecoder().decode(MealResponse.self, from: data)
                 return mealData.meals
                 
-                default: print("Something went wrong")
+            default: print("Something went wrong")
             }
         }
         return []
-      
+        
     } getMealsByArea: { area in
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?a=\(area)")!
         
@@ -48,17 +48,40 @@ extension MealAPIClient {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
                 
-                case 200...299:
-                    print("getMealsByArea response: \(statusCode), with data: \(data)")
+            case 200...299:
+                print("getMealsByArea response: \(statusCode), with data: \(data)")
                 do{
                     let filteredData = try JSONDecoder().decode(SearchResponse.self, from: data)
-//                    print(categoryData)
+                    //                    print(categoryData)
                     return filteredData.meals
                 }catch let error{
                     print(error)
                 }
                 
-                default: print("Something went wrong")
+            default: print("Something went wrong")
+            }
+        }
+        return []
+    } getMealsByCategory: { category in
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(category)")!
+        
+        var urlRequest = URLRequest.init(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            switch statusCode {
+                
+            case 200...299:
+                print("getMealsByCategorie() response: \(statusCode), with data: \(data)")
+                do{
+                    let filteredData = try JSONDecoder().decode(SearchResponse.self, from: data)
+                    
+                    return filteredData.meals
+                }catch let error{
+                    print(error)
+                }
+                
+            default: print("Something went wrong")
             }
         }
         return []
@@ -71,17 +94,17 @@ extension MealAPIClient {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
                 
-                case 200...299:
-                    print("getCategories() response: \(statusCode), with data: \(data)")
+            case 200...299:
+                print("getCategories() response: \(statusCode), with data: \(data)")
                 do{
                     let categoryData = try JSONDecoder().decode(CategoryResponse.self, from: data)
-//                    print(categoryData)
+                    //                    print(categoryData)
                     return categoryData.categories
                 }catch let error{
                     print(error)
                 }
                 
-                default: print("Something went wrong")
+            default: print("Something went wrong")
             }
         }
         return []
@@ -94,17 +117,17 @@ extension MealAPIClient {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
                 
-                case 200...299:
-                    print("getAreas() response: \(statusCode), with data: \(data)")
+            case 200...299:
+                print("getAreas() response: \(statusCode), with data: \(data)")
                 do{
                     let areaData = try JSONDecoder().decode(AreaResponse.self, from: data)
-//                    print(areaData)
+                    //                    print(areaData)
                     return areaData.meals
                 }catch let error{
                     print(error)
                 }
                 
-                default: print("Something went wrong")
+            default: print("Something went wrong")
             }
         }
         return []
@@ -117,17 +140,17 @@ extension MealAPIClient {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
                 
-                case 200...299:
-                    print("getIngredients() response: \(statusCode), with data: \(data)")
+            case 200...299:
+                print("getIngredients() response: \(statusCode), with data: \(data)")
                 do{
                     let ingredientData = try JSONDecoder().decode(IngredientResponse.self, from: data)
-//                    print(ingredientData)
+                    //                    print(ingredientData)
                     return ingredientData.meals
                 }catch let error{
                     print(error)
                 }
                 
-                default: print("Something went wrong")
+            default: print("Something went wrong")
             }
         }
         return []

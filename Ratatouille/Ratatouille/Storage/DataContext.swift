@@ -9,16 +9,19 @@ import Foundation
 
 class DataContext: ObservableObject {
     @Published var areaArray: [AreaModel] = AreaModel.demoArray
-    @Published var areaSearchTerm: String = "Italian"
+    @Published var selectedArea: AreaModel = AreaModel.demo
+    @Published var areaFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray
     
-    @Published var categoryArray: [CategoryModel] = []
-    @Published var categorySearchTerm: String = "Seafood"
+    
+    @Published var categoryArray: [CategoryModel] = CategoryModel.demoArray
+    @Published var selectedCategory: CategoryModel = CategoryModel.demo
+    @Published var categoryFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray
     
     @Published var ingredientArray: [IngredientModel] = []
-    @Published var ingredientSearchTerm: String = "Pasta"
-    
-    @Published var areaFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray
-    @Published var categoryFilteredMealArray: [SearchMealModel] = []
+    @Published var selectedIngredient: String = "Pasta"
     @Published var ingredientFilteredMealArray: [SearchMealModel] = []
+    
+    
+    
     @Published var nameFilteredMealArray: [SearchMealModel] = []
 }
