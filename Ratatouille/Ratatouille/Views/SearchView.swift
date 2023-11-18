@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchView: View {
     
+    @ObservedObject var dataContext: DataContext
+    
     var mealApiClient = MealAPIClient.live
     @State var tabSelected = "Landområde"
     @State var sheetPresented = false
@@ -22,6 +24,7 @@ struct SearchView: View {
     @State var areas: [AreaModel] = []
     
     func getMealsbyArea(area: String) async{
+        meals = dataContext.areaFilteredMealArray
         Task{
             do{
                 meals = try await mealApiClient.getMealsByArea(area)
@@ -54,7 +57,7 @@ struct SearchView: View {
                 Image(systemName: "carrot.fill").tag("Ingrediens")
                 Image(systemName: "magnifyingglass").tag("Navn")
                 
-            }).pickerStyle(.segmented).safeAreaPadding()
+            }).pickerStyle(.segmented).padding()
             
             
             Text("\(tabSelected): \(selectedArea)").font(.title).bold()
@@ -75,18 +78,12 @@ struct SearchView: View {
             })
             .sheet(isPresented: $sheetPresented){
                 SearchSheetView(searchTerm: $selectedArea, areas: areas, tabSelected: "Landområde")
-            }.presentationDetents([.height(50)])
+            }.presentationDetents([.medium])
             
-        }.onAppear{
-            Task{
-                await getMealsbyArea(area: selectedArea)
-                await getAreas()
-            }
-           
         }
     }
 }
 
 #Preview {
-    SearchView()
+    SearchView(dataContext: DataContext())
 }

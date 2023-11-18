@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1714DE642B090EC500AB5246 /* DataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714DE632B090EC500AB5246 /* DataContext.swift */; };
 		17E53D972B07675300F35940 /* RatatouilleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D962B07675300F35940 /* RatatouilleApp.swift */; };
 		17E53D992B07675300F35940 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D982B07675300F35940 /* ContentView.swift */; };
 		17E53D9B2B07675400F35940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E53D9A2B07675400F35940 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1714DE632B090EC500AB5246 /* DataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContext.swift; sourceTree = "<group>"; };
 		17E53D932B07675300F35940 /* Ratatouille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratatouille.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E53D962B07675300F35940 /* RatatouilleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleApp.swift; sourceTree = "<group>"; };
 		17E53D982B07675300F35940 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				17E53D9F2B07675400F35940 /* Persistence.swift */,
 				17E53DA12B07675400F35940 /* Ratatouille.xcdatamodeld */,
+				1714DE632B090EC500AB5246 /* DataContext.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -308,7 +311,7 @@
 				};
 			};
 			buildConfigurationList = 17E53D8E2B07675300F35940 /* Build configuration list for PBXProject "Ratatouille" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -364,6 +367,7 @@
 				17E53DCE2B07681400F35940 /* EditCategoryView.swift in Sources */,
 				17E53DD12B07681400F35940 /* MyRecipesView.swift in Sources */,
 				17E53DF42B07974400F35940 /* SearchMealItemView.swift in Sources */,
+				1714DE642B090EC500AB5246 /* DataContext.swift in Sources */,
 				17E53DE12B0768C300F35940 /* FilteredMealModel.swift in Sources */,
 				17E53DF62B079DE900F35940 /* SearchMealListView.swift in Sources */,
 				17E53D992B07675300F35940 /* ContentView.swift in Sources */,
