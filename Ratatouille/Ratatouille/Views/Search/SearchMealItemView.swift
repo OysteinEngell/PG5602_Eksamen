@@ -23,7 +23,7 @@ struct SearchMealItemView: View {
                 Button(action: {
                     print("SwipeAction Registered on item id: \(meal.id)")
                 }, label: {
-                    Label("", systemImage: "archivebox.fill").tint(.primary)
+                    Label("", systemImage: "square.grid.3x1.folder.fill.badge.plus").tint(.primary)
                 })
             })
     }

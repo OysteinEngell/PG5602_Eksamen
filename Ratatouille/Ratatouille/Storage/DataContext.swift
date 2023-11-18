@@ -8,7 +8,7 @@
 import Foundation
 
 class DataContext: ObservableObject {
-    @Published var areaArray: [AreaModel] = []
+    @Published var areaArray: [AreaModel] = AreaModel.demoArray
     @Published var areaSearchTerm: String = "Italian"
     
     @Published var categoryArray: [CategoryModel] = []
@@ -17,7 +17,7 @@ class DataContext: ObservableObject {
     @Published var ingredientArray: [IngredientModel] = []
     @Published var ingredientSearchTerm: String = "Pasta"
     
-    @Published var areaFilteredMealArray: [SearchMealModel] = []
+    @Published var areaFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray
     @Published var categoryFilteredMealArray: [SearchMealModel] = []
     @Published var ingredientFilteredMealArray: [SearchMealModel] = []
     @Published var nameFilteredMealArray: [SearchMealModel] = []
