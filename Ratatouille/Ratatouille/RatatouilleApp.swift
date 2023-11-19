@@ -39,8 +39,6 @@ struct RatatouilleApp: App {
     
     func fetchData() async { //handle null / ""
         do{
-            let apiCategoryFilteredMeals = try await mealApiClient.getMealsByCategory(dataContext.selectedCategory.title)
-            
             dataContext.areaArray = try await mealApiClient.getAreas()
             dataContext.selectedArea = dataContext.areaArray[0]
             dataContext.areaFilteredMealArray = try await mealApiClient.getMealsByArea(dataContext.selectedArea.name)
@@ -51,6 +49,9 @@ struct RatatouilleApp: App {
             dataContext.categoryFilteredMealArray = try await mealApiClient.getMealsByCategory(dataContext.selectedCategory.title)
             
             dataContext.ingredientArray = try await mealApiClient.getIngredients()
+            dataContext.selectedIngredient = dataContext.ingredientArray[0]
+            dataContext.ingredientFilteredMealArray = try await mealApiClient.getMealsByIngredient(dataContext.selectedIngredient.name)
+            
             
             
             

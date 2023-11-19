@@ -10,6 +10,7 @@
 		1714DE642B090EC500AB5246 /* DataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714DE632B090EC500AB5246 /* DataContext.swift */; };
 		1714DE662B0955C800AB5246 /* SearchByAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714DE652B0955C800AB5246 /* SearchByAreaView.swift */; };
 		1714DE6B2B0964B700AB5246 /* SearchByCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714DE6A2B0964B700AB5246 /* SearchByCategoryView.swift */; };
+		1714DE6D2B0A378F00AB5246 /* SearchByIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714DE6C2B0A378F00AB5246 /* SearchByIngredientView.swift */; };
 		17E53D972B07675300F35940 /* RatatouilleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D962B07675300F35940 /* RatatouilleApp.swift */; };
 		17E53D992B07675300F35940 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D982B07675300F35940 /* ContentView.swift */; };
 		17E53D9B2B07675400F35940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E53D9A2B07675400F35940 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		1714DE632B090EC500AB5246 /* DataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContext.swift; sourceTree = "<group>"; };
 		1714DE652B0955C800AB5246 /* SearchByAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByAreaView.swift; sourceTree = "<group>"; };
 		1714DE6A2B0964B700AB5246 /* SearchByCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByCategoryView.swift; sourceTree = "<group>"; };
+		1714DE6C2B0A378F00AB5246 /* SearchByIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByIngredientView.swift; sourceTree = "<group>"; };
 		17E53D932B07675300F35940 /* Ratatouille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratatouille.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E53D962B07675300F35940 /* RatatouilleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleApp.swift; sourceTree = "<group>"; };
 		17E53D982B07675300F35940 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				17E53DF52B079DE900F35940 /* SearchMealListView.swift */,
 				1714DE652B0955C800AB5246 /* SearchByAreaView.swift */,
 				1714DE6A2B0964B700AB5246 /* SearchByCategoryView.swift */,
+				1714DE6C2B0A378F00AB5246 /* SearchByIngredientView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				17E53D992B07675300F35940 /* ContentView.swift in Sources */,
 				17E53DD42B07681400F35940 /* SplashScreenView.swift in Sources */,
 				17E53DA32B07675400F35940 /* Ratatouille.xcdatamodeld in Sources */,
+				1714DE6D2B0A378F00AB5246 /* SearchByIngredientView.swift in Sources */,
 				17E53DF12B07744400F35940 /* Meal+CoreDataClass.swift in Sources */,
 				17E53DD32B07681400F35940 /* SettingsView.swift in Sources */,
 				1714DE6B2B0964B700AB5246 /* SearchByCategoryView.swift in Sources */,

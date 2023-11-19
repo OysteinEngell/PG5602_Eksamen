@@ -26,10 +26,11 @@ struct SearchView: View {
             }).pickerStyle(.segmented).padding()
             
             switch(tabSelected){
-                case "Landområde": SearchByAreaView(dataContext: dataContext)
-                case "Kategori": SearchByCategoryView(dataContext: dataContext)
+            case "Landområde": SearchByAreaView(dataContext: dataContext)
+            case "Kategori": SearchByCategoryView(dataContext: dataContext)
+            case "Ingrediens": SearchByIngredientView(dataContext: dataContext)
                 
-                default: SearchMealListView(meals: [])
+            default: SearchMealListView(meals: [])
             }
             
             

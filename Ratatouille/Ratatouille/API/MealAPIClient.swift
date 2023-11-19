@@ -10,9 +10,10 @@ import Foundation
 struct MealAPIClient {
     var getMealByName: (( _ mealName: String) async throws -> [MealModel])
     //    var getRecipeById: (() async throws -> ())
+    
     var getMealsByArea: ((_ area: String) async throws -> [SearchMealModel])
     var getMealsByCategory: ((_ category: String) async throws -> [SearchMealModel])
-    //    var getRecipesByIngredient: (() async throws -> ())
+    var getMealsByIngredient: ((_ ingredient: String) async throws -> [SearchMealModel])
     //
     var getCategories: (() async throws -> [CategoryModel])
     var getAreas: (() async throws -> [AreaModel])
@@ -72,7 +73,30 @@ extension MealAPIClient {
             switch statusCode {
                 
             case 200...299:
-                print("getMealsByCategorie() response: \(statusCode), with data: \(data)")
+                print("getMealsByCategory() response: \(statusCode), with data: \(data)")
+                do{
+                    let filteredData = try JSONDecoder().decode(SearchResponse.self, from: data)
+                    
+                    return filteredData.meals
+                }catch let error{
+                    print(error)
+                }
+                
+            default: print("Something went wrong")
+            }
+        }
+        return []
+    }getMealsByIngredient: { ingredient in
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?i=\(ingredient)")!
+        
+        var urlRequest = URLRequest.init(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            switch statusCode {
+                
+            case 200...299:
+                print("getMealsByIngredient() response: \(statusCode), with data: \(data)")
                 do{
                     let filteredData = try JSONDecoder().decode(SearchResponse.self, from: data)
                     

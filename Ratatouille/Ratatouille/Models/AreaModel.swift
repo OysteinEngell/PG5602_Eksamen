@@ -10,6 +10,7 @@ import Foundation
 struct AreaModel: Codable, Identifiable {
     var id = UUID()
     var name: String
+    var flag: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "strArea"

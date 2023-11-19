@@ -17,9 +17,9 @@ class DataContext: ObservableObject {
     @Published var selectedCategory: CategoryModel = CategoryModel.demo
     @Published var categoryFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray
     
-    @Published var ingredientArray: [IngredientModel] = []
-    @Published var selectedIngredient: String = "Pasta"
-    @Published var ingredientFilteredMealArray: [SearchMealModel] = []
+    @Published var ingredientArray: [IngredientModel] = IngredientModel.demoArray
+    @Published var selectedIngredient: IngredientModel = IngredientModel.demo
+    @Published var ingredientFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray
     
     
     
