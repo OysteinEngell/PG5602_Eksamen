@@ -29,6 +29,7 @@ struct SearchView: View {
             case "Landområde": SearchByAreaView(dataContext: dataContext)
             case "Kategori": SearchByCategoryView(dataContext: dataContext)
             case "Ingrediens": SearchByIngredientView(dataContext: dataContext)
+            case "Navn": SearchByNameView(dataContext: dataContext)
                 
             default: SearchMealListView(meals: [])
             }
