@@ -17,11 +17,15 @@ struct SearchByIngredientView: View {
         VStack{
             VStack(alignment: .leading){
                 HStack(alignment: .center){
-                    AsyncImage(url: URL(string: dataContext.selectedCategory.image)){image in
+                    if let encodedIngredientName = dataContext.selectedIngredient.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+                        let urlString = "\(dataContext.selectedIngredient.image)\(encodedIngredientName)-Small.png"
+                    
+                    AsyncImage(url: URL(string: urlString )){image in
                         image.image?.resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100)
                         .cornerRadius(40)}
+                    }
                   
                         Text("Ingrediens: \(dataContext.selectedIngredient.name)").font(.title).bold()
                 }.padding(.horizontal)
@@ -57,11 +61,15 @@ struct SearchByIngredientView: View {
                                     sheetPresented = false
                                 }, label: {
                                     HStack{
-                                        AsyncImage(url: URL(string: ingredient.image ?? "")){image in
+                                        if let encodedIngredientName = ingredient.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+                                            let urlString = "\(ingredient.image)\(encodedIngredientName)-Small.png"
+                                        
+                                        AsyncImage(url: URL(string: urlString )){image in
                                             image.image?.resizable()
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: 100)
                                             .cornerRadius(40)}
+                                        }
                                         VStack{
                                             Text(ingredient.name).font(.title2).foregroundStyle(.primary).bold()
                                         }

@@ -14,6 +14,7 @@ struct MealAPIClient {
     var getMealsByArea: ((_ area: String) async throws -> [SearchMealModel])
     var getMealsByCategory: ((_ category: String) async throws -> [SearchMealModel])
     var getMealsByIngredient: ((_ ingredient: String) async throws -> [SearchMealModel])
+
     //
     var getCategories: (() async throws -> [CategoryModel])
     var getAreas: (() async throws -> [AreaModel])

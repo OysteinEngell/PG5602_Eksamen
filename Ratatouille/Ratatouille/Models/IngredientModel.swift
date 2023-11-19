@@ -11,7 +11,7 @@ struct IngredientModel: Identifiable, Codable, Hashable {
     var id: String
     var name: String
     var info: String?
-    var image: String?
+    var image = "https://www.themealdb.com/images/ingredients/"
 
     enum CodingKeys: String, CodingKey {
         case id = "idIngredient"
