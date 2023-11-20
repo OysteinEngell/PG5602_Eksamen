@@ -39,7 +39,7 @@ struct SearchMealItemView: View {
             let responseMeal = try await mealAPIClient.getMealById(id)
             if((responseMeal != nil)){
                 let result = transformer.parseMealObject(meal: responseMeal!, context: viewContext)
-                
+               
                 do{
                    try viewContext.save()
                 }catch let error{
