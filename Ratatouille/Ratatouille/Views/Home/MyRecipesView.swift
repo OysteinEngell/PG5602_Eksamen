@@ -32,7 +32,7 @@ struct MyRecipesView: View {
                 }
             }
         }.onAppear{
-            
+         
         }
     }
 }
