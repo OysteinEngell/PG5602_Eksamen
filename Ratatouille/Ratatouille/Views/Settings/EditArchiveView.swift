@@ -8,8 +8,31 @@
 import SwiftUI
 
 struct EditArchiveView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
-        Text("Rediger arkivet")
+        VStack{
+            List{
+                Section(header: Text("Arkiv").font(.title).bold().foregroundStyle(.black)){}
+                Section(header: Text("Landområder")){
+                    Text("Landområde")
+                }
+                Section(header: Text("Kategorier")){
+                    Text("Kategori")
+                }
+                Section(header: Text("Ingredienser")){
+                    Text("Ingrediens")
+                }
+                Section(header: Text("Matoppskrifter")){
+                    Text("Matoppskrift")
+                }
+            }
+            
+            
+            
+        }.onAppear{
+            
+        }
     }
 }
 
