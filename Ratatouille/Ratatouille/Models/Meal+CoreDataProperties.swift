@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreData
+import UIKit
+
 
 
 extension Meal {
@@ -33,4 +35,26 @@ extension Meal {
 
 extension Meal : Identifiable {
 
+}
+
+extension Meal {
+    // ... existing code ...
+
+    static var demo: Meal {
+        let context = PersistenceController.shared.container.viewContext
+        let demoMeal = Meal(context: context)
+        demoMeal.id = "11111"
+        demoMeal.archived = false
+        demoMeal.area = "Demo Area"
+        demoMeal.category = "Demo Category"
+        demoMeal.favorite = false
+        demoMeal.image = "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+        demoMeal.ingredients = ["Ingredient1", "Ingredient2"]
+        demoMeal.instructions = "Demo Instructions"
+        demoMeal.measures = ["Measure1", "Measure2"]
+        demoMeal.tags = "Demo Tags"
+        demoMeal.title = "Demo Title"
+        demoMeal.video = "demoVideo"
+        return demoMeal
+    }
 }

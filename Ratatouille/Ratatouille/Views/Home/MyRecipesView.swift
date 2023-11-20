@@ -25,9 +25,18 @@ struct MyRecipesView: View {
                 
                 Text("Ingen matoppskrifter").bold()
             } else {
-                List{
-                    ForEach(meals){meal in
-                        Text(meal.title)
+                NavigationStack{
+                    Text("Matoppskrifter")
+                    List{
+                        ForEach(meals){meal in
+                            if(meal.archived == false){
+                                NavigationLink{
+                                    Text("DetailView?")
+                                } label: {
+                                    StoredMealItemView(favorite: meal.favorite, meal: meal)
+                                }
+                            }
+                        }
                     }
                 }
             }
