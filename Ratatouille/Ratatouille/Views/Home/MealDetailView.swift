@@ -70,9 +70,8 @@ struct MealDetailView: View {
             
             
             
-        }.ignoresSafeArea(.container).onAppear{
-            print(meal.ingredients)
-            print(meal.measures)}
+        }.ignoresSafeArea(.container)
+            .onAppear{}
     }
 }
 

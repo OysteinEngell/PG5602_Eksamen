@@ -14,23 +14,25 @@ struct SearchByAreaView: View {
     
     
     var body: some View {
-        VStack{
-            HStack(){
-                Text("Landområde: \(dataContext.selectedArea.name)").font(.title).bold()
-                Circle().frame(width: 25) //flag
-                Spacer()
-            }.padding()
-            
-            SearchMealListView(meals: dataContext.areaFilteredMealArray)
-            
-            Picker("", selection: $dataContext.selectedArea.name) {
-                ForEach(dataContext.areaArray, id: \.id){area in
-                    Text(area.name).tag(area.name)
-                }
-            }.pickerStyle(.wheel)
-
-        }.onChange(of: dataContext.selectedArea.name) { oldValue, newValue in
-            handleChange()
+        NavigationStack{
+            VStack{
+                HStack(){
+                    Text("Landområde: \(dataContext.selectedArea.name)").font(.title).bold()
+                    Circle().frame(width: 25) //flag
+                    Spacer()
+                }.padding()
+                
+                SearchMealListView(meals: dataContext.areaFilteredMealArray)
+                
+                Picker("", selection: $dataContext.selectedArea.name) {
+                    ForEach(dataContext.areaArray, id: \.id){area in
+                        Text(area.name).tag(area.name)
+                    }
+                }.pickerStyle(.wheel)
+                
+            }.onChange(of: dataContext.selectedArea.name) { oldValue, newValue in
+                handleChange()
+            }
         }
     }
     

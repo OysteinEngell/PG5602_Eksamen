@@ -14,33 +14,35 @@ struct SearchByCategoryView: View {
     @State var sheetPresented = false
     
     var body: some View {
-        VStack{
-            VStack(alignment: .leading){
-                HStack{
-                    AsyncImage(url: URL(string: dataContext.selectedCategory.image)){image in
-                        image.image?.resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100)
-                        .cornerRadius(40)}
-                    
+        NavigationStack{
+            VStack{
+                VStack(alignment: .leading){
+                    HStack{
+                        AsyncImage(url: URL(string: dataContext.selectedCategory.image)){image in
+                            image.image?.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100)
+                            .cornerRadius(40)}
+                        
                         Text("Kategori: \(dataContext.selectedCategory.title)").font(.title).bold()
-                }.padding(.horizontal)
+                    }.padding(.horizontal)
+                    
+                    ScrollView{
+                        Text(dataContext.selectedCategory.info)
+                    }.padding()
+                }.frame(height: 200)
                 
-                ScrollView{
-                    Text(dataContext.selectedCategory.info)
-                }.padding()
-            }.frame(height: 200)
-            
-            SearchMealListView(meals: dataContext.categoryFilteredMealArray)
-            
-            Button(action: {
-                sheetPresented = true
-            }, label: {
-                ZStack{
-                    Rectangle().frame(width: 250, height: 50).cornerRadius(30).foregroundColor(.primary)
-                    Text("Velg kategori").foregroundStyle(.white).bold()
-                }.padding(.vertical)
-            })
+                SearchMealListView(meals: dataContext.categoryFilteredMealArray)
+                
+                Button(action: {
+                    sheetPresented = true
+                }, label: {
+                    ZStack{
+                        Rectangle().frame(width: 250, height: 50).cornerRadius(30).foregroundColor(.primary)
+                        Text("Velg kategori").foregroundStyle(.white).bold()
+                    }.padding(.vertical)
+                })
+            }
         }
         
         .sheet(isPresented: $sheetPresented){
