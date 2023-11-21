@@ -16,30 +16,32 @@ struct SearchView: View {
     @State var sheetPresented = false
     
     var body: some View {
-        VStack{
-            Picker(selection: $tabSelected, label: Text(""), content: {
-                Image(systemName: "globe").tag("Landområde")
-                Image(systemName: "rectangle.3.group.bubble").tag("Kategori")
-                Image(systemName: "carrot.fill").tag("Ingrediens")
-                Image(systemName: "magnifyingglass").tag("Navn")
+        NavigationStack{
+            VStack{
+                Picker(selection: $tabSelected, label: Text(""), content: {
+                    Image(systemName: "globe").tag("Landområde")
+                    Image(systemName: "rectangle.3.group.bubble").tag("Kategori")
+                    Image(systemName: "carrot.fill").tag("Ingrediens")
+                    Image(systemName: "magnifyingglass").tag("Navn")
+                    
+                }).pickerStyle(.segmented).padding()
                 
-            }).pickerStyle(.segmented).padding()
-            
-            switch(tabSelected){
-            case "Landområde": SearchByAreaView(dataContext: dataContext)
-            case "Kategori": SearchByCategoryView(dataContext: dataContext)
-            case "Ingrediens": SearchByIngredientView(dataContext: dataContext)
-            case "Navn": SearchByNameView(dataContext: dataContext)
+                switch(tabSelected){
+                case "Landområde": SearchByAreaView(dataContext: dataContext)
+                case "Kategori": SearchByCategoryView(dataContext: dataContext)
+                case "Ingrediens": SearchByIngredientView(dataContext: dataContext)
+                case "Navn": SearchByNameView(dataContext: dataContext)
+                    
+                default: SearchMealListView(meals: [])
+                }
                 
-            default: SearchMealListView(meals: [])
+                
+                
+                Spacer()
+                
+                
+                
             }
-            
-            
-            
-            Spacer()
-            
-            
-            
         }
     }
 }
