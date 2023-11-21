@@ -17,7 +17,7 @@ struct SearchMealListView: View {
                 ForEach(meals){meal in
                     
                     NavigationLink{
-                        Text("DetailView?")
+                        FetchDetailView(id: meal.id)
                     } label: {
                         SearchMealItemView(meal: meal)
                     }
