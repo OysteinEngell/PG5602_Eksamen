@@ -52,6 +52,16 @@ struct EditArchiveView: View {
                         }
                     }
                 }
+                Section{
+                    Button(action: {
+                        clearData()
+                    }, label: {
+                        HStack{
+                            Image(systemName: "trash")
+                            Text("Slett alle måltider i databasen")
+                        }
+                    }).tint(.red)
+                }
             }
         }.onAppear{
         }
@@ -68,6 +78,16 @@ struct EditArchiveView: View {
     func handleRestore(meal: Meal){
         meal.archived = false
         do{
+            try viewContext.save()
+        }catch let error{
+            print(error)
+        }
+    }
+    func clearData(){
+        do{
+            for meal in meals{
+                viewContext.delete(meal)
+            }
             try viewContext.save()
         }catch let error{
             print(error)
