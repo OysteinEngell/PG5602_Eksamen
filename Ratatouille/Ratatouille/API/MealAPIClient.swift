@@ -24,7 +24,6 @@ struct MealAPIClient {
 extension MealAPIClient {
     static let live = MealAPIClient { mealName in
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/search.php?s=\(mealName)")!
-        
         var urlRequest = URLRequest.init(url: url)
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
@@ -33,10 +32,14 @@ extension MealAPIClient {
                 
             case 200...299:
                 print("getMealByName() response: \(statusCode), with data: \(data)")
-                let mealData = try JSONDecoder().decode(MealResponse.self, from: data)
-                return mealData.meals
+                do{
+                    let mealData = try JSONDecoder().decode(MealResponse.self, from: data)
+                    return mealData.meals
+                }catch let error{
+                    print(error)
+                }
                 
-            default: print("Something went wrong")
+            default: print("No results")
             }
         }
         return []
