@@ -15,11 +15,14 @@ struct SearchByNameView: View {
     @State var searchResults: [SearchMealModel] = []
     @State var alertPresented = false
     @State var alertMessage = "Something went wrong"
+    @State var searchTerm = "Søk"
     
     var body: some View {
         VStack{
-            
-            Text("Søk").font(.title).bold()
+            HStack{
+                Text(searchTerm).font(.title).bold()
+                Spacer()
+            }.padding(.leading, 20)
             
             SearchMealListView(meals: searchResults)
             Spacer()
@@ -36,26 +39,26 @@ struct SearchByNameView: View {
             .sheet(isPresented: $sheetPresented, content: {
                 VStack(alignment: .center){
                     
-                    ZStack{
-                        Rectangle().foregroundColor(.mint).cornerRadius(10).frame(width: 350, height: 50)
-                        TextField("Name", text: $dataContext.selectedName.title).padding(.horizontal, 60.0)
-                    }.padding(.top, 40.0)
-                    
-                    
-                    
-                    Button(action: {
-                        
-                        Task{
-                            await handleChange()
+                    List{
+                        Section(header: Text("Navn på oppskrift")){
+                            TextField("Name", text: $dataContext.selectedName.title)
+                                .autocorrectionDisabled(true)
+                                .textInputAutocapitalization(.never)
                         }
-                       
-                        
-                    }, label: {
-                        ZStack{
-                            Rectangle().frame(width: 350, height: 50).cornerRadius(10).foregroundColor(.primary)
-                            Text("Søk").foregroundStyle(.white).bold()
-                        }.padding(.vertical)
-                    })
+                        Section{
+                            Button(action: {
+                                Task{
+                                    await handleChange()
+                                }
+                            }, label: {
+                                Text("Søk").bold()
+                            })
+                        }
+                    }
+                    
+                    
+                    
+                    
                     Spacer()
                     
                 }.alert(isPresented: $alertPresented){
@@ -67,19 +70,21 @@ struct SearchByNameView: View {
     
     func handleChange() async{
         do{
-            if(dataContext.selectedName.title != ""){
-                dataContext.nameFilteredMealArray = try await mealAPIClient.getMealByName(dataContext.selectedName.title)
-                searchResults = convertResult(inputMeals: dataContext.nameFilteredMealArray)
-            }else{
-                alertMessage = "You must enter a searchterm"
-                alertPresented = true
+            if(dataContext.selectedName.title != "" && dataContext.selectedName.title != " "){
+      
+                let response = try await mealAPIClient.getMealByName(dataContext.selectedName.title)
                 
+                dataContext.nameFilteredMealArray = response
+                searchResults = convertResult(inputMeals: dataContext.nameFilteredMealArray)
+                searchTerm = "\(dataContext.nameFilteredMealArray.count) Resultater for '\(dataContext.selectedName.title)'"
+            }else{
+                alertMessage = "Søkefeltet kan ikke være tomt!"
+                alertPresented = true
             }
-            
             if(!alertPresented){
                 sheetPresented = false
             }
-           
+            
         }catch let error{
             print(error)
         }
