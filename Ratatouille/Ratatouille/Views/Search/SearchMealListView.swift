@@ -12,7 +12,7 @@ struct SearchMealListView: View {
     
     var body: some View {
         
-        NavigationStack{
+      
             List{
                 ForEach(meals){meal in
                     
@@ -24,7 +24,7 @@ struct SearchMealListView: View {
                     
                 }
             }
-        }
+        
         
     }
 }
