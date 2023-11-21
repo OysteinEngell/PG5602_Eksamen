@@ -43,7 +43,6 @@ extension MealAPIClient {
         
     }getMealById: { id in
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(id)")!
-        
         var urlRequest = URLRequest.init(url: url)
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
@@ -51,7 +50,7 @@ extension MealAPIClient {
             switch statusCode {
                 
             case 200...299:
-                print("getMealByName() response: \(statusCode), with data: \(data)")
+                print("getMealById() response: \(statusCode), with data: \(data)")
                 let mealData = try JSONDecoder().decode(MealResponse.self, from: data)
                 return mealData.meals[0]
                 
@@ -69,7 +68,7 @@ extension MealAPIClient {
             switch statusCode {
                 
             case 200...299:
-                print("getMealsByArea response: \(statusCode), with data: \(data)")
+                print("getMealsByArea() response: \(statusCode), with data: \(data)")
                 do{
                     let filteredData = try JSONDecoder().decode(SearchResponse.self, from: data)
                     //                    print(categoryData)
