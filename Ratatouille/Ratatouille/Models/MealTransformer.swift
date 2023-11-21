@@ -183,7 +183,7 @@ struct MealTransformer {
             area: meal.area,
             instructions: meal.instructions,
             image: meal.image,
-            tags: meal.tags, 
+            tags: meal.tags ?? "",
             video: meal.video,
             ingredients: ingredientArray,
             measures: measureArray

@@ -14,7 +14,7 @@ struct MealModel: Codable, Identifiable {
     var area: String
     var instructions: String
     var image: String
-    var tags: String
+    var tags: String?
     var video: String
     let ingredient1: String?
     let ingredient2: String?
