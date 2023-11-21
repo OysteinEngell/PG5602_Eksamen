@@ -52,6 +52,17 @@ struct EditArchiveView: View {
                         }
                     }
                 }
+                Section{
+                    Button(action: {
+                        handleClearData()
+                    }, label: {
+                        HStack{
+                            Image(systemName: "trash")
+                            Text("Tøm databasen for matoppskrifter")
+                        }
+                       
+                    }).tint(.red)
+                }
             }
         }.onAppear{
         }
@@ -71,6 +82,18 @@ struct EditArchiveView: View {
             try viewContext.save()
         }catch let error{
             print(error)
+        }
+    }
+    
+    func handleClearData() {
+        do {
+            meals.forEach { meal in
+                viewContext.delete(meal)
+            }
+            try viewContext.save()
+        } catch {
+            // Handle error appropriately
+            print("Failed to clear data: \(error)")
         }
     }
 }

@@ -31,7 +31,7 @@ struct MyRecipesView: View {
                         ForEach(meals){meal in
                             if(meal.archived == false){
                                 NavigationLink{
-                                    MealDetailView(meal: meal)
+                                    MealDetailView(id: meal.id)
                                 } label: {
                                     StoredMealItemView(favorite: meal.favorite, meal: meal)
                                 }

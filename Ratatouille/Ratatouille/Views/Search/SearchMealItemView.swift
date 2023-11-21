@@ -46,11 +46,12 @@ struct SearchMealItemView: View {
                     print(error)
                 }
             }
-            
+//            
         }catch let error{
             print(error)
         }
     }
+    
 }
 
 #Preview {

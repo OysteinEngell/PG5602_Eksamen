@@ -39,6 +39,7 @@ struct SearchByAreaView: View {
     func handleChange(){
         Task{
             dataContext.areaFilteredMealArray = try await mealAPIClient.getMealsByArea(dataContext.selectedArea.name)
+            
         }
     }
 }
