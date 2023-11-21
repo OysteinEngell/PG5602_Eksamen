@@ -39,7 +39,7 @@ struct FetchDetailView: View {
                             Spacer()
                         }
                         
-                        HStack{
+                        HStack(alignment: .top){
                             VStack(alignment: .leading){
                                 ForEach(detailedMeal!.measures, id: \.self){measure in
                                     Text(measure)
@@ -95,5 +95,5 @@ struct FetchDetailView: View {
 
 
 #Preview {
-    FetchDetailView(id: "1111")
+    FetchDetailView(id: "52995")
 }
