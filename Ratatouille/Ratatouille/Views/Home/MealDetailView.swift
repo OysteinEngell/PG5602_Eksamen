@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MealDetailView: View {
     var meal: Meal
+    @State var countryCode = ""
+    
     
     var body: some View {
         ScrollView{
@@ -20,8 +22,19 @@ struct MealDetailView: View {
             
             HStack{
                 VStack(alignment: .leading){
+                    
                     Text(meal.title).font(.title).bold()
-                    Text(meal.category)
+                    
+                    HStack{
+                        AsyncImage(url: URL(string: "https://flagsapi.com/\(countryCode)/flat/32.png")){image in
+                            image.image?.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 25)
+                        }
+                            Text("\(meal.area) \(meal.category)")
+                        
+                    }
+                    
                 }
                 Spacer()
             }.padding(EdgeInsets(top: 0, leading: 30, bottom: 40, trailing: 30))
@@ -71,6 +84,9 @@ struct MealDetailView: View {
             
             
         }.ignoresSafeArea(.container)
+            .onAppear{
+                countryCode = FlagAPI.countryCode(for: meal.area)
+            }
     }
 }
 
