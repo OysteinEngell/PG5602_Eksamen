@@ -202,7 +202,6 @@ struct ParseMeal {
             newMeal.area = meal.area
             newMeal.instructions = meal.instructions
             newMeal.image = meal.image
-            newMeal.tags = meal.tags
             newMeal.video = meal.video
             newMeal.ingredients = ingredientArray
             newMeal.measures = measureArray
@@ -392,7 +391,6 @@ struct ParseMeal {
         newMeal.area = meal.area
         newMeal.instructions = meal.instructions
         newMeal.image = meal.image
-        newMeal.tags = meal.tags
         newMeal.video = meal.video
         newMeal.ingredients = ingredientArray
         newMeal.measures = measureArray

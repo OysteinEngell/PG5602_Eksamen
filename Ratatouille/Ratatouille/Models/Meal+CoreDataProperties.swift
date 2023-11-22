@@ -27,9 +27,9 @@ extension Meal {
     @NSManaged public var ingredients: [String]
     @NSManaged public var instructions: String?
     @NSManaged public var measures: [String]
-    @NSManaged public var tags: String?
     @NSManaged public var title: String
     @NSManaged public var video: String?
+    @NSManaged public var date: Date?
 
 }
 
@@ -52,7 +52,6 @@ extension Meal {
         demoMeal.ingredients = ["Ingredient1", "Ingredient2"]
         demoMeal.instructions = "Demo Instructions"
         demoMeal.measures = ["Measure1", "Measure2"]
-        demoMeal.tags = "Demo Tags"
         demoMeal.title = "Demo Title"
         demoMeal.video = "demoVideo"
         return demoMeal
