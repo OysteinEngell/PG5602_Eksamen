@@ -13,6 +13,7 @@ struct FetchDetailView: View {
     
     @State var detailedMeal: MealModelModified? = nil
     @State var status: String = "Loading..."
+    @State var countryCode = ""
     let id: String
     
     var body: some View {
@@ -28,7 +29,14 @@ struct FetchDetailView: View {
                     HStack{
                         VStack(alignment: .leading){
                             Text(detailedMeal!.title).font(.title).bold()
-                            Text(detailedMeal!.category)
+                            HStack{
+                                AsyncImage(url: URL(string: "https://flagsapi.com/\(countryCode)/flat/32.png")){image in
+                                    image.image?.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 25)
+                                }
+                                Text("\(detailedMeal!.area) \(detailedMeal!.category)")
+                            }
                         }
                         Spacer()
                     }.padding(EdgeInsets(top: 0, leading: 30, bottom: 40, trailing: 30))
@@ -83,6 +91,7 @@ struct FetchDetailView: View {
                 if let response = try await mealAPIClient.getMealById(id){
                     let result = MealTransformer().modifyMealModel(meal: response)
                     detailedMeal = result
+                    countryCode = FlagAPI.countryCode(for: detailedMeal!.area)
                 }else{
                     status = "Could not get the data for this meal :("
                 }

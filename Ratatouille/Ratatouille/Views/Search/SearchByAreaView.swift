@@ -10,14 +10,20 @@ import SwiftUI
 struct SearchByAreaView: View {
     @ObservedObject var dataContext: DataContext
     let mealAPIClient = MealAPIClient.live
-    
+    let flagAPI = FlagAPI()
+    @State var countryCode = "unknown"
+ 
     
     
     var body: some View {
         VStack{
             HStack(){
                 Text("Landområde: \(dataContext.selectedArea.name)").font(.title).bold()
-                Circle().frame(width: 25) //flag
+                AsyncImage(url: URL(string: "https://flagsapi.com/\(countryCode)/flat/32.png")){image in
+                    image.image?.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35)
+                }
                 Spacer()
             }.padding()
             
@@ -31,12 +37,15 @@ struct SearchByAreaView: View {
 
         }.onChange(of: dataContext.selectedArea.name) { oldValue, newValue in
             handleChange()
+        }.onAppear{
+            countryCode = FlagAPI.countryCode(for: dataContext.selectedArea.name)
         }
     }
     
     func handleChange(){
         Task{
             dataContext.areaFilteredMealArray = try await mealAPIClient.getMealsByArea(dataContext.selectedArea.name)
+            countryCode = FlagAPI.countryCode(for: dataContext.selectedArea.name)
         }
     }
 }
