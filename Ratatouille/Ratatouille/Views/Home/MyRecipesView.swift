@@ -26,7 +26,6 @@ struct MyRecipesView: View {
                 Text("Ingen matoppskrifter").bold()
             } else {
                 NavigationStack{
-                    Text("Matoppskrifter")
                     List{
                         ForEach(meals){meal in
                             if(meal.archived == false){
@@ -37,7 +36,7 @@ struct MyRecipesView: View {
                                 }
                             }
                         }
-                    }
+                    }.navigationTitle("Matoppskrifter")
                 }
             }
         }.onAppear{

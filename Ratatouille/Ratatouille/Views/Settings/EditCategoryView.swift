@@ -9,7 +9,12 @@ import SwiftUI
 
 struct EditCategoryView: View {
     var body: some View {
-        Text("Rediger kategorer")
+        NavigationStack{
+            
+            List{
+                
+            }.navigationTitle("Kategorier")
+        }
     }
 }
 

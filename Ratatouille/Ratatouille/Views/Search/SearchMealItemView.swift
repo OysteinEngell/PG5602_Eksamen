@@ -29,7 +29,7 @@ struct SearchMealItemView: View {
                         await handlePress(id: meal.id)
                     }
                 }, label: {
-                    Label("", systemImage: "square.grid.3x1.folder.fill.badge.plus").tint(.primary)
+                    Label("", systemImage: "square.grid.3x1.folder.fill.badge.plus").tint(.blue)
                 })
             })
     }

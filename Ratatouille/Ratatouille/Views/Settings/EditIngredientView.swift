@@ -9,7 +9,12 @@ import SwiftUI
 
 struct EditIngredientView: View {
     var body: some View {
-        Text("Rediger ingredienser")
+        NavigationStack{
+            
+            List{
+                
+            }.navigationTitle("Ingredienser")
+        }
     }
 }
 

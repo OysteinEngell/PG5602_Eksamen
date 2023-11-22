@@ -15,9 +15,8 @@ struct EditArchiveView: View {
     
     
     var body: some View {
-        VStack{
+        NavigationStack{
             List{
-                Section(header: Text("Arkiv").font(.title).bold().foregroundStyle(.black)){}
                 Section(header: Text("Landområder")){
                     Text("Landområde")
                 }
@@ -62,7 +61,7 @@ struct EditArchiveView: View {
                         }
                     }).tint(.red)
                 }
-            }
+            }.navigationTitle("Arkiv")
         }.onAppear{
         }
     }

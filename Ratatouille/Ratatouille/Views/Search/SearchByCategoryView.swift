@@ -47,10 +47,8 @@ struct SearchByCategoryView: View {
             
             
             List{
-                Section{
-                    Text("Velg en kategori")
-                }
-                Section{
+                
+                Section(header: Text("Velg en kategori")){
                     ForEach(dataContext.categoryArray){category in
                         Button(action: {
                             handleChange(category: category)

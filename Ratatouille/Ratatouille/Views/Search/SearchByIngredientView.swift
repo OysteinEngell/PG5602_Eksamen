@@ -51,10 +51,8 @@ struct SearchByIngredientView: View {
                 
                     
                     List{
-                        Section{
-                            Text("Velg en ingrediens")
-                        }
-                        Section{
+                        
+                        Section(header: Text("Velg en ingrediens")){
                             ForEach(dataContext.ingredientArray){ingredient in
                                 Button(action: {
                                     handleChange(ingredient: ingredient)
