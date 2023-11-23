@@ -23,4 +23,6 @@ class DataContext: ObservableObject {
     
     @Published var nameFilteredMealArray: [MealModel] = MealModel.demoArray
     @Published var selectedName: MealModel = MealModel.placeholder
+    
+    @Published var numberOfMealsInStorage = 0
 }

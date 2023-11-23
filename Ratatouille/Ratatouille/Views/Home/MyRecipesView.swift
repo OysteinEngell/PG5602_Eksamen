@@ -9,9 +9,12 @@ import SwiftUI
 
 struct MyRecipesView: View {
     
-    @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Meal.entity(), sortDescriptors: []) 
-    var meals: FetchedResults<Meal>
+    let dataContext: DataContext
+    
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(entity: Meal.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
+        var meals: FetchedResults<Meal>
+    
     
     
     
@@ -40,11 +43,13 @@ struct MyRecipesView: View {
                 }
             }
         }.onAppear{
-         
+            
+            dataContext.numberOfMealsInStorage = meals.count
+            
         }
     }
 }
 
 #Preview {
-    MyRecipesView()
+    MyRecipesView(dataContext: DataContext())
 }

@@ -12,15 +12,16 @@ struct RatatouilleApp: App {
     let persistenceController = PersistenceController.shared
     @ObservedObject var dataContext = DataContext()
     var mealApiClient = MealAPIClient.live
+    
 
     
     var body: some Scene {
         WindowGroup {
             TabView {
-                MyRecipesView()
+                MyRecipesView(dataContext: dataContext)
                     .tabItem {
                         Label("Mine Oppskrifter", systemImage: "fork.knife.circle.fill")
-                    }
+                    }.badge(dataContext.numberOfMealsInStorage)
                 SearchView(dataContext: dataContext)
                     .tabItem {
                         Label("Søk", systemImage: "magnifyingglass.circle.fill")
@@ -34,6 +35,7 @@ struct RatatouilleApp: App {
                     await fetchData()
                 }
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(dataContext) 
             
         }
     }
@@ -55,6 +57,7 @@ struct RatatouilleApp: App {
             dataContext.ingredientFilteredMealArray = try await mealApiClient.getMealsByIngredient(dataContext.selectedIngredient.name)
 
             storeInCoreData()
+
         }catch let error{print(error)}
     }
     

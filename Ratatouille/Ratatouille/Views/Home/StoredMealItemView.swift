@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoredMealItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataContext: DataContext
     @State var favorite: Bool
     let meal: Meal
     var body: some View {
@@ -59,6 +60,7 @@ struct StoredMealItemView: View {
     func handleArchived(){
         withAnimation {
             meal.archived = true
+            dataContext.numberOfMealsInStorage -= 1
             do{
                try viewContext.save()
             }catch let error{

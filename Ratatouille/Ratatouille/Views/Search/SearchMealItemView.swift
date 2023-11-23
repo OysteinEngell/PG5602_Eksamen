@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SearchMealItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataContext: DataContext
     let mealAPIClient = MealAPIClient.live
     let transformer = MealTransformer()
     var meal: SearchMealModel
+    
     
     var body: some View {
             HStack{
@@ -38,6 +40,7 @@ struct SearchMealItemView: View {
             let responseMeal = try await mealAPIClient.getMealById(id)
             if((responseMeal != nil)){
                 let storedMeal = transformer.parseMealObject(meal: responseMeal!, context: viewContext)
+                dataContext.numberOfMealsInStorage += 1
                 print("Stored:  \(storedMeal.title)")
                 do{
                    try viewContext.save()
