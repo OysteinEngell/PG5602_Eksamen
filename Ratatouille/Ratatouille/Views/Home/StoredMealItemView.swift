@@ -13,7 +13,7 @@ struct StoredMealItemView: View {
     let meal: Meal
     var body: some View {
         HStack{
-            AsyncImage(url: URL(string: meal.image ?? "")){image in
+            AsyncImage(url: URL(string: meal.image)){image in
                 image.image?.resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50)

@@ -14,7 +14,7 @@ struct MealDetailView: View {
     
     var body: some View {
         ScrollView{
-            AsyncImage(url: URL(string: meal.image ?? "")){image in
+            AsyncImage(url: URL(string: meal.image)){image in
                 image.image?.resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 420)
