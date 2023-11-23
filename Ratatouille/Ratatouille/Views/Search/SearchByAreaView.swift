@@ -12,6 +12,9 @@ struct SearchByAreaView: View {
     let mealAPIClient = MealAPIClient.live
     let flagAPI = FlagAPI()
     @State var countryCode = "unknown"
+    
+    @FetchRequest(entity: Area.entity(), sortDescriptors: [])
+    var areas: FetchedResults<Area>
  
     
     
@@ -30,7 +33,7 @@ struct SearchByAreaView: View {
             SearchMealListView(meals: dataContext.areaFilteredMealArray)
             
             Picker("", selection: $dataContext.selectedArea.name) {
-                ForEach(dataContext.areaArray, id: \.id){area in
+                ForEach(areas){area in
                     Text(area.name).tag(area.name)
                 }
             }.pickerStyle(.wheel)

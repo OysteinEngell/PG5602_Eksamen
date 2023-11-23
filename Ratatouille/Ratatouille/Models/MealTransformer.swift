@@ -3,18 +3,103 @@
 //  Ratatouille
 //
 //  Created by Øystein Engell on 21/11/2023.
-//
+// - Converts MealModel into coreData Meal entity or MealModelModified
+// - Converts all ingredient and measure parameters into arrays and discards empty strings / nil.
 
 import Foundation
 import SwiftUI
+import CoreData
 
 
 struct MealTransformer {
 
     func modifyMealModel(meal: MealModel) -> MealModelModified {
 
+        let arrays = convertToArray(meal: meal)
+        
+        let modifiedMeal = MealModelModified(
+            id: meal.id,
+            title: meal.title,
+            category: meal.category,
+            area: meal.area,
+            instructions: meal.instructions,
+            image: meal.image,
+            video: meal.video,
+            ingredients: arrays.ingredientArray,
+            measures: arrays.measureArray
+        )
+        
+        return modifiedMeal
+    }
+    
+    func parseMealArray(meals: [MealModel], context: NSManagedObjectContext) -> [Meal] {
+        
+        var newMealsArray: [Meal] = []
+        
+        for meal in meals{
+            
+            let arrays = convertToArray(meal: meal)
+            
+            let newMeal = Meal(context: context)
+            
+            newMeal.id = meal.id
+            newMeal.title = meal.title
+            newMeal.category = meal.category
+            newMeal.area = meal.area
+            newMeal.instructions = meal.instructions
+            newMeal.image = meal.image
+            newMeal.video = meal.video
+            newMeal.ingredients = arrays.ingredientArray
+            newMeal.measures = arrays.measureArray
+            newMeal.favorite = false
+            newMeal.archived = false
+            
+            
+            newMealsArray.append(newMeal)
+            
+        }
+        return newMealsArray
+    }
+    
+    
+    
+    
+    func parseMealObject(meal: MealModel, context: NSManagedObjectContext) -> Meal {
+
+        let arrays = convertToArray(meal: meal)
+        
+        let newMeal = Meal(context: context)
+        
+        newMeal.id = meal.id
+        newMeal.title = meal.title
+        newMeal.category = meal.category
+        newMeal.area = meal.area
+        newMeal.instructions = meal.instructions
+        newMeal.image = meal.image
+        newMeal.video = meal.video
+        newMeal.ingredients = arrays.ingredientArray
+        newMeal.measures = arrays.measureArray
+        newMeal.favorite = false
+        newMeal.archived = false
+        
+        return newMeal
+    }
+    
+    func convertToArray(meal: MealModel) -> (ingredientArray: [String], measureArray: [String]){
         var ingredientArray: [String] = []
         var measureArray: [String] = []
+        
+        //  Tried to iterate through all the parameters, but ended up having to do it manually
+        //
+        //        for i in 1...20 {
+        //                if let ingredient = meal.ingredient(i), !ingredient.isEmpty {
+        //                    ingredientArray.append(ingredient)
+        //                }
+        //
+        //                if let measure = meal.measure?(i), !measure.isEmpty {
+        //                    measureArray.append(measure)
+        //                }
+        //            }
         
         if meal.ingredient1 != "" && meal.ingredient1 != nil && meal.ingredient1 != " " {
             ingredientArray.append(meal.ingredient1!)
@@ -176,19 +261,6 @@ struct MealTransformer {
             measureArray.append(meal.measure20!)
         }
         
-        let modifiedMeal = MealModelModified(
-            id: meal.id,
-            title: meal.title,
-            category: meal.category,
-            area: meal.area,
-            instructions: meal.instructions,
-            image: meal.image,
-            tags: meal.tags ?? "",
-            video: meal.video,
-            ingredients: ingredientArray,
-            measures: measureArray
-        )
-        
-        return modifiedMeal
+        return(ingredientArray, measureArray)
     }
 }

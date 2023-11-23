@@ -15,21 +15,19 @@ struct MealModelModified: Codable, Identifiable {
     let area: String
     let instructions: String
     let image: String
-    let tags: String?
     let video: String
     let ingredients: [String]
     let measures: [String]
     let favorite: Bool
     let archived: Bool
     
-    init(id: String, title: String, category: String, area: String, instructions: String, image: String, tags: String, video: String, ingredients: [String], measures: [String], favorite: Bool = false, archived: Bool = false) {
+    init(id: String, title: String, category: String, area: String, instructions: String, image: String, video: String, ingredients: [String], measures: [String], favorite: Bool = false, archived: Bool = false) {
         self.id = id
         self.title = title
         self.category = category
         self.area = area
         self.instructions = instructions
         self.image = image
-        self.tags = tags
         self.video = video
         self.ingredients = ingredients
         self.measures = measures
