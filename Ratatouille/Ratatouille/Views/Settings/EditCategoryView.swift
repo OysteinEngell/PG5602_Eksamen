@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditCategoryView: View {
-    @FetchRequest(entity: Category.entity(), sortDescriptors: [])
+    @FetchRequest(entity: Category.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
     var categories: FetchedResults<Category>
     
     var body: some View {
@@ -30,6 +30,12 @@ struct EditCategoryView: View {
                                     .cornerRadius(40)}
                                 Text(category.title).bold()
                             }
+                        }.swipeActions(edge: .trailing){
+                            Button {
+                                handleArchived(category: category)
+                            } label: {
+                                Label("Arkiver", systemImage: "archivebox.fill").tint(.blue)
+                            }
                         }
                     }
                 }
@@ -37,6 +43,11 @@ struct EditCategoryView: View {
                 }.navigationTitle("Kategorier")
             
         }
+    }
+    
+    func handleArchived(category: Category){
+        category.archived = true
+        category.date = Date()
     }
 }
 

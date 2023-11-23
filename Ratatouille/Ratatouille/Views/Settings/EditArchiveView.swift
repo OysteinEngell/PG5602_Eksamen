@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EditArchiveView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataContext: DataContext
     
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [])
     var meals: FetchedResults<Meal>
@@ -29,11 +31,20 @@ struct EditArchiveView: View {
                     if areas.contains(where: {$0.archived}){
                         ForEach(areas){area in
                             if(area.archived){
-                                VStack{
+                                VStack(alignment: .leading){
                                     Text(area.name).bold()
-                                    if(area.date != nil){
-                                        Text("Akrivert: ")
-                                    }
+                                    Text("Akrivert: \(area.date!, formatter: itemFormatter)")
+                                }.swipeActions(edge: .trailing){
+                                    Button(action: {
+                                        handleDelete(entity: area)
+                                    }, label: {
+                                        Label("", systemImage: "trash.fill").tint(.red)
+                                    })
+                                    Button(action: {
+                                        handleRestore(entity: area)
+                                    }, label: {
+                                        Label("", systemImage: "tray.and.arrow.up.fill")
+                                    })
                                 }
                             }
                         }
@@ -50,11 +61,21 @@ struct EditArchiveView: View {
                     if categories.contains(where: {$0.archived}){
                         ForEach(categories){category in
                             if(category.archived){
-                                VStack{
-                                    Text(category.title)
-                                    if(category.date != nil){
-                                        Text("Arkivert: ")
-                                    }
+                                
+                                VStack(alignment: .leading){
+                                    Text(category.title).bold()
+                                    Text("Arkivert: \(category.date!, formatter: itemFormatter)")
+                                }.swipeActions(edge: .trailing){
+                                    Button(action: {
+                                        handleDelete(entity: category)
+                                    }, label: {
+                                        Label("", systemImage: "trash.fill").tint(.red)
+                                    })
+                                    Button(action: {
+                                        handleRestore(entity: category)
+                                    }, label: {
+                                        Label("", systemImage: "tray.and.arrow.up.fill")
+                                    })
                                 }
                             }
                         }
@@ -67,13 +88,24 @@ struct EditArchiveView: View {
                 }
                 Section(header: Text("Ingredienser")){
                     if ingredients.contains(where: {$0.archived}){
-                        ForEach(ingredients){ingredient in
+                        ForEach(ingredients, id: \.self){ingredient in
                             if(ingredient.archived){
-                                HStack{
-                                    Text(ingredient.name)
-                                    if(ingredient.date != nil){
-                                        Text("Arkivert: ")
-                                    }
+                                VStack(alignment: .leading){
+                                    Text(ingredient.name).bold()
+                                  
+                                    Text("Arkivert: \(ingredient.date!, formatter: itemFormatter)")
+                                    
+                                }.swipeActions(edge: .trailing){
+                                    Button(action: {
+                                        handleDelete(entity: ingredient)
+                                    }, label: {
+                                        Label("", systemImage: "trash.fill").tint(.red)
+                                    })
+                                    Button(action: {
+                                        handleRestore(entity: ingredient)
+                                    }, label: {
+                                        Label("", systemImage: "tray.and.arrow.up.fill")
+                                    })
                                 }
                             }
                         }
@@ -89,19 +121,20 @@ struct EditArchiveView: View {
                     if meals.contains(where: { $0.archived }){
                         ForEach(meals){meal in
                             if(meal.archived){
-                                VStack{
+                                VStack(alignment: .leading){
                                     Text(meal.title).bold()
-                                    if(meal.date != nil){
-                                        Text("Arkivert: ")
-                                    }
+                              
+                                    Text("Arkivert: \(meal.date!, formatter: itemFormatter)")
+                                  
                                 }.swipeActions(edge: .trailing){
                                     Button(action: {
-                                        handleDelete(meal: meal)
+                                        handleDelete(entity: meal)
                                     }, label: {
                                         Label("", systemImage: "trash.fill").tint(.red)
                                     })
                                     Button(action: {
-                                        handleRestore(meal: meal)
+                                        handleRestore(entity: meal)
+                                        dataContext.numberOfMealsInStorage += 1
                                     }, label: {
                                         Label("", systemImage: "tray.and.arrow.up.fill")
                                     })
@@ -118,7 +151,7 @@ struct EditArchiveView: View {
                 }
                 Section(header: Text("Danger Zone")){
                     Button(action: {
-                        clearMealData()
+                        clearData(entities: meals)
                     }, label: {
                         HStack{
                             Image(systemName: "trash")
@@ -126,7 +159,7 @@ struct EditArchiveView: View {
                         }
                     }).tint(.red)
                     Button(action: {
-                        clearIngredientData()
+                        
                     }, label: {
                         HStack{
                             Image(systemName: "trash")
@@ -135,11 +168,11 @@ struct EditArchiveView: View {
                     }).tint(.red)
                 }
             }.navigationTitle("Arkiv")
-        }.onAppear{
         }
     }
-    func handleDelete(meal: Meal){
-        viewContext.delete(meal)
+    
+    func handleDelete<T: NSManagedObject>(entity: T){
+        viewContext.delete(entity as NSManagedObject)
         do{
             try viewContext.save()
         }catch let error{
@@ -147,34 +180,34 @@ struct EditArchiveView: View {
         }
     }
     
-    func handleRestore(meal: Meal){
-        meal.archived = false
+    func handleRestore<T: NSManagedObject>(entity: T){
         do{
-            try viewContext.save()
-        }catch let error{
-            print(error)
-        }
-    }
-    func clearMealData(){
-        do{
-            for meal in meals{
-                viewContext.delete(meal)
+            if let archivableEntity = entity as NSManagedObject? {
+                archivableEntity.setValue(false, forKey: "archived")
             }
             try viewContext.save()
         }catch let error{
             print(error)
         }
     }
-    func clearIngredientData(){
+    
+    func clearData<T: NSManagedObject>(entities: FetchedResults<T>){
         do{
-            for ingredient in ingredients{
-                viewContext.delete(ingredient)
+            for entity in entities{
+                viewContext.delete(entity)
             }
             try viewContext.save()
         }catch let error{
             print(error)
         }
     }
+    
+    private let itemFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
 }
     
 
