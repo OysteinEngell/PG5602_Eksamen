@@ -13,7 +13,7 @@ struct MyRecipesView: View {
     
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
-        var meals: FetchedResults<Meal>
+    var meals: FetchedResults<Meal>
     
     
     

@@ -60,6 +60,7 @@ struct StoredMealItemView: View {
     func handleArchived(){
         withAnimation {
             meal.archived = true
+            meal.date = Date()
             dataContext.numberOfMealsInStorage -= 1
             do{
                try viewContext.save()
