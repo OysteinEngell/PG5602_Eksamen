@@ -8,7 +8,7 @@
 import Foundation
 
 struct FlagAPI {
-    static let CountryCodes: [String: String] = {
+    public static let CountryCodes: [String: String] = {
         return [
             "American": "US",
             "British": "GB",
@@ -41,7 +41,7 @@ struct FlagAPI {
         ]
     }()
 
-    static func countryCode(for area: String) -> String {
+    public static func countryCode(for area: String) -> String {
         return CountryCodes[area] ?? "Unknown"
     }
 }

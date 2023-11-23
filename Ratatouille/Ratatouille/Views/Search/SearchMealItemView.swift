@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchMealItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
     let mealAPIClient = MealAPIClient.live
-    let transformer = ParseMeal()
+    let transformer = MealTransformer()
     var meal: SearchMealModel
     
     var body: some View {
@@ -25,7 +25,6 @@ struct SearchMealItemView: View {
             }.swipeActions(edge: .trailing, content: {
                 Button(action: {
                     Task{
-                        print("SwipeAction Registered on item id: \(meal.id)")
                         await handlePress(id: meal.id)
                     }
                 }, label: {
@@ -38,8 +37,8 @@ struct SearchMealItemView: View {
         do{
             let responseMeal = try await mealAPIClient.getMealById(id)
             if((responseMeal != nil)){
-                let result = transformer.parseMealObject(meal: responseMeal!, context: viewContext)
-               
+                let storedMeal = transformer.parseMealObject(meal: responseMeal!, context: viewContext)
+                print("Stored:  \(storedMeal.title)")
                 do{
                    try viewContext.save()
                 }catch let error{

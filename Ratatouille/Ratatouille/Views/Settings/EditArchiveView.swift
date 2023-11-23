@@ -9,28 +9,92 @@ import SwiftUI
 
 struct EditArchiveView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [])
     var meals: FetchedResults<Meal>
     
+    @FetchRequest(entity: Area.entity(), sortDescriptors: [])
+    var areas: FetchedResults<Area>
     
+    @FetchRequest(entity: Category.entity(), sortDescriptors: [])
+    var categories: FetchedResults<Category>
+    
+    @FetchRequest(entity: Ingredient.entity(), sortDescriptors: [])
+    var ingredients: FetchedResults<Ingredient>
     
     var body: some View {
         NavigationStack{
             List{
                 Section(header: Text("Landområder")){
-                    Text("Landområde")
+                    if areas.contains(where: {$0.archived}){
+                        ForEach(areas){area in
+                            if(area.archived){
+                                VStack{
+                                    Text(area.name).bold()
+                                    if(area.date != nil){
+                                        Text("Akrivert: ")
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        HStack{
+                            Image(systemName: "globe")
+                            Text("Ingen arkiverte landområder")
+                        }.foregroundColor(.blue)
+                    }
+                    
+                   
                 }
                 Section(header: Text("Kategorier")){
-                    Text("Kategori")
+                    if categories.contains(where: {$0.archived}){
+                        ForEach(categories){category in
+                            if(category.archived){
+                                VStack{
+                                    Text(category.title)
+                                    if(category.date != nil){
+                                        Text("Arkivert: ")
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        HStack{
+                            Image(systemName: "rectangle.3.group.bubble")
+                            Text("Ingen arkiverte kategorier")
+                        }.foregroundColor(.blue)
+                    }
                 }
                 Section(header: Text("Ingredienser")){
-                    Text("Ingrediens")
+                    if ingredients.contains(where: {$0.archived}){
+                        ForEach(ingredients){ingredient in
+                            if(ingredient.archived){
+                                HStack{
+                                    Text(ingredient.name)
+                                    if(ingredient.date != nil){
+                                        Text("Arkivert: ")
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        HStack{
+                            Image(systemName: "carrot.fill")
+                            Text("Ingen arkiverte ingredienser")
+                        }.foregroundColor(.blue)
+                    }
+                    
                 }
                 Section(header: Text("Matoppskrifter")){
                     if meals.contains(where: { $0.archived }){
                         ForEach(meals){meal in
                             if(meal.archived){
-                                Text(meal.title).swipeActions(edge: .trailing){
+                                VStack{
+                                    Text(meal.title).bold()
+                                    if(meal.date != nil){
+                                        Text("Arkivert: ")
+                                    }
+                                }.swipeActions(edge: .trailing){
                                     Button(action: {
                                         handleDelete(meal: meal)
                                     }, label: {
@@ -39,9 +103,10 @@ struct EditArchiveView: View {
                                     Button(action: {
                                         handleRestore(meal: meal)
                                     }, label: {
-                                        Label("", systemImage: "tray.and.arrow.up.fill").tint(.blue)
+                                        Label("", systemImage: "tray.and.arrow.up.fill")
                                     })
                                 }
+                                
                             }
                         }
                     }else{
@@ -51,13 +116,21 @@ struct EditArchiveView: View {
                         }
                     }
                 }
-                Section{
+                Section(header: Text("Danger Zone")){
                     Button(action: {
-                        clearData()
+                        clearMealData()
                     }, label: {
                         HStack{
                             Image(systemName: "trash")
                             Text("Slett alle måltider i databasen")
+                        }
+                    }).tint(.red)
+                    Button(action: {
+                        clearIngredientData()
+                    }, label: {
+                        HStack{
+                            Image(systemName: "trash")
+                            Text("Slett alle ingredienser i databasen")
                         }
                     }).tint(.red)
                 }
@@ -82,10 +155,20 @@ struct EditArchiveView: View {
             print(error)
         }
     }
-    func clearData(){
+    func clearMealData(){
         do{
             for meal in meals{
                 viewContext.delete(meal)
+            }
+            try viewContext.save()
+        }catch let error{
+            print(error)
+        }
+    }
+    func clearIngredientData(){
+        do{
+            for ingredient in ingredients{
+                viewContext.delete(ingredient)
             }
             try viewContext.save()
         }catch let error{

@@ -15,9 +15,14 @@ extension Area {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Area> {
         return NSFetchRequest<Area>(entityName: "Area")
     }
-
-    @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
+    
+    @nonobjc public class func fetchRequest(for name: String) -> NSFetchRequest<Area> {
+            let request: NSFetchRequest<Area> = NSFetchRequest<Area>(entityName: "Area")
+            request.predicate = NSPredicate(format: "name == %@", name)
+            return request
+        }
+    @NSManaged public var id: String
+    @NSManaged public var name: String
     @NSManaged public var flag: String?
     @NSManaged public var archived: Bool
     @NSManaged public var date: Date?

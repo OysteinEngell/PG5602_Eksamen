@@ -15,9 +15,15 @@ extension Category {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
         return NSFetchRequest<Category>(entityName: "Category")
     }
+    
+    @nonobjc public class func fetchRequest(for id: String) -> NSFetchRequest<Category> {
+            let request: NSFetchRequest<Category> = NSFetchRequest<Category>(entityName: "Category")
+            request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            return request
+        }
 
-    @NSManaged public var id: String?
-    @NSManaged public var title: String?
+    @NSManaged public var id: String
+    @NSManaged public var title: String
     @NSManaged public var image: String?
     @NSManaged public var info: String?
     @NSManaged public var archived: Bool
