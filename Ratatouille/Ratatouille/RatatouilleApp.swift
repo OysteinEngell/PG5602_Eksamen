@@ -18,7 +18,7 @@ struct RatatouilleApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                MyRecipesView(dataContext: dataContext)
+                MyMealsView(dataContext: dataContext)
                     .tabItem {
                         Label("Mine Oppskrifter", systemImage: "fork.knife.circle.fill")
                     }.badge(dataContext.numberOfMealsInStorage)

@@ -23,6 +23,7 @@
 		174E90BB2B0F6AE000A0FB22 /* Area+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90B32B0F6AE000A0FB22 /* Area+CoreDataProperties.swift */; };
 		174E90BC2B0F6AE000A0FB22 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90B42B0F6AE000A0FB22 /* Category+CoreDataClass.swift */; };
 		174E90BD2B0F6AE000A0FB22 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90B52B0F6AE000A0FB22 /* Category+CoreDataProperties.swift */; };
+		174E90C42B10864A00A0FB22 /* EditMealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90C32B10864A00A0FB22 /* EditMealDetailView.swift */; };
 		175F92D62B0B7CB10024B0D0 /* StoredMealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92D52B0B7CB10024B0D0 /* StoredMealItemView.swift */; };
 		175F92D82B0BEEE80024B0D0 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92D72B0BEEE80024B0D0 /* MealDetailView.swift */; };
 		17E53D972B07675300F35940 /* RatatouilleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D962B07675300F35940 /* RatatouilleApp.swift */; };
@@ -37,7 +38,7 @@
 		17E53DCE2B07681400F35940 /* EditCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DC62B07681400F35940 /* EditCategoryView.swift */; };
 		17E53DCF2B07681400F35940 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DC72B07681400F35940 /* SearchView.swift */; };
 		17E53DD02B07681400F35940 /* EditAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DC82B07681400F35940 /* EditAreaView.swift */; };
-		17E53DD12B07681400F35940 /* MyRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DC92B07681400F35940 /* MyRecipesView.swift */; };
+		17E53DD12B07681400F35940 /* MyMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DC92B07681400F35940 /* MyMealsView.swift */; };
 		17E53DD22B07681400F35940 /* EditIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DCA2B07681400F35940 /* EditIngredientView.swift */; };
 		17E53DD32B07681400F35940 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DCB2B07681400F35940 /* SettingsView.swift */; };
 		17E53DD42B07681400F35940 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53DCC2B07681400F35940 /* SplashScreenView.swift */; };
@@ -87,6 +88,7 @@
 		174E90B32B0F6AE000A0FB22 /* Area+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Area+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		174E90B42B0F6AE000A0FB22 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		174E90B52B0F6AE000A0FB22 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		174E90C32B10864A00A0FB22 /* EditMealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealDetailView.swift; sourceTree = "<group>"; };
 		175F92D52B0B7CB10024B0D0 /* StoredMealItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredMealItemView.swift; sourceTree = "<group>"; };
 		175F92D72B0BEEE80024B0D0 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		17E53D932B07675300F35940 /* Ratatouille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratatouille.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +106,7 @@
 		17E53DC62B07681400F35940 /* EditCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryView.swift; sourceTree = "<group>"; };
 		17E53DC72B07681400F35940 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		17E53DC82B07681400F35940 /* EditAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAreaView.swift; sourceTree = "<group>"; };
-		17E53DC92B07681400F35940 /* MyRecipesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesView.swift; sourceTree = "<group>"; };
+		17E53DC92B07681400F35940 /* MyMealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMealsView.swift; sourceTree = "<group>"; };
 		17E53DCA2B07681400F35940 /* EditIngredientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIngredientView.swift; sourceTree = "<group>"; };
 		17E53DCB2B07681400F35940 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		17E53DCC2B07681400F35940 /* SplashScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -175,9 +177,10 @@
 		1714DE692B09625A00AB5246 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				17E53DC92B07681400F35940 /* MyRecipesView.swift */,
+				17E53DC92B07681400F35940 /* MyMealsView.swift */,
 				175F92D52B0B7CB10024B0D0 /* StoredMealItemView.swift */,
 				175F92D72B0BEEE80024B0D0 /* MealDetailView.swift */,
+				174E90C32B10864A00A0FB22 /* EditMealDetailView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -437,7 +440,7 @@
 				17E53DE62B07693500F35940 /* MealAPIClient.swift in Sources */,
 				17E53DA02B07675400F35940 /* Persistence.swift in Sources */,
 				17E53DCE2B07681400F35940 /* EditCategoryView.swift in Sources */,
-				17E53DD12B07681400F35940 /* MyRecipesView.swift in Sources */,
+				17E53DD12B07681400F35940 /* MyMealsView.swift in Sources */,
 				17E53DF42B07974400F35940 /* SearchMealItemView.swift in Sources */,
 				1714DE642B090EC500AB5246 /* DataContext.swift in Sources */,
 				174E90A72B0CE49800A0FB22 /* MealTransformer.swift in Sources */,
@@ -454,6 +457,7 @@
 				1714DE6D2B0A378F00AB5246 /* SearchByIngredientView.swift in Sources */,
 				175F92D82B0BEEE80024B0D0 /* MealDetailView.swift in Sources */,
 				17E53DD32B07681400F35940 /* SettingsView.swift in Sources */,
+				174E90C42B10864A00A0FB22 /* EditMealDetailView.swift in Sources */,
 				1714DE6B2B0964B700AB5246 /* SearchByCategoryView.swift in Sources */,
 				174E90BA2B0F6AE000A0FB22 /* Area+CoreDataClass.swift in Sources */,
 				17E53DD52B07681400F35940 /* EditArchiveView.swift in Sources */,

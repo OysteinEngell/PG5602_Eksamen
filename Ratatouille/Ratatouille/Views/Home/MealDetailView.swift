@@ -22,9 +22,7 @@ struct MealDetailView: View {
             
             HStack{
                 VStack(alignment: .leading){
-                    
                     Text(meal.title).font(.title).bold()
-                    
                     HStack{
                         AsyncImage(url: URL(string: "https://flagsapi.com/\(countryCode)/flat/32.png")){image in
                             image.image?.resizable()
@@ -32,9 +30,7 @@ struct MealDetailView: View {
                                 .frame(width: 25)
                         }
                             Text("\(meal.area) \(meal.category)")
-                        
                     }
-                    
                 }
                 Spacer()
             }.padding(EdgeInsets(top: 0, leading: 30, bottom: 40, trailing: 30))
@@ -44,7 +40,6 @@ struct MealDetailView: View {
                     Text("Ingredienser").bold().font(.title3).padding(.bottom)
                     Spacer()
                 }
-                
                 HStack{
                     VStack(alignment: .leading){
                         ForEach(meal.measures, id: \.self){measure in
@@ -59,31 +54,20 @@ struct MealDetailView: View {
                         }
                     }
                     Spacer()
-                    
                 }
-                
             }.padding(EdgeInsets(top: 0, leading: 30, bottom: 40, trailing: 30))
-            
             if(meal.instructions != nil){
-                
                 HStack{
-                    
                     VStack(alignment: .leading){
                         Text("Instruksjoner").bold().font(.title3).padding(.bottom)
-                        
                         Text(meal.instructions ?? "")
                     }
                     Spacer()
                 }.padding(EdgeInsets(top: 0, leading: 30, bottom: 50, trailing: 30))
             }
-            
-            VStack{
-                
-            }.frame(height: 100)
-            
-            
-            
+            VStack{}.frame(height: 100)
         }.ignoresSafeArea(.container)
+            
             .onAppear{
                 countryCode = FlagAPI.countryCode(for: meal.area)
             }
