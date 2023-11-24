@@ -1,56 +1,63 @@
 //
-//  EditAreaView.swift
+//  EditAreaDetailView.swift
 //  Ratatouille
 //
-//  Created by Øystein Engell on 13/11/2023.
+//  Created by Øystein Engell on 24/11/2023.
 //
 
 import SwiftUI
 
 struct EditAreaView: View {
-    @FetchRequest(entity: Area.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
-    var areas: FetchedResults<Area>
+    
+    var area: Area
+    
+    @State var inputName = ""
+    @State var inputFlag = ""
     
     var body: some View {
         NavigationStack{
-            
             List{
-                if(areas.isEmpty){
-                    Text("Ingen landområder i databasen")
-                }else{
-                    ForEach(areas){area in
-                        if(area.archived == false){
-                            NavigationLink{
-                                Text("Edit Area details")
-                            }label: {
-                                HStack{
-                                    AsyncImage(url: URL(string: "https://flagsapi.com/\(area.flag ?? "AQ")/flat/32.png")){image in
-                                        image.image?.resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 50)
-                                    }
-                                    Text(area.name).bold()
-                                }
-                            }.swipeActions(edge: .trailing){
-                                Button {
-                                    handleArchived(area: area)
-                                } label: {
-                                    Label("Arkiver", systemImage: "archivebox.fill").tint(.blue)
-                                }
-                            }
+                Section(header: Text("Navn")){
+                    TextField(text: $inputName) {}
+                }
+    
+                Section(header: Text("Landskode")){
+                    HStack{
+                        TextField("Landskode", text: $inputFlag)
+                        Spacer()
+                        AsyncImage(url: URL(string: "https://flagsapi.com/\(inputFlag)/flat/32.png")) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50)
+                        } placeholder: {
+                            ProgressView()
                         }
+
+                        
                     }
                 }
-            }.navigationTitle("Landområder")
+                
+            }
+            .navigationTitle("Rediger landområde")
+            .toolbar(content: {
+                Button(action: {
+                    print("save")
+                }, label: {
+                    HStack{
+                        Image(systemName: "square.and.arrow.down.on.square.fill")
+                        Text("Lagre")
+                    }
+                })
+            })
         }
-    }
-    func handleArchived(area: Area){
-        area.archived = true
-        area.date = Date()
+        .onAppear{
+            inputName = area.name
+            inputFlag = area.flag ?? "AQ"
+        }
     }
 }
 
 #Preview {
-    EditAreaView()
+    EditAreaView(area: Area() )
 }
-

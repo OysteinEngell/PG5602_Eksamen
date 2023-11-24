@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct EditArchiveView: View {
+struct ArchiveView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataContext: DataContext
     
@@ -212,5 +212,5 @@ struct EditArchiveView: View {
     
 
 #Preview {
-    EditArchiveView()
+    ArchiveView()
 }

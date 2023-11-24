@@ -2,55 +2,44 @@
 //  EditCategoryView.swift
 //  Ratatouille
 //
-//  Created by Øystein Engell on 13/11/2023.
+//  Created by Øystein Engell on 24/11/2023.
 //
 
 import SwiftUI
 
 struct EditCategoryView: View {
-    @FetchRequest(entity: Category.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
-    var categories: FetchedResults<Category>
+    var category: Category
+    
+    @State var inputTitle = ""
+    @State var inputDescription = ""
+    @State var inputImage = ""
+    
+    
     
     var body: some View {
         NavigationStack{
-            
             List{
-                if(categories.isEmpty){
-                    Text("Ingen kategorier i databasen")
-                }else{
-                    ForEach(categories){category in
-                        NavigationLink{
-                            Text("edit category details")
-                        }label: {
-                            HStack{
-                                AsyncImage(url: URL(string: category.image ?? "")){image in
-                                    image.image?.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 75)
-                                    .cornerRadius(40)}
-                                Text(category.title).bold()
-                            }
-                        }.swipeActions(edge: .trailing){
-                            Button {
-                                handleArchived(category: category)
-                            } label: {
-                                Label("Arkiver", systemImage: "archivebox.fill").tint(.blue)
-                            }
-                        }
+//                TextField()
+            }
+            .navigationTitle("Rediger kategori")
+            .toolbar(content: {
+                Button(action: {
+                    print("save")
+                }, label: {
+                    HStack{
+                        Image(systemName: "square.and.arrow.down.on.square.fill")
+                        Text("Lagre")
                     }
-                }
-                    
-                }.navigationTitle("Kategorier")
-            
+                })
+            })
         }
-    }
-    
-    func handleArchived(category: Category){
-        category.archived = true
-        category.date = Date()
+        .onAppear{
+            inputTitle = category.title
+            inputDescription = category.info ?? "Legg til informasjon"
+        }
     }
 }
 
 #Preview {
-    EditCategoryView()
+    EditCategoryView(category: Category())
 }
