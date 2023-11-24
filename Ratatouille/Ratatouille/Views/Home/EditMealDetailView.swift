@@ -10,7 +10,7 @@ import SwiftUI
 struct EditMealDetailView: View {
     @FetchRequest(entity: Area.entity(), sortDescriptors: [])
     var areas: FetchedResults<Area>
-
+    
     @FetchRequest(entity: Category.entity(), sortDescriptors: [])
     var categories: FetchedResults<Category>
     
@@ -25,8 +25,10 @@ struct EditMealDetailView: View {
     @State var inputCategory = ""
     @State var inputIngredients: [String] = []
     @State var ingredientItems: [Ingredient] = []
-    @State var inputMeasures = []
+    @State var selectedIngredient: Ingredient? = nil
+    @State var inputMeasures: [String] = []
     @State var inputInstructions = ""
+    @State var sheetPresented = false
     
     var body: some View {
         NavigationStack{
@@ -79,15 +81,30 @@ struct EditMealDetailView: View {
                 }
                 
                 Section(header: Text("Ingredienser")){
-                    ForEach(ingredientItems.indices, id: \.self){index in
-                        HStack{
-                            Picker("", selection: $ingredientItems[index], content: {
-                                ForEach(ingredients, id: \.self){ingredient in
-                                    Text(ingredient.name).tag(ingredient as Ingredient)
+                    ForEach(inputIngredients.indices, id: \.self) { index in
+                           
+                                Button{
+                                    print("edit")
+                                }label: {
+                                    HStack {
+                                    Image(systemName: "pencil")
+                                        Text(inputIngredients[index])
+                                    Spacer()
+                                        if(index < inputMeasures.count){
+                                            Text(inputMeasures[index])
+                                        }
                                 }
-                            })
+                            }
+                        }
+                    Button {
+                        
+                    } label: {
+                        HStack{
+                            Image(systemName: "plus.circle.fill")
+                            Text("Legg til ingrediens")
                         }
                     }
+                    
                     
                 }
                 
@@ -96,6 +113,7 @@ struct EditMealDetailView: View {
                         
                     }
                 }
+                
             }
             .navigationTitle("Rediger oppskrift")
             .toolbar {
