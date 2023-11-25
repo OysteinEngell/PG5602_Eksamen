@@ -18,21 +18,21 @@ struct SettingsView: View {
                     
                     Section{
                         NavigationLink{
-                            EditAreaView()
+                           AreaView()
                         } label: {
                             Image(systemName: "globe")
                             Text("Redigere landområder")
                         }
                         
                         NavigationLink{
-                            EditCategoryView()
+                            CategoryView()
                         } label: {
                             Image(systemName: "rectangle.3.group.bubble")
                             Text("Redigere kategorier")
                         }
                         
                         NavigationLink{
-                            EditIngredientView()
+                          IngredientView()
                         } label: {
                             Image(systemName: "carrot.fill")
                             Text("Redigere ingredienser")
@@ -48,7 +48,7 @@ struct SettingsView: View {
                     }
                     Section {
                         NavigationLink{
-                            EditArchiveView()
+                            ArchiveView()
                         } label: {
                             Image(systemName: "archivebox.fill")
                             Text("Redigere arkiv")

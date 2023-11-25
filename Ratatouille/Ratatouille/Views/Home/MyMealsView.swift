@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyRecipesView: View {
+struct MyMealsView: View {
     
     let dataContext: DataContext
     
@@ -33,13 +33,24 @@ struct MyRecipesView: View {
                         ForEach(meals){meal in
                             if(meal.archived == false){
                                 NavigationLink{
-                                    MealDetailView(meal: meal)
+                                    MealDetailView(meal: meal).toolbar {
+                                        NavigationLink{
+                                            EditMealDetailView(meal: meal)
+                                        }label: {
+                                            HStack{
+                                                Image(systemName: "pencil")
+                                                Text("Rediger").bold()
+                                            }.foregroundColor(.blue)
+                                        }
+                                        
+                                    }
                                 } label: {
                                     StoredMealItemView(favorite: meal.favorite, meal: meal)
                                 }
                             }
                         }
                     }.navigationTitle("Matoppskrifter")
+                        
                 }
             }
         }.onAppear{
@@ -51,5 +62,5 @@ struct MyRecipesView: View {
 }
 
 #Preview {
-    MyRecipesView(dataContext: DataContext())
+    MyMealsView(dataContext: DataContext())
 }

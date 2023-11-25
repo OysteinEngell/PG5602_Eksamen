@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditAreaView: View {
+struct AreaView: View {
     @FetchRequest(entity: Area.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
     var areas: FetchedResults<Area>
     
@@ -21,13 +21,15 @@ struct EditAreaView: View {
                     ForEach(areas){area in
                         if(area.archived == false){
                             NavigationLink{
-                                Text("Edit Area details")
+                                EditAreaView(area: area)
                             }label: {
                                 HStack{
                                     AsyncImage(url: URL(string: "https://flagsapi.com/\(area.flag ?? "AQ")/flat/32.png")){image in
-                                        image.image?.resizable()
+                                        image.resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 50)
+                                    } placeholder: {
+                                        ProgressView()
                                     }
                                     Text(area.name).bold()
                                 }
@@ -41,7 +43,15 @@ struct EditAreaView: View {
                         }
                     }
                 }
-            }.navigationTitle("Landområder")
+            }
+            .navigationTitle("Landområder")
+            .toolbar {
+                NavigationLink{
+                    AddAreaView()
+                }label: {
+                    Image(systemName: "plus.circle.fill").resizable().frame(width: 30, height: 30)
+                }
+            }
         }
     }
     func handleArchived(area: Area){
@@ -51,6 +61,6 @@ struct EditAreaView: View {
 }
 
 #Preview {
-    EditAreaView()
+    AreaView()
 }
 

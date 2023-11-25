@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditCategoryView: View {
+struct CategoryView: View {
     @FetchRequest(entity: Category.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
     var categories: FetchedResults<Category>
     
@@ -20,14 +20,16 @@ struct EditCategoryView: View {
                 }else{
                     ForEach(categories){category in
                         NavigationLink{
-                            Text("edit category details")
+                            EditCategoryView(category: category)
                         }label: {
                             HStack{
                                 AsyncImage(url: URL(string: category.image ?? "")){image in
-                                    image.image?.resizable()
+                                    image.resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 75)
-                                    .cornerRadius(40)}
+                                    .cornerRadius(40)}placeholder: {
+                                        ProgressView()
+                                    }
                                 Text(category.title).bold()
                             }
                         }.swipeActions(edge: .trailing){
@@ -39,8 +41,16 @@ struct EditCategoryView: View {
                         }
                     }
                 }
-                    
-                }.navigationTitle("Kategorier")
+            }
+            .navigationTitle("Kategorier")
+            .toolbar{
+                NavigationLink {
+                    AddCategoryView()
+                } label: {
+                    Image(systemName: "plus.circle.fill").resizable().frame(width: 30, height: 30)
+                }
+
+            }
             
         }
     }
@@ -52,5 +62,5 @@ struct EditCategoryView: View {
 }
 
 #Preview {
-    EditCategoryView()
+    CategoryView()
 }
