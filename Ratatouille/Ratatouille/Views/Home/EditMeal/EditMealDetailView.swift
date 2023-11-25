@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct EditMealDetailView: View {
-    
+    @Environment(\.managedObjectContext) private var context
+    @Environment(\.presentationMode) var presentationMode
     
     @FetchRequest(entity: Area.entity(), sortDescriptors: [])
     var areas: FetchedResults<Area>
@@ -128,14 +129,29 @@ struct EditMealDetailView: View {
                     }
                 }
                 .sheet(isPresented: $sheetPresented){
-                    SelectIngredientView(selectedIngredient: $selectedIngredient, inputMeasure: $selectedMeasure)
+                    SelectIngredientView(
+                            inputIngredient: $selectedIngredient,
+                            inputMeasure: $selectedMeasure,
+                            handleData: { updatedIngredient, updatedMeasure in
+                                if let index = inputIngredients.firstIndex(of: selectedIngredient) {
+                                    // Update existing ingredient
+                                    inputIngredients[index] = updatedIngredient
+                                    inputMeasures[index] = updatedMeasure
+                                } else {
+                                    // Add new ingredient
+                                    inputIngredients.append(updatedIngredient)
+                                    inputMeasures.append(updatedMeasure)
+                                }
+                            }
+                        )
                 }.presentationDetents([.medium])
                 
             }
             .navigationTitle("Rediger oppskrift")
             .toolbar {
                 Button(action: {
-                    
+                    handleSave()
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "square.and.arrow.down.on.square.fill")
                     Text("Lagre")
@@ -149,22 +165,29 @@ struct EditMealDetailView: View {
             areaCode = FlagAPI.countryCode(for: newValue)
         }
         
-        .onChange(of: selectedIngredient){
-            inputIngredients[selectedIngredientIndex] = selectedIngredient
-        }
         
-        .onChange(of: selectedMeasure) {
-            inputMeasures[selectedMeasureIndex] = selectedMeasure
+    }
+    
+    func handleSave(){
+        meal.title = inputTitle
+        meal.image = inputImage
+        meal.area = inputArea
+        meal.category = inputCategory
+        meal.ingredients = inputIngredients
+        meal.measures = inputMeasures
+        meal.instructions = meal.instructions
+        
+        do{
+            try context.save()
+        }catch let error{
+            print(error)
         }
     }
     
-    
     func addIngredient(){
-        
         selectedIngredient = ""
         selectedMeasure = ""
         sheetPresented = true
-        
     }
     
     func loadData(){

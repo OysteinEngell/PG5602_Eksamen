@@ -9,17 +9,18 @@ import SwiftUI
 
 struct SelectIngredientView: View {
     @EnvironmentObject var dataContext: DataContext
+    @Environment(\.presentationMode) var presentationMode
     
-    @Binding var selectedIngredient: String
+    @Binding var inputIngredient: String
     @Binding var inputMeasure: String
     
-//    var handleData: (()->())
+    var handleData: ((_ inputIngredient: String, _ inputMeasure: String)->())
     
     var body: some View {
         NavigationStack{
             List{
                 HStack{
-                    Picker("", selection: $selectedIngredient) {
+                    Picker("Ingrediens", selection: $inputIngredient) {
                         ForEach(dataContext.ingredientArray){ingredient in
                             Text(ingredient.name).tag(ingredient.name)
                         }
@@ -34,7 +35,8 @@ struct SelectIngredientView: View {
             .navigationTitle("Velg ingrediens")
             .toolbar(content: {
                 Button(action: {
-                    
+                    handleData(inputIngredient, inputMeasure)
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Lagre")
                 })
@@ -45,5 +47,5 @@ struct SelectIngredientView: View {
 }
 
 #Preview {
-    SelectIngredientView( selectedIngredient: .constant("demo"), inputMeasure: .constant("100g"))
+    SelectIngredientView(inputIngredient: .constant(""), inputMeasure: .constant(""), handleData: {inputIngredient,inputMeasure in })
 }

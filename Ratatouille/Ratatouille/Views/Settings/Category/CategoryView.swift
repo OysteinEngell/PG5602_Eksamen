@@ -24,10 +24,12 @@ struct CategoryView: View {
                         }label: {
                             HStack{
                                 AsyncImage(url: URL(string: category.image ?? "")){image in
-                                    image.image?.resizable()
+                                    image.resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 75)
-                                    .cornerRadius(40)}
+                                    .cornerRadius(40)}placeholder: {
+                                        ProgressView()
+                                    }
                                 Text(category.title).bold()
                             }
                         }.swipeActions(edge: .trailing){
@@ -39,8 +41,16 @@ struct CategoryView: View {
                         }
                     }
                 }
-                    
-                }.navigationTitle("Kategorier")
+            }
+            .navigationTitle("Kategorier")
+            .toolbar{
+                NavigationLink {
+                    AddCategoryView()
+                } label: {
+                    Image(systemName: "plus.circle.fill").resizable().frame(width: 30, height: 30)
+                }
+
+            }
             
         }
     }

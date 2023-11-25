@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EditAreaView: View {
+    @Environment(\.managedObjectContext) private var context
+    @Environment(\.presentationMode) var presentationMode
     
     var area: Area
     
@@ -33,16 +35,13 @@ struct EditAreaView: View {
                         } placeholder: {
                             ProgressView()
                         }
-
-                        
                     }
                 }
-                
             }
             .navigationTitle("Rediger landområde")
             .toolbar(content: {
                 Button(action: {
-                    print("save")
+                    handleSave()
                 }, label: {
                     HStack{
                         Image(systemName: "square.and.arrow.down.on.square.fill")
@@ -55,6 +54,18 @@ struct EditAreaView: View {
             inputName = area.name
             inputFlag = area.flag ?? "AQ"
         }
+    }
+    func handleSave(){
+        area.name = inputName
+        area.flag = inputFlag
+        
+        do{
+            try context.save()
+        }catch let error{
+            print(error)
+        }
+        
+        presentationMode.wrappedValue.dismiss()
     }
 }
 

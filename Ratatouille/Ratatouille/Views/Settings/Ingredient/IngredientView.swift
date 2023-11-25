@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditIngredientView: View {
+struct IngredientView: View {
     @FetchRequest(entity: Ingredient.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
     var ingredients: FetchedResults<Ingredient>
     
@@ -20,13 +20,15 @@ struct EditIngredientView: View {
                 }else{
                     ForEach(ingredients, id: \.self){ingredient in
                         NavigationLink{
-                            Text("Ingredient details")
+                            EditIngredientView(ingredient: ingredient)
                         }label: {
                             HStack{
                                 AsyncImage(url: URL(string: ingredient.image ?? "")){image in
-                                    image.image?.resizable()
+                                    image.resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 50)
+                                }placeholder: {
+                                    ProgressView()
                                 }
                                 Text(ingredient.name).bold()
                             }
@@ -39,7 +41,16 @@ struct EditIngredientView: View {
                         }
                     }
                 }
-            }.navigationTitle("Ingredienser")
+            }
+            .navigationTitle("Ingredienser")
+            .toolbar{
+                NavigationLink {
+                    AddIngredientView()
+                } label: {
+                    Image(systemName: "plus.circle.fill").resizable().frame(width: 30, height: 30)
+                }
+
+            }
         }
     }
     func handleArchived(ingredient: Ingredient){
@@ -49,5 +60,5 @@ struct EditIngredientView: View {
 }
 
 #Preview {
-    EditIngredientView()
+    IngredientView()
 }

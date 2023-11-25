@@ -66,11 +66,11 @@ struct MealDetailView: View {
                 }.padding(EdgeInsets(top: 0, leading: 30, bottom: 50, trailing: 30))
             }
             VStack{}.frame(height: 100)
-        }.ignoresSafeArea(.container)
-            
-            .onAppear{
-                countryCode = FlagAPI.countryCode(for: meal.area)
-            }
+        }
+        .ignoresSafeArea(.container)
+        .onAppear{
+            countryCode = FlagAPI.countryCode(for: meal.area)
+        }
     }
 }
 

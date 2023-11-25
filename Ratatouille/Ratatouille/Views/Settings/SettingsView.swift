@@ -32,7 +32,7 @@ struct SettingsView: View {
                         }
                         
                         NavigationLink{
-                            EditIngredientView()
+                          IngredientView()
                         } label: {
                             Image(systemName: "carrot.fill")
                             Text("Redigere ingredienser")

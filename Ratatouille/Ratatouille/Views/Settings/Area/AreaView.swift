@@ -43,7 +43,15 @@ struct AreaView: View {
                         }
                     }
                 }
-            }.navigationTitle("Landområder")
+            }
+            .navigationTitle("Landområder")
+            .toolbar {
+                NavigationLink{
+                    AddAreaView()
+                }label: {
+                    Image(systemName: "plus.circle.fill").resizable().frame(width: 30, height: 30)
+                }
+            }
         }
     }
     func handleArchived(area: Area){
