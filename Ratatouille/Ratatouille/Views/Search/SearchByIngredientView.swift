@@ -43,7 +43,7 @@ struct SearchByIngredientView: View {
             }, label: {
                 ZStack{
                     Rectangle().frame(width: 250, height: 50).cornerRadius(30).foregroundColor(.primary)
-                    Text("Velg ingrediens").foregroundStyle(.white).bold()
+                    Text("Velg ingrediens").bold()
                 }.padding(.vertical)
             })
             

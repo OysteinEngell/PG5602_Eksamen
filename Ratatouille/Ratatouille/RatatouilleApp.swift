@@ -11,9 +11,10 @@ import SwiftUI
 struct RatatouilleApp: App {
     let persistenceController = PersistenceController.shared
     @ObservedObject var dataContext = DataContext()
+    @AppStorage("isDarkModeEnabled") private var isDarkmodeEnabled = false
     var mealApiClient = MealAPIClient.live
     
-
+    
     
     var body: some Scene {
         WindowGroup {
@@ -34,8 +35,10 @@ struct RatatouilleApp: App {
                 Task{
                     await fetchData()
                 }
-            }.environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(dataContext) 
+            }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .environmentObject(dataContext)
+            .preferredColorScheme(isDarkmodeEnabled ? .dark : .light)
             
         }
     }

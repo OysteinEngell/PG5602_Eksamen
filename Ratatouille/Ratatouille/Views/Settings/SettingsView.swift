@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State var toggleDarkmode = false
+    @AppStorage("isDarkModeEnabled") private var isDarkmodeEnabled = false
+    
    
     var body: some View {
         
@@ -43,7 +44,9 @@ struct SettingsView: View {
                             Image(systemName: "moon.circle")
                             Text("Aktiver mørk modus")
                             Spacer()
-                            Toggle("", isOn: $toggleDarkmode).frame(width: 50)
+                            Toggle("", isOn: $isDarkmodeEnabled)
+                                .frame(width: 50)
+                               
                         }
                     }
                     Section {

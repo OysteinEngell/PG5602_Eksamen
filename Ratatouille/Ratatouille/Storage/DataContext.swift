@@ -25,4 +25,5 @@ class DataContext: ObservableObject {
     @Published var selectedName: MealModel = MealModel.placeholder
     
     @Published var numberOfMealsInStorage = 0
+    @Published var darkMode = false
 }

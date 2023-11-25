@@ -32,11 +32,13 @@ struct SearchByAreaView: View {
             
             SearchMealListView(meals: dataContext.areaFilteredMealArray)
             
+            
             Picker("", selection: $dataContext.selectedArea.name) {
                 ForEach(areas){area in
                     Text(area.name).tag(area.name)
                 }
             }.pickerStyle(.wheel)
+                .frame(height: 125)
 
         }.onChange(of: dataContext.selectedArea.name) { oldValue, newValue in
             handleChange()

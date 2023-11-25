@@ -32,7 +32,7 @@ struct SearchByNameView: View {
             }, label: {
                 ZStack{
                     Rectangle().frame(width: 250, height: 50).cornerRadius(30).foregroundColor(.primary)
-                    Text("Søk etter oppskrift").foregroundStyle(.white).bold()
+                    Text("Søk etter oppskrift").bold()
                 }.padding(.vertical)
             })
             
