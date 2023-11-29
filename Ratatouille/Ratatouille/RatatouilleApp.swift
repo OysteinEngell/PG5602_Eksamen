@@ -14,32 +14,45 @@ struct RatatouilleApp: App {
     @AppStorage("isDarkModeEnabled") private var isDarkmodeEnabled = false
     var mealApiClient = MealAPIClient.live
     
+    @State var splashPresented = true
     
     
     var body: some Scene {
         WindowGroup {
-            TabView {
-                MyMealsView(dataContext: dataContext)
-                    .tabItem {
-                        Label("Mine Oppskrifter", systemImage: "fork.knife.circle.fill")
-                    }.badge(dataContext.numberOfMealsInStorage)
-                SearchView(dataContext: dataContext)
-                    .tabItem {
-                        Label("Søk", systemImage: "magnifyingglass.circle.fill")
+            ZStack{
+                if(splashPresented){
+                    SplashScreenView()
+                }else{
+                    TabView {
+                        MyMealsView(dataContext: dataContext)
+                            .tabItem {
+                                Label("Mine Oppskrifter", systemImage: "fork.knife.circle.fill")
+                            }.badge(dataContext.numberOfMealsInStorage)
+                        SearchView(dataContext: dataContext)
+                            .tabItem {
+                                Label("Søk", systemImage: "magnifyingglass.circle.fill")
+                            }
+                        SettingsView()
+                            .tabItem {
+                                Label("Innstillinger", systemImage: "gearshape")
+                            }
                     }
-                SettingsView()
-                    .tabItem {
-                        Label("Innstillinger", systemImage: "gearshape")
-                    }
-            }.onAppear{
+                }
+            }
+            .onAppear{
                 Task{
                     await fetchData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                        withAnimation {
+                            splashPresented = false
+                        }
+                        
+                    }
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
             .environmentObject(dataContext)
             .preferredColorScheme(isDarkmodeEnabled ? .dark : .light)
-            
         }
     }
     
