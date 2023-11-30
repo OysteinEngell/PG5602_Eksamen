@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "RatatouilleLogo_IconHat.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

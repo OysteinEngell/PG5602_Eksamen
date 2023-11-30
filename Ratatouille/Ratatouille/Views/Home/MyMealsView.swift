@@ -14,12 +14,14 @@ struct MyMealsView: View {
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
     var meals: FetchedResults<Meal>
-    
+  
     
     
     
     var body: some View {
         VStack{
+            LogoView().background(Color(.main))
+            
             if meals.isEmpty {
                 Image(systemName: "square.3.layers.3d.slash")
                     .resizable()
@@ -49,9 +51,11 @@ struct MyMealsView: View {
                                 }
                             }
                         }
-                    }.navigationTitle("Matoppskrifter")
+                    }
+                    .listStyle(PlainListStyle())
+                    .navigationBarTitle("Matoppskrifter")
                         
-                }
+                }.offset(y: -10)
             }
         }.onAppear{
             

@@ -42,7 +42,7 @@ struct RatatouilleApp: App {
             .onAppear{
                 Task{
                     await fetchData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                         withAnimation {
                             splashPresented = false
                         }
