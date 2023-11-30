@@ -27,6 +27,14 @@ extension Area {
     @NSManaged public var archived: Bool
     @NSManaged public var date: Date?
     @NSManaged public var meals: NSSet?
+    
+    public var mealsArray: [Meal] {
+        let set = meals as? Set<Meal> ?? []
+        
+        return set.sorted {
+            $0.title < $1.title
+        }
+    }
 
 }
 

@@ -22,7 +22,7 @@ struct EditAreaView: View {
                 Section(header: Text("Navn")){
                     TextField(text: $inputName) {}
                 }
-    
+                
                 Section(header: Text("Landskode")){
                     HStack{
                         TextField("Landskode", text: $inputFlag)
@@ -34,6 +34,29 @@ struct EditAreaView: View {
                                 .frame(width: 50)
                         } placeholder: {
                             ProgressView()
+                        }
+                    }
+                }
+                Section(header: Text("Oppskrifter")){
+                    if(area.mealsArray.isEmpty){
+                        Text("Ingen oppskrifter lagret fra dette området")
+                    }else{
+                        ForEach(area.mealsArray){meal in
+                            NavigationLink{
+                                MealDetailView(meal: meal)
+                            }label: {
+                                HStack{
+                                    AsyncImage(url: URL(string: meal.image)){image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 50)
+                                            .cornerRadius(40)
+                                    }placeholder: {
+                                        ProgressView().padding(20)
+                                    }
+                                    Text(meal.title)
+                                }
+                            }
                         }
                     }
                 }
@@ -58,6 +81,7 @@ struct EditAreaView: View {
     func handleSave(){
         area.name = inputName
         area.flag = inputFlag
+        
         
         do{
             try context.save()
