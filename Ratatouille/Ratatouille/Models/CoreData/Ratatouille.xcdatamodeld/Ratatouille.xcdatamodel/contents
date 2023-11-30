@@ -7,6 +7,11 @@
         <attribute name="id" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="fromArea" inverseEntity="Meal"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="archived" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -16,6 +21,11 @@
         <attribute name="info" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="inCategory" inverseEntity="Meal"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="title"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
         <attribute name="archived" attributeType="Boolean" usesScalarValueType="YES"/>

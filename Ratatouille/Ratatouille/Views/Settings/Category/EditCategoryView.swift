@@ -42,6 +42,30 @@ struct EditCategoryView: View {
                 Section(header: Text("Informasjon")){
                     TextField(text: $inputInfo, axis: .vertical){}
                 }
+                
+                Section(header: Text("Oppskrifter")){
+                    if(category.mealsArray.isEmpty){
+                        Text("Ingen oppskrifter lagret i denne kategorien")
+                    }else{
+                        ForEach(category.mealsArray){meal in
+                            NavigationLink{
+                                MealDetailView(meal: meal)
+                            }label: {
+                                HStack{
+                                    AsyncImage(url: URL(string: meal.image)){image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 50)
+                                            .cornerRadius(40)
+                                    }placeholder: {
+                                        ProgressView().padding(20)
+                                    }
+                                    Text(meal.title)
+                                }
+                            }
+                        }
+                    }
+                }
             }
             .navigationTitle("Rediger kategori")
             .toolbar(content: {

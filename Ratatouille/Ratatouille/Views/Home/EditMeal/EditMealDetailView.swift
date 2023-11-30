@@ -17,8 +17,8 @@ struct EditMealDetailView: View {
     @FetchRequest(entity: Category.entity(), sortDescriptors: [])
     var categories: FetchedResults<Category>
     
-//    @FetchRequest(entity: Ingredient.entity(), sortDescriptors: [])
-//    var ingredients: FetchedResults<Ingredient>
+    //    @FetchRequest(entity: Ingredient.entity(), sortDescriptors: [])
+    //    var ingredients: FetchedResults<Ingredient>
     
     @State var sheetPresented = false
     @State var sheetType = ""
@@ -130,20 +130,20 @@ struct EditMealDetailView: View {
                 }
                 .sheet(isPresented: $sheetPresented){
                     SelectIngredientView(
-                            inputIngredient: $selectedIngredient,
-                            inputMeasure: $selectedMeasure,
-                            handleData: { updatedIngredient, updatedMeasure in
-                                if let index = inputIngredients.firstIndex(of: selectedIngredient) {
-                                    // Update existing ingredient
-                                    inputIngredients[index] = updatedIngredient
-                                    inputMeasures[index] = updatedMeasure
-                                } else {
-                                    // Add new ingredient
-                                    inputIngredients.append(updatedIngredient)
-                                    inputMeasures.append(updatedMeasure)
-                                }
+                        inputIngredient: $selectedIngredient,
+                        inputMeasure: $selectedMeasure,
+                        handleData: { updatedIngredient, updatedMeasure in
+                            if let index = inputIngredients.firstIndex(of: selectedIngredient) {
+                                // Update existing ingredient
+                                inputIngredients[index] = updatedIngredient
+                                inputMeasures[index] = updatedMeasure
+                            } else {
+                                // Add new ingredient
+                                inputIngredients.append(updatedIngredient)
+                                inputMeasures.append(updatedMeasure)
                             }
-                        )
+                        }
+                    )
                 }.presentationDetents([.medium])
                 
             }
@@ -158,8 +158,7 @@ struct EditMealDetailView: View {
                 })
             }
         }.onAppear{
-           loadData()
-//            linkIngredientItems()
+            loadData()
         }
         .onChange(of: inputArea) { oldValue, newValue in
             areaCode = FlagAPI.countryCode(for: newValue)
@@ -176,6 +175,9 @@ struct EditMealDetailView: View {
         meal.ingredients = inputIngredients
         meal.measures = inputMeasures
         meal.instructions = meal.instructions
+        
+        addCategoryRelation()
+        addAreaRelation()
         
         do{
             try context.save()
@@ -200,12 +202,16 @@ struct EditMealDetailView: View {
         inputInstructions = meal.instructions ?? "Legg til instruksjoner"
     }
     
-    func linkIngredientItems(){
-//        ingredientItems = inputIngredients.compactMap{name in
-//            ingredients.first { ingredient in
-//                ingredient.name == name
-//            }
-//        }
+    func addCategoryRelation(){
+        if let selectedCategory = categories.first(where: { $0.title == inputCategory }) {
+            meal.inCategory = selectedCategory
+        }
+    }
+    
+    func addAreaRelation(){
+        if let selectedArea = areas.first(where: { $0.name == inputArea }) {
+            meal.fromArea = selectedArea
+        }
     }
 }
 
