@@ -46,7 +46,6 @@ struct RatatouilleApp: App {
                         withAnimation {
                             splashPresented = false
                         }
-                        
                     }
                 }
             }

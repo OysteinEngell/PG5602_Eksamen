@@ -18,10 +18,12 @@ struct SearchMealItemView: View {
     var body: some View {
             HStack{
                 AsyncImage(url: URL(string: meal.image)){image in
-                    image.image?.resizable()
+                    image.resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50)
                         .cornerRadius(40)
+                }placeholder: {
+                    ProgressView().padding(20)
                 }
                 Text(meal.title).bold()
             }.swipeActions(edge: .trailing, content: {

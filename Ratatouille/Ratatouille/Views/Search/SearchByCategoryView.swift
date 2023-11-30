@@ -44,30 +44,31 @@ struct SearchByCategoryView: View {
         }
         
         .sheet(isPresented: $sheetPresented){
-            
-            
-            List{
-                
-                Section(header: Text("Velg en kategori")){
-                    ForEach(dataContext.categoryArray){category in
-                        Button(action: {
-                            handleChange(category: category)
-                            sheetPresented = false
-                        }, label: {
-                            HStack{
-                                AsyncImage(url: URL(string: category.image)){image in
-                                    image.image?.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 100)
-                                    .cornerRadius(40)}
-                                VStack{
-                                    Text(category.title).font(.title2).foregroundStyle(.primary).bold()
+            NavigationStack{
+                List{
+                    Section{
+                        ForEach(dataContext.categoryArray){category in
+                            Button(action: {
+                                handleChange(category: category)
+                                sheetPresented = false
+                            }, label: {
+                                HStack{
+                                    AsyncImage(url: URL(string: category.image)){image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 75)
+                                        .cornerRadius(40)}placeholder: {
+                                            ProgressView().padding(20)
+                                        }.padding(.trailing, 20)
+                                    VStack{
+                                        Text(category.title).font(.title2).foregroundStyle(.primary).bold()
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
-                            }
-                        })
+                            })
+                        }
                     }
-                }
+                }.navigationTitle("Velg en kategori")
             }
         }
     }

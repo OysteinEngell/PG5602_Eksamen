@@ -8,6 +8,7 @@
 import Foundation
 
 class DataContext: ObservableObject {
+    
     @Published var areaArray: [AreaModel] = AreaModel.demoArray
     @Published var selectedArea: AreaModel = AreaModel.demo
     @Published var areaFilteredMealArray: [SearchMealModel] = SearchMealModel.demoArray

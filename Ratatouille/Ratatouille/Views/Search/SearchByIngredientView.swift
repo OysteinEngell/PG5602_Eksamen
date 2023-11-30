@@ -21,10 +21,12 @@ struct SearchByIngredientView: View {
                         let urlString = "\(dataContext.selectedIngredient.image)\(encodedIngredientName)-Small.png"
                     
                     AsyncImage(url: URL(string: urlString )){image in
-                        image.image?.resizable()
+                        image.resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100)
-                        .cornerRadius(40)}
+                        .cornerRadius(40)}placeholder: {
+                            ProgressView().padding(20)
+                        }
                     }
                   
                         Text("Ingrediens: \(dataContext.selectedIngredient.name)").font(.title).bold()
@@ -48,11 +50,9 @@ struct SearchByIngredientView: View {
             })
             
             .sheet(isPresented: $sheetPresented){
-                
-                    
+                NavigationStack{
                     List{
-                        
-                        Section(header: Text("Velg en ingrediens")){
+                        Section{
                             ForEach(dataContext.ingredientArray){ingredient in
                                 Button(action: {
                                     handleChange(ingredient: ingredient)
@@ -61,12 +61,15 @@ struct SearchByIngredientView: View {
                                     HStack{
                                         if let encodedIngredientName = ingredient.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
                                             let urlString = "\(ingredient.image)\(encodedIngredientName)-Small.png"
-                                        
-                                        AsyncImage(url: URL(string: urlString )){image in
-                                            image.image?.resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 100)
-                                            .cornerRadius(40)}
+                                            
+                                            AsyncImage(url: URL(string: urlString )){image in
+                                                image.resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 75)
+                                                .cornerRadius(40)} placeholder: {
+                                                    ProgressView().padding(20)
+                                                  }
+                                            .padding(.trailing, 20)
                                         }
                                         VStack{
                                             Text(ingredient.name).font(.title2).foregroundStyle(.primary).bold()
@@ -77,6 +80,8 @@ struct SearchByIngredientView: View {
                             }
                         }
                     }
+                    .navigationTitle("Velg en ingrediens")
+                }
             }
         }
     }
