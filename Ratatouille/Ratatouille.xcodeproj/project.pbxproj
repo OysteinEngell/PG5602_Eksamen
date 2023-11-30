@@ -20,6 +20,7 @@
 		17498EBD2B121220005E2EC4 /* AddAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EBC2B121220005E2EC4 /* AddAreaView.swift */; };
 		17498EBF2B1218BC005E2EC4 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EBE2B1218BC005E2EC4 /* AddCategoryView.swift */; };
 		17498EC12B121AA1005E2EC4 /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EC02B121AA1005E2EC4 /* AddIngredientView.swift */; };
+		17498ED52B1882E7005E2EC4 /* ClearDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498ED42B1882E7005E2EC4 /* ClearDataView.swift */; };
 		174E90A52B0CC62A00A0FB22 /* FetchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90A42B0CC62A00A0FB22 /* FetchDetailView.swift */; };
 		174E90A72B0CE49800A0FB22 /* MealTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90A62B0CE49800A0FB22 /* MealTransformer.swift */; };
 		174E90AB2B0D3A4800A0FB22 /* FlagAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E90AA2B0D3A4800A0FB22 /* FlagAPI.swift */; };
@@ -93,6 +94,7 @@
 		17498EBC2B121220005E2EC4 /* AddAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAreaView.swift; sourceTree = "<group>"; };
 		17498EBE2B1218BC005E2EC4 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		17498EC02B121AA1005E2EC4 /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
+		17498ED42B1882E7005E2EC4 /* ClearDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDataView.swift; sourceTree = "<group>"; };
 		174E90A42B0CC62A00A0FB22 /* FetchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailView.swift; sourceTree = "<group>"; };
 		174E90A62B0CE49800A0FB22 /* MealTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTransformer.swift; sourceTree = "<group>"; };
 		174E90AA2B0D3A4800A0FB22 /* FlagAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAPI.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				17498EB92B1211D6005E2EC4 /* Area */,
 				17E53DCD2B07681400F35940 /* ArchiveView.swift */,
 				17E53DCB2B07681400F35940 /* SettingsView.swift */,
+				17498ED42B1882E7005E2EC4 /* ClearDataView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				17498EBF2B1218BC005E2EC4 /* AddCategoryView.swift in Sources */,
 				17E53DF62B079DE900F35940 /* SearchMealListView.swift in Sources */,
 				17E53D992B07675300F35940 /* ContentView.swift in Sources */,
+				17498ED52B1882E7005E2EC4 /* ClearDataView.swift in Sources */,
 				174E90B62B0F6AE000A0FB22 /* Ingredient+CoreDataClass.swift in Sources */,
 				17E53DD42B07681400F35940 /* SplashScreenView.swift in Sources */,
 				17E53DA32B07675400F35940 /* Ratatouille.xcdatamodeld in Sources */,

@@ -149,24 +149,8 @@ struct ArchiveView: View {
                         }
                     }
                 }
-                Section(header: Text("Danger Zone")){
-                    Button(action: {
-                        clearData(entities: meals)
-                    }, label: {
-                        HStack{
-                            Image(systemName: "trash")
-                            Text("Slett alle måltider i databasen")
-                        }
-                    }).tint(.red)
-                    Button(action: {
-                        
-                    }, label: {
-                        HStack{
-                            Image(systemName: "trash")
-                            Text("Slett alle ingredienser i databasen")
-                        }
-                    }).tint(.red)
-                }
+                ClearDataView()
+               
             }.navigationTitle("Arkiv")
         }
     }
@@ -191,16 +175,6 @@ struct ArchiveView: View {
         }
     }
     
-    func clearData<T: NSManagedObject>(entities: FetchedResults<T>){
-        do{
-            for entity in entities{
-                viewContext.delete(entity)
-            }
-            try viewContext.save()
-        }catch let error{
-            print(error)
-        }
-    }
     
     private let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
