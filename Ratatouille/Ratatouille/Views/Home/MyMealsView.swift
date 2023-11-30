@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyMealsView: View {
     
-    let dataContext: DataContext
+    @EnvironmentObject var dataContext: DataContext
     
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
@@ -62,5 +62,5 @@ struct MyMealsView: View {
 }
 
 #Preview {
-    MyMealsView(dataContext: DataContext())
+    MyMealsView()
 }

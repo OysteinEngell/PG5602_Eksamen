@@ -46,6 +46,8 @@ struct EditMealDetailView: View {
             List{
                 Section(header: Text("Tittel")){
                     TextField(text: $inputTitle) {}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 Section(header: Text("Bilde")){
                     HStack{
@@ -56,6 +58,8 @@ struct EditMealDetailView: View {
                                 .cornerRadius(10)
                         }
                         TextField(text: $inputImage, axis: .vertical) {}
+                            .autocorrectionDisabled(true)
+                            .textInputAutocapitalization(.never)
                     }
                 }
                 Section(header: Text("Landområde")){
@@ -124,9 +128,9 @@ struct EditMealDetailView: View {
                 }
                 
                 Section(header: Text("Instruksjoner")){
-                    TextField(text: $inputInstructions, axis: .vertical){
-                        
-                    }
+                    TextField(text: $inputInstructions, axis: .vertical){}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 .sheet(isPresented: $sheetPresented){
                     SelectIngredientView(

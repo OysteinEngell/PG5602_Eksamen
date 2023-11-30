@@ -20,6 +20,8 @@ struct AddIngredientView: View {
             List{
                 Section(header: Text("Navn")){
                     TextField(text: $inputName){}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 
                 Section(header: Text("Bilde")){
@@ -32,12 +34,16 @@ struct AddIngredientView: View {
                             ProgressView()
                         }
                         TextField(text: $inputImage, axis: .vertical){}
+                            .autocorrectionDisabled(true)
+                            .textInputAutocapitalization(.never)
                         
                     }
                 }
                 
                 Section(header: Text("Informasjon")){
                     TextField(text: $inputInfo, axis: .vertical){}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 
                 

@@ -27,9 +27,9 @@ struct SelectIngredientView: View {
                     }.frame(width: 160, alignment: .leading)
                         .labelsHidden()
                     Text("Mengde: ")
-                    TextField(text: $inputMeasure){
-                        
-                    }
+                    TextField(text: $inputMeasure){}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
             }
             .navigationTitle("Velg ingrediens")

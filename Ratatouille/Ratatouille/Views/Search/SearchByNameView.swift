@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchByNameView: View {
-    @ObservedObject var dataContext: DataContext
+    @EnvironmentObject var dataContext: DataContext
     
     let mealAPIClient = MealAPIClient.live
     @State var sheetPresented = false
@@ -31,8 +31,13 @@ struct SearchByNameView: View {
                 sheetPresented = true
             }, label: {
                 ZStack{
-                    Rectangle().frame(width: 250, height: 50).cornerRadius(30).foregroundColor(.primary)
-                    Text("Søk etter oppskrift").bold()
+                    Rectangle()
+                        .frame(width: 250, height: 50)
+                        .cornerRadius(30)
+                        .foregroundColor(Color("Main"))
+                    Text("Søk etter oppskrift")
+                        .foregroundStyle(Color("Text"))
+                        .bold()
                 }.padding(.vertical)
             })
             
@@ -105,5 +110,5 @@ struct SearchByNameView: View {
 }
 
 #Preview {
-    SearchByNameView(dataContext: DataContext())
+    SearchByNameView()
 }

@@ -21,11 +21,15 @@ struct EditAreaView: View {
             List{
                 Section(header: Text("Navn")){
                     TextField(text: $inputName) {}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 
                 Section(header: Text("Landskode")){
                     HStack{
-                        TextField("Landskode", text: $inputFlag)
+                        TextField("Landskode", text: $inputFlag){}
+                            .autocorrectionDisabled(true)
+                            .textInputAutocapitalization(.never)
                         Spacer()
                         AsyncImage(url: URL(string: "https://flagsapi.com/\(inputFlag)/flat/32.png")) { image in
                             image

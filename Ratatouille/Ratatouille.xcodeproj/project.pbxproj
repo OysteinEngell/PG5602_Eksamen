@@ -36,7 +36,6 @@
 		175F92D62B0B7CB10024B0D0 /* StoredMealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92D52B0B7CB10024B0D0 /* StoredMealItemView.swift */; };
 		175F92D82B0BEEE80024B0D0 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92D72B0BEEE80024B0D0 /* MealDetailView.swift */; };
 		17E53D972B07675300F35940 /* RatatouilleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D962B07675300F35940 /* RatatouilleApp.swift */; };
-		17E53D992B07675300F35940 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D982B07675300F35940 /* ContentView.swift */; };
 		17E53D9B2B07675400F35940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E53D9A2B07675400F35940 /* Assets.xcassets */; };
 		17E53D9E2B07675400F35940 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E53D9D2B07675400F35940 /* Preview Assets.xcassets */; };
 		17E53DA02B07675400F35940 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E53D9F2B07675400F35940 /* Persistence.swift */; };
@@ -111,7 +110,6 @@
 		175F92D72B0BEEE80024B0D0 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		17E53D932B07675300F35940 /* Ratatouille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratatouille.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E53D962B07675300F35940 /* RatatouilleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatatouilleApp.swift; sourceTree = "<group>"; };
-		17E53D982B07675300F35940 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		17E53D9A2B07675400F35940 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17E53D9D2B07675400F35940 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17E53D9F2B07675400F35940 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -171,8 +169,8 @@
 				17E53DC72B07681400F35940 /* SearchView.swift */,
 				17E53DF32B07974400F35940 /* SearchMealItemView.swift */,
 				17E53DF52B079DE900F35940 /* SearchMealListView.swift */,
-				1714DE652B0955C800AB5246 /* SearchByAreaView.swift */,
 				1714DE6A2B0964B700AB5246 /* SearchByCategoryView.swift */,
+				1714DE652B0955C800AB5246 /* SearchByAreaView.swift */,
 				1714DE6C2B0A378F00AB5246 /* SearchByIngredientView.swift */,
 				1714DE6E2B0A4F1800AB5246 /* SearchByNameView.swift */,
 				174E90A42B0CC62A00A0FB22 /* FetchDetailView.swift */,
@@ -284,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				17E53D962B07675300F35940 /* RatatouilleApp.swift */,
+				17E53DCC2B07681400F35940 /* SplashScreenView.swift */,
 				17E53D9A2B07675400F35940 /* Assets.xcassets */,
 				17E53DE42B07692100F35940 /* API */,
 				17E53DD72B07687700F35940 /* Models */,
@@ -323,10 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				1714DE692B09625A00AB5246 /* Home */,
-				1714DE682B09622D00AB5246 /* Settings */,
 				1714DE672B09621300AB5246 /* Search */,
-				17E53D982B07675300F35940 /* ContentView.swift */,
-				17E53DCC2B07681400F35940 /* SplashScreenView.swift */,
+				1714DE682B09622D00AB5246 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -514,7 +511,6 @@
 				17E53DE12B0768C300F35940 /* FilteredMealModel.swift in Sources */,
 				17498EBF2B1218BC005E2EC4 /* AddCategoryView.swift in Sources */,
 				17E53DF62B079DE900F35940 /* SearchMealListView.swift in Sources */,
-				17E53D992B07675300F35940 /* ContentView.swift in Sources */,
 				17498ED52B1882E7005E2EC4 /* ClearDataView.swift in Sources */,
 				174E90B62B0F6AE000A0FB22 /* Ingredient+CoreDataClass.swift in Sources */,
 				17E53DD42B07681400F35940 /* SplashScreenView.swift in Sources */,

@@ -9,11 +9,16 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @ObservedObject var dataContext: DataContext
+    
     var mealApiClient = MealAPIClient.live
     
     @State var tabSelected = "Landområde"
     @State var sheetPresented = false
+    
+    init(){
+        UISegmentedControl.appearance().selectedSegmentTintColor = .main
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.text], for: .selected)
+    }
     
     var body: some View {
         NavigationStack{
@@ -24,23 +29,20 @@ struct SearchView: View {
                     Image(systemName: "carrot.fill").tag("Ingrediens")
                     Image(systemName: "magnifyingglass").tag("Navn")
                     
-                }).pickerStyle(.segmented).padding()
+                })
+                .pickerStyle(.segmented)
+                .padding()
                 
                 switch(tabSelected){
-                case "Landområde": SearchByAreaView(dataContext: dataContext)
-                case "Kategori": SearchByCategoryView(dataContext: dataContext)
-                case "Ingrediens": SearchByIngredientView(dataContext: dataContext)
-                case "Navn": SearchByNameView(dataContext: dataContext)
+                case "Landområde": SearchByAreaView()
+                case "Kategori": SearchByCategoryView()
+                case "Ingrediens": SearchByIngredientView()
+                case "Navn": SearchByNameView()
                     
                 default: SearchMealListView(meals: [])
                 }
                 
-                
-                
                 Spacer()
-                
-                
-                
             }
         }
     }
@@ -49,5 +51,5 @@ struct SearchView: View {
 
 
 #Preview {
-    SearchView(dataContext: DataContext())
+    SearchView()
 }

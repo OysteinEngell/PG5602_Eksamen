@@ -24,11 +24,11 @@ struct RatatouilleApp: App {
                     SplashScreenView()
                 }else{
                     TabView {
-                        MyMealsView(dataContext: dataContext)
+                        MyMealsView()
                             .tabItem {
                                 Label("Mine Oppskrifter", systemImage: "fork.knife.circle.fill")
                             }.badge(dataContext.numberOfMealsInStorage)
-                        SearchView(dataContext: dataContext)
+                        SearchView()
                             .tabItem {
                                 Label("Søk", systemImage: "magnifyingglass.circle.fill")
                             }

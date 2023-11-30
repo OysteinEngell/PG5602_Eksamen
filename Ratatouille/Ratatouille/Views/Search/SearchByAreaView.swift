@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchByAreaView: View {
-    @ObservedObject var dataContext: DataContext
+    @EnvironmentObject var dataContext: DataContext
     let mealAPIClient = MealAPIClient.live
     let flagAPI = FlagAPI()
     @State var countryCode = "unknown"
@@ -56,5 +56,5 @@ struct SearchByAreaView: View {
 }
 
 #Preview {
-    SearchByAreaView(dataContext: DataContext())
+    SearchByAreaView()
 }

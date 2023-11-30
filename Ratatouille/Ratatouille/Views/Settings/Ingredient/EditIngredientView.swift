@@ -21,6 +21,8 @@ struct EditIngredientView: View {
             List{
                 Section(header: Text("Navn")){
                     TextField(text: $inputName){}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 
                 Section(header: Text("Bilde")){
@@ -39,6 +41,8 @@ struct EditIngredientView: View {
                 
                 Section(header: Text("Informasjon")){
                     TextField(text: $inputInfo, axis: .vertical){}
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
                 }
                 
                 
