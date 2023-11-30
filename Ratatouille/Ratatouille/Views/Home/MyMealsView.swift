@@ -21,7 +21,7 @@ struct MyMealsView: View {
     var body: some View {
         VStack{
             LogoView().background(Color(.main))
-            
+            Spacer()
             if meals.isEmpty {
                 Image(systemName: "square.3.layers.3d.slash")
                     .resizable()
@@ -29,6 +29,7 @@ struct MyMealsView: View {
                     .frame(width: 50)
                 
                 Text("Ingen matoppskrifter").bold()
+                Spacer()
             } else {
                 NavigationStack{
                     List{
@@ -52,7 +53,6 @@ struct MyMealsView: View {
                             }
                         }
                     }
-                    .listStyle(PlainListStyle())
                     .navigationBarTitle("Matoppskrifter")
                         
                 }.offset(y: -10)

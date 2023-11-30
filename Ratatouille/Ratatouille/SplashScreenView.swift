@@ -9,60 +9,86 @@ import SwiftUI
 
 struct SplashScreenView: View {
     
+    let isDarkmode = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
     
-    @State var Roffset = -300.0
-    @State var RatOffset = -300.0
-    @State var HatOffsetX = 0.0
-    @State var HatOffsetY = 0.0
+    
+    
+    
+    @State var colorOffset = 0.0
+    @State var stackOpacity = 1.0
+    
+    @State var rOffset = -300.0
+    @State var ratOffset = -300.0
+    @State var hatOffsetX = 0.0
+    @State var hatOffsetY = 0.0
     @State var hatOpacity = 0.0
     @State var hatRotation = 0.0
     
+    
+    
     var body: some View {
+        
+        let rImage = isDarkmode ? "IconR" : "IconRNegative"
+        let hatImage = isDarkmode ? "IconHat" : "IconHatNegative"
+        let ratImage = isDarkmode ? "IconRat" : "IconRatNegative"
         
         VStack{
             ZStack{
                 Color(.main).ignoresSafeArea()
+                    .offset(y: colorOffset)
+                    .onAppear{
+                        withAnimation(.easeIn(duration: 0.3).delay(2.7)){
+                            colorOffset = -800
+                        }
+                    }
                 
                 ZStack{
-                    
-                    Image("IconHat")
+                    Image(hatImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300)
-                        .offset(x: HatOffsetX, y: HatOffsetY)
+                        .offset(x: hatOffsetX, y: hatOffsetY)
                         .rotationEffect(.degrees(hatRotation))
                         .opacity(hatOpacity)
                         .onAppear{
                             withAnimation(.easeOut(duration: 0.5).delay(0.7)){
-                                HatOffsetY = -120.0
-                                HatOffsetX = 55.0
-                                hatOpacity = 100.0
+                                hatOffsetY = -120.0
+                                hatOffsetX = 55.0
+                                hatOpacity = 1.0
                                 hatRotation = 22.0
                             }
-                            
                         }
-                    Image("IconR")
+                    Image(rImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300)
-                        .offset(x: Roffset)
+                        .offset(x: rOffset)
                         .onAppear{
                             withAnimation(.easeOut(duration: 0.8)){
-                             Roffset = 0
+                             rOffset = 0
                             }
+                           
                         }
-                    Image("IconRat")
+                    Image(ratImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300)
-                        .offset(x: RatOffset, y: -15)
+                        .offset(x: ratOffset, y: -15)
                         .onAppear{
                             withAnimation(.easeOut(duration: 0.8).delay(0.3)){
-                             RatOffset = -10
+                             ratOffset = -10
                             }
+                         
                             
                         }
-                }.offset(x: -20)
+                }
+                .offset(x: -20)
+                .opacity(stackOpacity)
+                .onAppear{
+                    withAnimation(.easeIn(duration: 0.2).delay(2.6)){
+                            stackOpacity = 0.0
+                        }
+                    }
             }
         }
       

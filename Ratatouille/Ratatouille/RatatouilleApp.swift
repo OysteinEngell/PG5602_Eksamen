@@ -20,9 +20,7 @@ struct RatatouilleApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack{
-                if(splashPresented){
-                    SplashScreenView()
-                }else{
+                
                     TabView {
                         MyMealsView()
                             .tabItem {
@@ -36,7 +34,10 @@ struct RatatouilleApp: App {
                             .tabItem {
                                 Label("Innstillinger", systemImage: "gearshape")
                             }
-                    }
+                    
+                }
+                if(splashPresented){
+                    SplashScreenView()
                 }
             }
             .onAppear{
@@ -45,6 +46,7 @@ struct RatatouilleApp: App {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                         withAnimation {
                             splashPresented = false
+                            
                         }
                     }
                 }
@@ -55,7 +57,7 @@ struct RatatouilleApp: App {
         }
     }
     
-    func fetchData() async { //handle null / ""
+    func fetchData() async {
         
         do{
             dataContext.areaArray = try await mealApiClient.getAreas()
