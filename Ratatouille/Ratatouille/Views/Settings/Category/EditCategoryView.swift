@@ -94,16 +94,17 @@ struct EditCategoryView: View {
     }
     
     func handleSave(){
-        category.title = inputTitle
-        category.info = inputInfo
-        category.image = inputInfo
-        
-        do{
-            try moc.save()
-        }catch let error{
-            print(error)
+        if(InputValidator.validateName(name: inputTitle)){
+            category.title = inputTitle
+            category.info = inputInfo
+            category.image = inputInfo
+            
+            do{
+                try moc.save()
+            }catch let error{
+                print(error)
+            }
         }
-        
         presentationMode.wrappedValue.dismiss()
     }
 }

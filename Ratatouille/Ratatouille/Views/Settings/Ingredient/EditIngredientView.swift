@@ -61,24 +61,22 @@ struct EditIngredientView: View {
         }
         .onAppear{
             inputName = ingredient.name
-            inputImage = ingredient.image ?? "Legg til bilde (url)"
-            inputInfo = ingredient.info ?? "Legg til informasjon"
+            inputImage = ingredient.image ?? ""
+            inputInfo = ingredient.info ?? ""
         }
     }
     
     func handleSave(){
-        ingredient.name = inputName
-        ingredient.image = inputImage
-        ingredient.info = inputInfo
-        
-        
-        
-        do{
-            try moc.save()
-        }catch let error{
-            print(error)
+        if(InputValidator.validateName(name: inputName)){
+            ingredient.name = inputName
+            ingredient.image = inputImage
+            ingredient.info = inputInfo
+            do{
+                try moc.save()
+            }catch let error{
+                print(error)
+            }
         }
-        
         presentationMode.wrappedValue.dismiss()
     }
 }

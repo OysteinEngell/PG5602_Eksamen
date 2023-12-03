@@ -15,6 +15,8 @@ struct AddIngredientView: View {
     @State var inputImage = ""
     @State var inputInfo = ""
     
+    @State var nameFieldFocused = false
+    
     var body: some View {
         NavigationStack{
             List{
@@ -36,7 +38,7 @@ struct AddIngredientView: View {
                         TextField("Legg til bilde url", text: $inputImage, axis: .vertical)
                             .autocorrectionDisabled(true)
                             .textInputAutocapitalization(.never)
-                        
+                            
                     }
                 }
                 
@@ -67,20 +69,24 @@ struct AddIngredientView: View {
         do{
             if let existingIngredient = try moc.fetch(Ingredient.fetchRequest(has: inputName)).first {
                 print("\(inputName) already exists")
+                existingIngredient.archived = false
             }else{
-                let newIngredient = Ingredient(context: moc)
-                newIngredient.id = "\(inputName)\(arc4random())"
-                newIngredient.name = inputName
-                newIngredient.image = inputImage
-                newIngredient.info = inputInfo
-                newIngredient.archived = false
-                newIngredient.date = nil
-                
-                do{
-                    try moc.save()
-                }catch let error{
-                    print(error)
+                if(InputValidator.validateName(name: inputName)){
+                    let newIngredient = Ingredient(context: moc)
+                    newIngredient.id = "\(inputName)\(arc4random())"
+                    newIngredient.name = inputName
+                    newIngredient.image = inputImage
+                    newIngredient.info = inputInfo
+                    newIngredient.archived = false
+                    newIngredient.date = nil
+                    
+                    do{
+                        try moc.save()
+                    }catch let error{
+                        print(error)
+                    }
                 }
+                
             }
         }
         catch let error{

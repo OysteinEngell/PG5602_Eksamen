@@ -45,7 +45,7 @@ struct EditMealDetailView: View {
         NavigationStack{
             List{
                 Section(header: Text("Tittel")){
-                    TextField(text: $inputTitle) {}
+                    TextField("Navn på oppskrift", text: $inputTitle)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                 }
@@ -57,7 +57,7 @@ struct EditMealDetailView: View {
                                 .frame(width: 100)
                                 .cornerRadius(10)
                         }
-                        TextField(text: $inputImage, axis: .vertical) {}
+                        TextField("Legg til bilde url", text: $inputImage, axis: .vertical)
                             .autocorrectionDisabled(true)
                             .textInputAutocapitalization(.never)
                     }
@@ -172,21 +172,23 @@ struct EditMealDetailView: View {
     }
     
     func handleSave(){
-        meal.title = inputTitle
-        meal.image = inputImage
-        meal.area = inputArea
-        meal.category = inputCategory
-        meal.ingredients = inputIngredients
-        meal.measures = inputMeasures
-        meal.instructions = meal.instructions
-        
-        addCategoryRelation()
-        addAreaRelation()
-        
-        do{
-            try moc.save()
-        }catch let error{
-            print(error)
+        if(InputValidator.validateName(name: inputTitle)){
+            meal.title = inputTitle
+            meal.image = inputImage
+            meal.area = inputArea
+            meal.category = inputCategory
+            meal.ingredients = inputIngredients
+            meal.measures = inputMeasures
+            meal.instructions = meal.instructions
+            
+            addCategoryRelation()
+            addAreaRelation()
+            
+            do{
+                try moc.save()
+            }catch let error{
+                print(error)
+            }
         }
     }
     

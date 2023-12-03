@@ -83,16 +83,17 @@ struct EditAreaView: View {
         }
     }
     func handleSave(){
-        area.name = inputName
-        area.flag = inputFlag
-        
-        
-        do{
-            try moc.save()
-        }catch let error{
-            print(error)
+        if(InputValidator.validateName(name: inputName)){
+            area.name = inputName
+            area.flag = inputFlag
+            
+            
+            do{
+                try moc.save()
+            }catch let error{
+                print(error)
+            }
         }
-        
         presentationMode.wrappedValue.dismiss()
     }
 }

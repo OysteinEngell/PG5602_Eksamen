@@ -59,18 +59,21 @@ struct AddAreaView: View {
         do{
             if let existingArea = try moc.fetch(Area.fetchRequest(for: inputName)).first {
                 print("\(inputName) already exists")
+                existingArea.archived = false
             }else{
-                let newArea = Area(context: moc)
-                newArea.name = inputName
-                newArea.flag = inputFlag
-                newArea.archived = false
-                newArea.date = nil
-                newArea.id = "\(inputName)\(arc4random())"
-                
-                do{
-                    try moc.save()
-                }catch let error{
-                    print(error)
+                if(InputValidator.validateName(name: inputName)){
+                    let newArea = Area(context: moc)
+                    newArea.name = inputName
+                    newArea.flag = inputFlag
+                    newArea.archived = false
+                    newArea.date = nil
+                    newArea.id = "\(inputName)\(arc4random())"
+                    
+                    do{
+                        try moc.save()
+                    }catch let error{
+                        print(error)
+                    }
                 }
             }
             presentationMode.wrappedValue.dismiss()

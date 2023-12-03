@@ -63,20 +63,23 @@ struct AddCategoryView: View {
     func handleSave(){
         do{
             if let existingCategory = try moc.fetch(Category.fetchRequest(has: inputTitle)).first {
+                existingCategory.archived = false
                 print("\(inputTitle) already exists")
             }else{
-                let newCategory = Category(context: moc)
-                newCategory.id = "\(inputTitle)\(arc4random())"
-                newCategory.title = inputTitle
-                newCategory.image = inputImage
-                newCategory.info = inputInfo
-                newCategory.archived = false
-                newCategory.date = nil
-                
-                do{
-                    try moc.save()
-                }catch let error{
-                    print(error)
+                if(InputValidator.validateName(name: inputTitle)){
+                    let newCategory = Category(context: moc)
+                    newCategory.id = "\(inputTitle)\(arc4random())"
+                    newCategory.title = inputTitle
+                    newCategory.image = inputImage
+                    newCategory.info = inputInfo
+                    newCategory.archived = false
+                    newCategory.date = nil
+                    
+                    do{
+                        try moc.save()
+                    }catch let error{
+                        print(error)
+                    }
                 }
             }
         }catch let error{
