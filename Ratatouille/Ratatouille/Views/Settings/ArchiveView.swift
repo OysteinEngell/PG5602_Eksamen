@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ArchiveView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var moc
     @EnvironmentObject var dataContext: DataContext
     
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [])
@@ -156,9 +156,9 @@ struct ArchiveView: View {
     }
     
     func handleDelete<T: NSManagedObject>(entity: T){
-        viewContext.delete(entity as NSManagedObject)
+        moc.delete(entity as NSManagedObject)
         do{
-            try viewContext.save()
+            try moc.save()
         }catch let error{
             print(error)
         }
@@ -169,7 +169,7 @@ struct ArchiveView: View {
             if let archivableEntity = entity as NSManagedObject? {
                 archivableEntity.setValue(false, forKey: "archived")
             }
-            try viewContext.save()
+            try moc.save()
         }catch let error{
             print(error)
         }

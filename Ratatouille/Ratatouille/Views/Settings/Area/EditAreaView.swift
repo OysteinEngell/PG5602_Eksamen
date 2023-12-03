@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditAreaView: View {
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     
     var area: Area
@@ -88,7 +88,7 @@ struct EditAreaView: View {
         
         
         do{
-            try context.save()
+            try moc.save()
         }catch let error{
             print(error)
         }

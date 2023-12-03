@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditIngredientView: View {
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     var ingredient: Ingredient
     
@@ -74,7 +74,7 @@ struct EditIngredientView: View {
         
         
         do{
-            try context.save()
+            try moc.save()
         }catch let error{
             print(error)
         }

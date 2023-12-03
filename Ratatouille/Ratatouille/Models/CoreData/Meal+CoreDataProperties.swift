@@ -15,6 +15,12 @@ extension Meal {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Meal> {
         return NSFetchRequest<Meal>(entityName: "Meal")
     }
+    
+    @nonobjc public class func fetchRequest(for id: String) -> NSFetchRequest<Meal> {
+            let request: NSFetchRequest<Meal> = NSFetchRequest<Meal>(entityName: "Meal")
+            request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            return request
+        }
 
     @NSManaged public var archived: Bool
     @NSManaged public var area: String
@@ -40,8 +46,8 @@ extension Meal : Identifiable {
 extension Meal {
     
     static var demo: Meal{
-        let context = PersistenceController.shared.container.viewContext
-        let meal = Meal(context: context)
+        let moc = PersistenceController.shared.container.viewContext
+        let meal = Meal(context: moc)
         meal.id = "54605"
         meal.title = "Delicous demomeal"
         meal.area = "Italian"

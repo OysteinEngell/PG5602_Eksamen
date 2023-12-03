@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddAreaView: View {
     
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     
     @State var inputName = ""
@@ -19,14 +19,14 @@ struct AddAreaView: View {
         NavigationStack{
             List{
                 Section(header: Text("Navn")){
-                    TextField(text: $inputName) {}
+                    TextField("Legg til navn", text: $inputName)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                 }
                 
                 Section(header: Text("Landskode")){
                     HStack{
-                        TextField("Landskode", text: $inputFlag){}
+                        TextField("Landskode (f.eks NO)", text: $inputFlag)
                             .autocorrectionDisabled(true)
                             .textInputAutocapitalization(.never)
                         Spacer()
@@ -56,20 +56,27 @@ struct AddAreaView: View {
         
     }
     func handleSave(){
-        let newArea = Area(context: context)
-        newArea.name = inputName
-        newArea.flag = inputFlag
-        newArea.archived = false
-        newArea.date = nil
-        newArea.id = "\(inputName)\(arc4random())"
-        
         do{
-            try context.save()
+            if let existingArea = try moc.fetch(Area.fetchRequest(for: inputName)).first {
+                print("\(inputName) already exists")
+            }else{
+                let newArea = Area(context: moc)
+                newArea.name = inputName
+                newArea.flag = inputFlag
+                newArea.archived = false
+                newArea.date = nil
+                newArea.id = "\(inputName)\(arc4random())"
+                
+                do{
+                    try moc.save()
+                }catch let error{
+                    print(error)
+                }
+            }
+            presentationMode.wrappedValue.dismiss()
         }catch let error{
             print(error)
         }
-        
-        presentationMode.wrappedValue.dismiss()
     }
     
     
