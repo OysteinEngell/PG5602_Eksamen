@@ -14,7 +14,7 @@ struct SplashScreenView: View {
     
     
     
-    @State var colorOffset = 0.0
+    
     @State var stackOpacity = 1.0
     
     @State var rOffset = -300.0
@@ -28,20 +28,17 @@ struct SplashScreenView: View {
     
     var body: some View {
         
-        let rImage = isDarkmode ? "IconR" : "IconRNegative"
-        let hatImage = isDarkmode ? "IconHat" : "IconHatNegative"
-        let ratImage = isDarkmode ? "IconRat" : "IconRatNegative"
+        let rImage = isDarkmode ? "icon_r_yellow" : "icon_r_red"
+        let hatImage = isDarkmode ? "icon_hat_yellow" : "icon_hat_red"
+        let ratImage = "icon_rat_black"
         
         VStack{
             ZStack{
-                Color(.main).ignoresSafeArea()
-                    .offset(y: colorOffset)
+                Color(.black).ignoresSafeArea()
                     .onAppear{
                         withAnimation(.easeIn(duration: 0.3).delay(2.7)){
-                            colorOffset = -800
                         }
                     }
-                
                 ZStack{
                     Image(hatImage)
                         .resizable()
@@ -53,9 +50,9 @@ struct SplashScreenView: View {
                         .onAppear{
                             withAnimation(.easeOut(duration: 0.5).delay(0.7)){
                                 hatOffsetY = -120.0
-                                hatOffsetX = 55.0
+                                hatOffsetX = 60.0
                                 hatOpacity = 1.0
-                                hatRotation = 22.0
+                                hatRotation = 20.0
                             }
                         }
                     Image(rImage)
@@ -65,9 +62,9 @@ struct SplashScreenView: View {
                         .offset(x: rOffset)
                         .onAppear{
                             withAnimation(.easeOut(duration: 0.8)){
-                             rOffset = 0
+                                rOffset = 0
                             }
-                           
+                            
                         }
                     Image(ratImage)
                         .resizable()
@@ -75,23 +72,21 @@ struct SplashScreenView: View {
                         .frame(width: 300)
                         .offset(x: ratOffset, y: -15)
                         .onAppear{
-                            withAnimation(.easeOut(duration: 0.8).delay(0.3)){
-                             ratOffset = -10
+                            withAnimation(.easeOut(duration: 0.6).delay(0.4)){
+                                ratOffset = -10
                             }
-                         
-                            
                         }
-                }
-                .offset(x: -20)
-                .opacity(stackOpacity)
-                .onAppear{
-                    withAnimation(.easeIn(duration: 0.2).delay(2.6)){
-                            stackOpacity = 0.0
-                        }
-                    }
+                }.offset(x: -20)
             }
+            
         }
-      
+        .opacity(stackOpacity)
+        .onAppear{
+            withAnimation(.easeIn(duration: 0.4).delay(2.6)){
+                    stackOpacity = 0.0
+                }
+            }
+        
     }
 }
 
