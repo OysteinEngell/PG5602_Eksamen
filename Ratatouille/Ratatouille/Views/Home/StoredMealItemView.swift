@@ -1,9 +1,4 @@
-//
-//  StoredMealItemView.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 20/11/2023.
-//
+
 
 import SwiftUI
 

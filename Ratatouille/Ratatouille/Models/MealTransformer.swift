@@ -1,8 +1,4 @@
-//
-//  MealTransformer.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 21/11/2023.
+
 // - Converts MealModel into coreData Meal entity or MealModelModified
 // - Converts all ingredient and measure parameters into arrays and discards empty strings / nil.
 
@@ -60,8 +56,6 @@ struct MealTransformer {
         }
         return newMealsArray
     }
-    
-    
     
     
     func parseMealObject(meal: MealModel, context: NSManagedObjectContext) -> Meal {

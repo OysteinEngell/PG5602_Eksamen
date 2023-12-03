@@ -1,9 +1,4 @@
-//
-//  SearchMealItemView.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 17/11/2023.
-//
+
 
 import SwiftUI
 

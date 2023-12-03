@@ -14,7 +14,6 @@
 		1714DE6F2B0A4F1800AB5246 /* SearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714DE6E2B0A4F1800AB5246 /* SearchByNameView.swift */; };
 		1732C0CD2B1D3F6000676856 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732C0CC2B1D3F6000676856 /* InputValidator.swift */; };
 		17498EAF2B10DC40005E2EC4 /* SelectIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EAE2B10DC40005E2EC4 /* SelectIngredientView.swift */; };
-		17498EB22B1136EE005E2EC4 /* EditMealIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EB12B1136EE005E2EC4 /* EditMealIngredientView.swift */; };
 		17498EB42B1138A3005E2EC4 /* EditAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EB32B1138A3005E2EC4 /* EditAreaView.swift */; };
 		17498EB62B113F67005E2EC4 /* EditCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EB52B113F67005E2EC4 /* EditCategoryView.swift */; };
 		17498EB82B11E66F005E2EC4 /* EditIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17498EB72B11E66F005E2EC4 /* EditIngredientView.swift */; };
@@ -89,7 +88,6 @@
 		1714DE6E2B0A4F1800AB5246 /* SearchByNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByNameView.swift; sourceTree = "<group>"; };
 		1732C0CC2B1D3F6000676856 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		17498EAE2B10DC40005E2EC4 /* SelectIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIngredientView.swift; sourceTree = "<group>"; };
-		17498EB12B1136EE005E2EC4 /* EditMealIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealIngredientView.swift; sourceTree = "<group>"; };
 		17498EB32B1138A3005E2EC4 /* EditAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAreaView.swift; sourceTree = "<group>"; };
 		17498EB52B113F67005E2EC4 /* EditCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryView.swift; sourceTree = "<group>"; };
 		17498EB72B11E66F005E2EC4 /* EditIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIngredientView.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 			children = (
 				174E90C32B10864A00A0FB22 /* EditMealDetailView.swift */,
 				17498EAE2B10DC40005E2EC4 /* SelectIngredientView.swift */,
-				17498EB12B1136EE005E2EC4 /* EditMealIngredientView.swift */,
 			);
 			path = EditMeal;
 			sourceTree = "<group>";
@@ -511,7 +508,6 @@
 				174E90A72B0CE49800A0FB22 /* MealTransformer.swift in Sources */,
 				174E90BB2B0F6AE000A0FB22 /* Area+CoreDataProperties.swift in Sources */,
 				174E90B92B0F6AE000A0FB22 /* Meal+CoreDataProperties.swift in Sources */,
-				17498EB22B1136EE005E2EC4 /* EditMealIngredientView.swift in Sources */,
 				174E90A52B0CC62A00A0FB22 /* FetchDetailView.swift in Sources */,
 				174E90AB2B0D3A4800A0FB22 /* FlagAPI.swift in Sources */,
 				17E53DE12B0768C300F35940 /* FilteredMealModel.swift in Sources */,

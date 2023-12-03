@@ -1,9 +1,4 @@
-//
-//  MealModel.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 15/11/2023.
-//
+
 
 import Foundation
 

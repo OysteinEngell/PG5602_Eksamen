@@ -1,9 +1,4 @@
-//
-//  SearchByIngredientView.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 19/11/2023.
-//
+
 
 import SwiftUI
 

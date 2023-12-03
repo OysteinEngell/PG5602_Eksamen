@@ -1,9 +1,4 @@
-//
-//  SearchByAreaView.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 18/11/2023.
-//
+
 
 import SwiftUI
 

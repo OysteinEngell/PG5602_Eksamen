@@ -1,9 +1,4 @@
-//
-//  EditMealDetailView.swift
-//  Ratatouille
-//
-//  Created by Øystein Engell on 24/11/2023.
-//
+
 
 import SwiftUI
 
@@ -16,9 +11,7 @@ struct EditMealDetailView: View {
     
     @FetchRequest(entity: Category.entity(), sortDescriptors: [])
     var categories: FetchedResults<Category>
-    
-    //    @FetchRequest(entity: Ingredient.entity(), sortDescriptors: [])
-    //    var ingredients: FetchedResults<Ingredient>
+
     
     @State var sheetPresented = false
     @State var sheetType = ""
