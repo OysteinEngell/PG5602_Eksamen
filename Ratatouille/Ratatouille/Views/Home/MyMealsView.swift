@@ -11,7 +11,7 @@ struct MyMealsView: View {
     
     @EnvironmentObject var dataContext: DataContext
     
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [], predicate: NSPredicate(format: "archived == false"))
     var meals: FetchedResults<Meal>
   

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StoredMealItemView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var moc
     @EnvironmentObject var dataContext: DataContext
     @State var favorite: Bool
     let meal: Meal
@@ -50,7 +50,7 @@ struct StoredMealItemView: View {
             meal.favorite.toggle()
             favorite.toggle()
             do{
-               try viewContext.save()
+               try moc.save()
             }catch let error{
                 print(error)
             }
@@ -63,7 +63,7 @@ struct StoredMealItemView: View {
             meal.date = Date()
             dataContext.numberOfMealsInStorage -= 1
             do{
-               try viewContext.save()
+               try moc.save()
             }catch let error{
                 print(error)
             }

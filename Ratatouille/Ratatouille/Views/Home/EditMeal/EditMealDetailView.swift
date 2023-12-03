@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditMealDetailView: View {
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     
     @FetchRequest(entity: Area.entity(), sortDescriptors: [])
@@ -184,7 +184,7 @@ struct EditMealDetailView: View {
         addAreaRelation()
         
         do{
-            try context.save()
+            try moc.save()
         }catch let error{
             print(error)
         }

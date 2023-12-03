@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ClearDataView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var moc
     
     @FetchRequest(entity: Meal.entity(), sortDescriptors: [])
     var meals: FetchedResults<Meal>
@@ -90,9 +90,9 @@ struct ClearDataView: View {
        
         do{
             for entity in entities{
-                viewContext.delete(entity)
+                moc.delete(entity)
             }
-            try viewContext.save()
+            try moc.save()
         }catch let error{
             print(error)
         }

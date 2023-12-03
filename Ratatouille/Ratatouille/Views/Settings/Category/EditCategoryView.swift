@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditCategoryView: View {
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     
     var category: Category
@@ -99,7 +99,7 @@ struct EditCategoryView: View {
         category.image = inputInfo
         
         do{
-            try context.save()
+            try moc.save()
         }catch let error{
             print(error)
         }

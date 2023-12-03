@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct AddCategoryView: View {
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     
-    @State var inputTitle = "Legg til tittel"
-    @State var inputInfo = "Legg til informasjon"
-    @State var inputImage = "Legg til bilde (url)"
+    @State var inputTitle = ""
+    @State var inputInfo = ""
+    @State var inputImage = ""
     
     var body: some View {
         NavigationStack{
             List{
                 Section(header: Text("Tittel")){
-                    TextField(text: $inputTitle){}
+                    TextField("Legg til tittel", text: $inputTitle)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                 }
@@ -33,14 +33,14 @@ struct AddCategoryView: View {
                             .cornerRadius(40)}placeholder: {
                                 ProgressView()
                             }
-                        TextField(text: $inputImage, axis: .vertical){}
+                        TextField("Legg til bilde url", text: $inputImage, axis: .vertical)
                             .autocorrectionDisabled(true)
                             .textInputAutocapitalization(.never)
                     }
                 }
                 
                 Section(header: Text("Informasjon")){
-                    TextField(text: $inputInfo, axis: .vertical){}
+                    TextField("Legg til beskrivelse", text: $inputInfo, axis: .vertical)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                 }
@@ -59,17 +59,26 @@ struct AddCategoryView: View {
             })
         }
     }
+    
     func handleSave(){
-        let newCategory = Category(context: context)
-        newCategory.id = "\(inputTitle)\(arc4random())"
-        newCategory.title = inputTitle
-        newCategory.image = inputImage
-        newCategory.info = inputInfo
-        newCategory.archived = false
-        newCategory.date = nil
-        
         do{
-            try context.save()
+            if let existingCategory = try moc.fetch(Category.fetchRequest(has: inputTitle)).first {
+                print("\(inputTitle) already exists")
+            }else{
+                let newCategory = Category(context: moc)
+                newCategory.id = "\(inputTitle)\(arc4random())"
+                newCategory.title = inputTitle
+                newCategory.image = inputImage
+                newCategory.info = inputInfo
+                newCategory.archived = false
+                newCategory.date = nil
+                
+                do{
+                    try moc.save()
+                }catch let error{
+                    print(error)
+                }
+            }
         }catch let error{
             print(error)
         }

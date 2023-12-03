@@ -21,6 +21,12 @@ extension Category {
             request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
             return request
         }
+    
+    @nonobjc public class func fetchRequest(has title: String) -> NSFetchRequest<Category> {
+            let request: NSFetchRequest<Category> = NSFetchRequest<Category>(entityName: "Category")
+            request.predicate = NSPredicate(format: "title == %@", title as CVarArg)
+            return request
+        }
 
     @NSManaged public var id: String
     @NSManaged public var title: String

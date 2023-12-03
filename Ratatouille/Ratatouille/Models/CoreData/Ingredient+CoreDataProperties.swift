@@ -17,8 +17,14 @@ extension Ingredient {
     }
     
     @nonobjc public class func fetchRequest(for id: String) -> NSFetchRequest<Ingredient> {
-            let request: NSFetchRequest<Ingredient> = NSFetchRequest<Ingredient>(entityName: "Area")
+            let request: NSFetchRequest<Ingredient> = NSFetchRequest<Ingredient>(entityName: "Ingredient")
             request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            return request
+        }
+    
+    @nonobjc public class func fetchRequest(has name: String) -> NSFetchRequest<Ingredient> {
+            let request: NSFetchRequest<Ingredient> = NSFetchRequest<Ingredient>(entityName: "Ingredient")
+            request.predicate = NSPredicate(format: "name == %@", name as CVarArg)
             return request
         }
 

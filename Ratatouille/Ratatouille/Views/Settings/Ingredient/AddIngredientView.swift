@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct AddIngredientView: View {
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.presentationMode) var presentationMode
     
-    @State var inputName = "Legg til navn"
-    @State var inputImage = "Legg til bilde (url)"
-    @State var inputInfo = "Legg til informasjon"
+    @State var inputName = ""
+    @State var inputImage = ""
+    @State var inputInfo = ""
     
     var body: some View {
         NavigationStack{
             List{
                 Section(header: Text("Navn")){
-                    TextField(text: $inputName){}
+                    TextField("Legg til navn", text: $inputName)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                 }
@@ -33,7 +33,7 @@ struct AddIngredientView: View {
                         }placeholder: {
                             ProgressView()
                         }
-                        TextField(text: $inputImage, axis: .vertical){}
+                        TextField("Legg til bilde url", text: $inputImage, axis: .vertical)
                             .autocorrectionDisabled(true)
                             .textInputAutocapitalization(.never)
                         
@@ -41,7 +41,7 @@ struct AddIngredientView: View {
                 }
                 
                 Section(header: Text("Informasjon")){
-                    TextField(text: $inputInfo, axis: .vertical){}
+                    TextField("Legg til en beskrivelse", text: $inputInfo, axis: .vertical)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                 }
@@ -64,17 +64,26 @@ struct AddIngredientView: View {
     }
     
     func handleSave(){
-        let newIngredient = Ingredient(context: context)
-        newIngredient.id = "\(inputName)\(arc4random())"
-        newIngredient.name = inputName
-        newIngredient.image = inputImage
-        newIngredient.info = inputInfo
-        newIngredient.archived = false
-        newIngredient.date = nil
-        
         do{
-            try context.save()
-        }catch let error{
+            if let existingIngredient = try moc.fetch(Ingredient.fetchRequest(has: inputName)).first {
+                print("\(inputName) already exists")
+            }else{
+                let newIngredient = Ingredient(context: moc)
+                newIngredient.id = "\(inputName)\(arc4random())"
+                newIngredient.name = inputName
+                newIngredient.image = inputImage
+                newIngredient.info = inputInfo
+                newIngredient.archived = false
+                newIngredient.date = nil
+                
+                do{
+                    try moc.save()
+                }catch let error{
+                    print(error)
+                }
+            }
+        }
+        catch let error{
             print(error)
         }
     }
